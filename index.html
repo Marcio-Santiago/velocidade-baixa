@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Velocidade Baixa 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Titillium+Web:wght@400;600;700&family=Metal+Mania&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Titillium Web', sans-serif;
+            padding: 40px; 
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0d0d1a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* HEADER ROCK N ROLL */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 50px 30px;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.9) 0%, rgba(124, 58, 237, 0.9) 50%, rgba(99, 102, 241, 0.9) 100%);
+            border-radius: 20px;
+            box-shadow: 
+                0 20px 60px rgba(99, 102, 241, 0.5),
+                0 0 100px rgba(124, 58, 237, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.2),
+                0 0 0 3px rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 2px,
+                rgba(0,0,0,0.1) 2px,
+                rgba(0,0,0,0.1) 4px
+            );
+            pointer-events: none;
+        }
+
+        .header::after {
+            content: '⚡🔥⚡';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 1.5em;
+            opacity: 0.8;
+        }
+
+        .icon-top {
+            font-size: 3em;
+            margin-bottom: 10px;
+            display: block;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.5));
+        }
+        
+        .header h1 { 
+            font-family: 'Metal Mania', cursive;
+            font-size: 4.5em;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            text-shadow: 
+                4px 4px 0 rgba(0,0,0,0.5),
+                0 0 40px rgba(255,255,255,0.4),
+                0 0 80px rgba(124, 58, 237, 0.8);
+            position: relative;
+            z-index: 1;
+            line-height: 1.1;
+        }
+
+        .header h1 .year {
+            display: block;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.5em;
+            letter-spacing: 20px;
+            margin-top: 10px;
+            color: #00f5d4;
+            text-shadow: 0 0 30px rgba(0, 245, 212, 0.8);
+        }
+        
+        .subtitle { 
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.4em;
+            font-weight: 600;
+            opacity: 0.95;
+            margin-top: 20px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle-icons {
+            margin-top: 15px;
+            font-size: 1.8em;
+            letter-spacing: 10px;
+        }
+
+        /* TÍTULOS DOS MESES */
+        h2 { 
+            font-family: 'Bebas Neue', sans-serif;
+            color: #00f5d4;
+            font-size: 2.2em;
+            font-weight: 400;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin: 60px 0 25px 0;
+            padding: 18px 30px;
+            background: linear-gradient(90deg, rgba(0, 245, 212, 0.2) 0%, rgba(0, 245, 212, 0.05) 50%, transparent 100%);
+            border-left: 6px solid #00f5d4;
+            border-radius: 0 15px 15px 0;
+            text-shadow: 0 0 30px rgba(0, 245, 212, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h2 .month-icon {
+            font-size: 1em;
+        }
+
+        /* TABELAS */
+        table { 
+            width: 100%; 
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-bottom: 35px; 
+            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.03) 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 
+                0 15px 50px rgba(0,0,0,0.4),
+                0 0 0 1px rgba(255,255,255,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        th { 
+            font-family: 'Bebas Neue', sans-serif;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #6366f1 100%);
+            color: white; 
+            padding: 20px 18px; 
+            text-align: left; 
+            font-weight: 400;
+            font-size: 1.2em;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-bottom: 4px solid #00f5d4;
+            position: relative;
+        }
+
+        th:first-child {
+            border-radius: 18px 0 0 0;
+        }
+
+        th:last-child {
+            border-radius: 0 18px 0 0;
+        }
+
+        th::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00f5d4, #00d2be, #00f5d4);
+        }
+        
+        td { 
+            padding: 18px; 
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            font-size: 1.05em;
+            vertical-align: middle;
+            transition: all 0.3s ease;
+        }
+
+        tr:last-child td:first-child {
+            border-radius: 0 0 0 18px;
+        }
+
+        tr:last-child td:last-child {
+            border-radius: 0 0 18px 0;
+        }
+        
+        tbody tr { 
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        tbody tr:hover { 
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.2) 0%, rgba(0, 245, 212, 0.1) 50%, rgba(99, 102, 241, 0.1) 100%);
+            transform: scale(1.01);
+            box-shadow: 0 5px 20px rgba(124, 58, 237, 0.3);
+        }
+
+        tbody tr:hover td {
+            border-bottom-color: rgba(0, 245, 212, 0.3);
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* COLUNA DE DATA */
+        td:first-child {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6em;
+            color: #00f5d4;
+            text-shadow: 0 0 15px rgba(0, 245, 212, 0.5);
+            letter-spacing: 2px;
+        }
+
+        /* COLUNA DIA */
+        td:nth-child(2) {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        /* COLUNA ETAPA */
+        td:nth-child(3) {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3em;
+            color: #a855f7;
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+        }
+
+        /* NOME DO GP */
+        .gp-name {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 1.2em;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .gp-icon {
+            font-size: 1.2em;
+        }
+        
+        .sprint-name {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+            font-size: 1.1em;
+            opacity: 0.85;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* COLUNA CIRCUITO */
+        .circuit {
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 400;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        /* BADGES */
+        .badge {
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.85em;
+            font-weight: 700;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 
+                0 4px 15px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+        
+        .sprint { 
+            background: linear-gradient(135deg, #ff8c00 0%, #ff5500 100%);
+            color: #000;
+            box-shadow: 0 4px 20px rgba(255, 140, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+        
+        .corrida { 
+            background: linear-gradient(135deg, #00f5d4 0%, #00b894 100%);
+            color: #000;
+            box-shadow: 0 4px 20px rgba(0, 245, 212, 0.5), inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+        
+        .especial { 
+            background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        
+        .final { 
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #000;
+            box-shadow: 0 4px 20px rgba(251, 191, 36, 0.5), inset 0 1px 0 rgba(255,255,255,0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(251, 191, 36, 0.5); }
+            50% { box-shadow: 0 4px 30px rgba(251, 191, 36, 0.8), 0 0 40px rgba(251, 191, 36, 0.4); }
+        }
+
+        /* SEÇÃO RESUMO */
+        .resumo-section {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            border-radius: 25px;
+            padding: 50px;
+            margin-top: 70px;
+            box-shadow: 
+                0 25px 70px rgba(0,0,0,0.4),
+                0 0 0 1px rgba(255,255,255,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            position: relative;
+        }
+
+        .resumo-section::before {
+            content: '🏆';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3em;
+            filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.8));
+        }
+        
+        .resumo-section h2 {
+            border-left: 6px solid #fbbf24;
+            color: #fbbf24;
+            margin-top: 0;
+            background: linear-gradient(90deg, rgba(251, 191, 36, 0.2) 0%, transparent 100%);
+            text-shadow: 0 0 30px rgba(251, 191, 36, 0.6);
+        }
+
+        /* GRID DE ESTATÍSTICAS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 100%);
+            padding: 35px 25px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .stat-box:hover::before {
+            left: 100%;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(124, 58, 237, 0.3);
+            border-color: rgba(124, 58, 237, 0.5);
+        }
+        
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5em;
+            font-weight: 400;
+            background: linear-gradient(135deg, #00f5d4 0%, #00d2be 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 25px rgba(0, 245, 212, 0.6));
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2em;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-top: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .stat-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 15px rgba(255,255,255,0.3));
+        }
+
+        /* LISTA DE SPRINTS */
+        .sprint-list {
+            margin-top: 50px;
+        }
+        
+        .sprint-list h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            color: #ff8c00;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* SEÇÃO PARTICIPANTES */
+        .participantes-section {
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .participantes-section h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            color: #a855f7;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .participantes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .participante-box {
+            background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%);
+            padding: 20px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 2px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .participante-box:hover {
+            border-color: rgba(168, 85, 247, 0.5);
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(168, 85, 247, 0.2);
+        }
+
+        .position {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8em;
+            color: #00f5d4;
+            text-shadow: 0 0 15px rgba(0, 245, 212, 0.5);
+            min-width: 50px;
+        }
+
+        .piloto-name {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+
+        /* SEÇÃO PONTUAÇÃO */
+        .pontuacao-section {
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .pontuacao-section h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            color: #fbbf24;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .pontuacao-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .pontuacao-table {
+            background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .pontuacao-table th {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            padding: 15px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3em;
+            letter-spacing: 3px;
+            border-bottom: 3px solid #00f5d4;
+        }
+
+        .pontuacao-table td {
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1em;
+        }
+
+        .pontuacao-table td:last-child {
+            text-align: right;
+            color: #00f5d4;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2em;
+            letter-spacing: 1px;
+        }
+
+        .pontuacao-table .nota {
+            text-align: center !important;
+            font-size: 0.85em !important;
+            opacity: 0.7;
+            font-style: italic;
+            color: #fff !important;
+        }
+
+        /* SEÇÃO REGRAS */
+        .regras-section {
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+            border-radius: 25px;
+            padding: 50px;
+            margin-top: 60px;
+            box-shadow: 
+                0 25px 70px rgba(0,0,0,0.4),
+                0 0 0 1px rgba(255,255,255,0.1);
+            border: 2px solid rgba(0, 245, 212, 0.2);
+        }
+
+        .regras-section h2 {
+            border-left: 6px solid #00f5d4;
+            color: #00f5d4;
+            margin-top: 0;
+            margin-bottom: 35px;
+        }
+
+        .regras-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .regra-box {
+            background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%);
+            padding: 30px 25px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
+        }
+
+        .regra-box:hover {
+            border-color: rgba(0, 245, 212, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .regra-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 15px rgba(255,255,255,0.3));
+        }
+
+        .regra-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5em;
+            color: #00f5d4;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(0, 245, 212, 0.4);
+        }
+
+        .regra-desc {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1em;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 35px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3em;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            border-top: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-icons {
+            font-size: 1.5em;
+            margin-top: 10px;
+            letter-spacing: 15px;
+        }
+
+        /* RESPONSIVIDADE PARA IMPRESSÃO */
+        @media print {
+            body { 
+                background: white; 
+                color: black;
+                padding: 20px;
+            }
+            .header { 
+                background: #4f46e5;
+                box-shadow: none;
+            }
+            h2 {
+                color: #4f46e5;
+                background: #f0f0f0;
+            }
+            table { 
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            .stat-number {
+                color: #00d2be;
+                -webkit-text-fill-color: #00d2be;
+            }
+            .resumo-section, .regras-section {
+                background: #f5f5f5;
+                box-shadow: none;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .stats-grid, .participantes-grid, .pontuacao-grid, .regras-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .stats-grid, .participantes-grid, .pontuacao-grid, .regras-grid {
+                grid-template-columns: 1fr;
+            }
+            .header h1 { font-size: 2.5em; }
+        }
+
+        /* DIFICULDADE */
+        .diff-cell {
+            white-space: nowrap;
+        }
+        .diff-stars {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .diff-stars .s {
+            font-size: 14px;
+            line-height: 1;
+        }
+        .diff-stars .s.on  { color: #fbbf24; text-shadow: 0 0 8px rgba(251,191,36,0.7); }
+        .diff-stars .s.off { color: #2a2a3a; }
+        .diff-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.72em;
+            letter-spacing: 1.5px;
+            margin-top: 3px;
+            opacity: 0.7;
+        }
+        .diff-s5 .diff-label { color: #e8001d; }
+        .diff-s4 .diff-label { color: #ff6b00; }
+        .diff-s3 .diff-label { color: #fbbf24; }
+        .diff-s2 .diff-label { color: #6ab7ff; }
+        .diff-s1 .diff-label { color: #00c853; }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+        <span class="icon-top">🏎️💨</span>
+        <h1>
+            Velocidade Baixa
+            <span class="year">— 2026 —</span>
+        </h1>
+        <div class="subtitle">Quem vai erguer o capacete à Lenda?</div>
+        <div class="subtitle-icons">🏁 🔥 🎮 🏆 🎸</div>
+    </div>
+
+    <!-- MARÇO -->
+    <h2><span class="month-icon">📅</span> Março</h2>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Dia</th>
+            <th>Etapa</th>
+            <th>Evento</th>
+            <th>Circuito</th>
+            <th>Tipo</th>
+            <th>Dificuldade</th>
+        </tr>
+        <tr>
+            <td>08</td>
+            <td>Dom</td>
+            <td>#01</td>
+            <td><span class="gp-name"><span class="gp-icon">🦘</span> GP da Austrália</span></td>
+            <td><span class="circuit">Melbourne</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s1"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Acessível</div></div></td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>Sáb</td>
+            <td>#02</td>
+            <td><span class="sprint-name"><span class="gp-icon">⚡</span> Sprint da China</span></td>
+            <td><span class="circuit">Xangai</span></td>
+            <td><span class="badge sprint">⚡ Sprint</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s3"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Difícil</div></div></td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>Dom</td>
+            <td>#02</td>
+            <td><span class="gp-name"><span class="gp-icon">🐉</span> GP da China</span></td>
+            <td><span class="circuit">Xangai</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s3"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Difícil</div></div></td>
+        </tr>
+        <tr>
+            <td>29</td>
+            <td>Dom</td>
+            <td>#03</td>
+            <td><span class="gp-name"><span class="gp-icon">🗻</span> GP do Japão</span></td>
+            <td><span class="circuit">Suzuka</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s4"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span></div><div class="diff-label">Muito Difícil</div></div></td>
+        </tr>
+    </table>
+
+    <!-- ABRIL -->
+    <h2><span class="month-icon">📅</span> Abril</h2>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Dia</th>
+            <th>Etapa</th>
+            <th>Evento</th>
+            <th>Circuito</th>
+            <th>Tipo</th>
+            <th>Dificuldade</th>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>Dom</td>
+            <td>#04</td>
+            <td><span class="gp-name"><span class="gp-icon">🏜️</span> GP do Bahrein</span></td>
+            <td><span class="circuit">Sakhir</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s1"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Acessível</div></div></td>
+        </tr>
+        <tr>
+            <td>19</td>
+            <td>Dom</td>
+            <td>#05</td>
+            <td><span class="gp-name"><span class="gp-icon">🌙</span> GP da Arábia Saudita</span></td>
+            <td><span class="circuit">Jeddah</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s5"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span></div><div class="diff-label">Lendário</div></div></td>
+        </tr>
+    </table>
+
+    <!-- MAIO -->
+    <h2><span class="month-icon">📅</span> Maio</h2>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Dia</th>
+            <th>Etapa</th>
+            <th>Evento</th>
+            <th>Circuito</th>
+            <th>Tipo</th>
+            <th>Dificuldade</th>
+        </tr>
+        <tr>
+            <td>02</td>
+            <td>Sáb</td>
+            <td>#06</td>
+            <td><span class="sprint-name"><span class="gp-icon">⚡</span> Sprint de Miami</span></td>
+            <td><span class="circuit">Miami Autodrome</span></td>
+            <td><span class="badge sprint">⚡ Sprint</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s2"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Moderado</div></div></td>
+        </tr>
+        <tr>
+            <td>03</td>
+            <td>Dom</td>
+            <td>#06</td>
+            <td><span class="gp-name"><span class="gp-icon">🌴</span> GP de Miami</span></td>
+            <td><span class="circuit">Miami Autodrome</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s2"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Moderado</div></div></td>
+        </tr>
+        <tr>
+            <td>23</td>
+            <td>Sáb</td>
+            <td>#07</td>
+            <td><span class="sprint-name"><span class="gp-icon">⚡</span> Sprint do Canadá</span></td>
+            <td><span class="circuit">Gilles Villeneuve</span></td>
+            <td><span class="badge sprint">⚡ Sprint</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s1"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Acessível</div></div></td>
+        </tr>
+        <tr>
+            <td>24</td>
+            <td>Dom</td>
+            <td>#07</td>
+            <td><span class="gp-name"><span class="gp-icon">🍁</span> GP do Canadá</span></td>
+            <td><span class="circuit">Gilles Villeneuve</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s1"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Acessível</div></div></td>
+        </tr>
+    </table>
+
+    <!-- JUNHO -->
+    <h2><span class="month-icon">📅</span> Junho</h2>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Dia</th>
+            <th>Etapa</th>
+            <th>Evento</th>
+            <th>Circuito</th>
+            <th>Tipo</th>
+            <th>Dificuldade</th>
+        </tr>
+        <tr>
+            <td>07</td>
+            <td>Dom</td>
+            <td>#08</td>
+            <td><span class="gp-name"><span class="gp-icon">🎰</span> GP de Mônaco</span></td>
+            <td><span class="circuit">Monte Carlo</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s5"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span></div><div class="diff-label">Lendário</div></div></td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>Dom</td>
+            <td>#09</td>
+            <td><span class="gp-name"><span class="gp-icon">💃</span> GP da Espanha</span></td>
+            <td><span class="circuit">Barcelona-Catalunha</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s2"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Moderado</div></div></td>
+        </tr>
+        <tr>
+            <td>28</td>
+            <td>Dom</td>
+            <td>#10</td>
+            <td><span class="gp-name"><span class="gp-icon">⛰️</span> GP da Áustria</span></td>
+            <td><span class="circuit">Red Bull Ring</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s1"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Fácil</div></div></td>
+        </tr>
+    </table>
+
+    <!-- JULHO -->
+    <h2><span class="month-icon">📅</span> Julho</h2>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Dia</th>
+            <th>Etapa</th>
+            <th>Evento</th>
+            <th>Circuito</th>
+            <th>Tipo</th>
+            <th>Dificuldade</th>
+        </tr>
+        <tr>
+            <td>04</td>
+            <td>Sáb</td>
+            <td>#11</td>
+            <td><span class="sprint-name"><span class="gp-icon">⚡</span> Sprint da Grã-Bretanha</span></td>
+            <td><span class="circuit">Silverstone</span></td>
+            <td><span class="badge sprint">⚡ Sprint</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s3"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span></div><div class="diff-label">Difícil</div></div></td>
+        </tr>
+        <tr>
+            <td>05</td>
+            <td>Dom</td>
+            <td>#11</td>
+            <td><span class="gp-name"><span class="gp-icon">👑</span> GP da Grã-Bretanha</span></td>
+            <td><span class="circuit">Silverstone</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s3"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span></div><div class="diff-label">Difícil</div></div></td>
+        </tr>
+        <tr>
+            <td>19</td>
+            <td>Dom</td>
+            <td>#12</td>
+            <td><span class="gp-name"><span class="gp-icon">🍫</span> GP da Bélgica</span></td>
+            <td><span class="circuit">Spa-Francorchamps</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s4"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span></div><div class="diff-label">Muito Difícil</div></div></td>
+        </tr>
+        <tr>
+            <td>26</td>
+            <td>Dom</td>
+            <td>#13</td>
+            <td><span class="gp-name"><span class="gp-icon">🌶️</span> GP da Hungria</span></td>
+            <td><span class="circuit">Hungaroring</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s2"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Moderado</div></div></td>
+        </tr>
+    </table>
+
+    <!-- AGOSTO -->
+    <h2><span class="month-icon">📅</span> Agosto</h2>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Dia</th>
+            <th>Etapa</th>
+            <th>Evento</th>
+            <th>Circuito</th>
+            <th>Tipo</th>
+            <th>Dificuldade</th>
+        </tr>
+        <tr>
+            <td>22</td>
+            <td>Sáb</td>
+            <td>#14</td>
+            <td><span class="sprint-name"><span class="gp-icon">⚡</span> Sprint da Holanda</span></td>
+            <td><span class="circuit">Zandvoort</span></td>
+            <td><span class="badge sprint">⚡ Sprint</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s3"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span></div><div class="diff-label">Difícil</div></div></td>
+        </tr>
+        <tr>
+            <td>23</td>
+            <td>Dom</td>
+            <td>#14</td>
+            <td><span class="gp-name"><span class="gp-icon">🌷</span> GP da Holanda</span></td>
+            <td><span class="circuit">Zandvoort</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s3"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span></div><div class="diff-label">Difícil</div></div></td>
+        </tr>
+    </table>
+
+    <!-- SETEMBRO -->
+    <h2><span class="month-icon">📅</span> Setembro</h2>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Dia</th>
+            <th>Etapa</th>
+            <th>Evento</th>
+            <th>Circuito</th>
+            <th>Tipo</th>
+            <th>Dificuldade</th>
+        </tr>
+        <tr>
+            <td>06</td>
+            <td>Dom</td>
+            <td>#15</td>
+            <td><span class="gp-name"><span class="gp-icon">🍕</span> GP da Itália</span></td>
+            <td><span class="circuit">Monza</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s2"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Moderado</div></div></td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>Dom</td>
+            <td>#16</td>
+            <td><span class="gp-name"><span class="gp-icon">🏟️</span> GP da Espanha (Madrid)</span></td>
+            <td><span class="circuit">Novo Circuito de Madrid</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s2"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Moderado</div></div></td>
+        </tr>
+        <tr>
+            <td>26</td>
+            <td>Sáb</td>
+            <td>#17</td>
+            <td><span class="gp-name"><span class="gp-icon">🔥</span> GP do Azerbaijão</span></td>
+            <td><span class="circuit">Baku</span></td>
+            <td><span class="badge especial">⭐ Sábado</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s5"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span></div><div class="diff-label">Lendário</div></div></td>
+        </tr>
+    </table>
+
+    <!-- OUTUBRO -->
+    <h2><span class="month-icon">📅</span> Outubro</h2>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Dia</th>
+            <th>Etapa</th>
+            <th>Evento</th>
+            <th>Circuito</th>
+            <th>Tipo</th>
+            <th>Dificuldade</th>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>Sáb</td>
+            <td>#18</td>
+            <td><span class="sprint-name"><span class="gp-icon">⚡</span> Sprint de Singapura</span></td>
+            <td><span class="circuit">Marina Bay</span></td>
+            <td><span class="badge sprint">⚡ Sprint</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s5"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span></div><div class="diff-label">Lendário</div></div></td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>Dom</td>
+            <td>#18</td>
+            <td><span class="gp-name"><span class="gp-icon">🦁</span> GP de Singapura</span></td>
+            <td><span class="circuit">Marina Bay</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s5"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span></div><div class="diff-label">Lendário</div></div></td>
+        </tr>
+        <tr>
+            <td>25</td>
+            <td>Dom</td>
+            <td>#19</td>
+            <td><span class="gp-name"><span class="gp-icon">🤠</span> GP dos Estados Unidos</span></td>
+            <td><span class="circuit">Austin (COTA)</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s3"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span></div><div class="diff-label">Difícil</div></div></td>
+        </tr>
+    </table>
+
+    <!-- NOVEMBRO -->
+    <h2><span class="month-icon">📅</span> Novembro</h2>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Dia</th>
+            <th>Etapa</th>
+            <th>Evento</th>
+            <th>Circuito</th>
+            <th>Tipo</th>
+            <th>Dificuldade</th>
+        </tr>
+        <tr>
+            <td>01</td>
+            <td>Dom</td>
+            <td>#20</td>
+            <td><span class="gp-name"><span class="gp-icon">💀</span> GP da Cidade do México</span></td>
+            <td><span class="circuit">Hermanos Rodríguez</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s2"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Moderado</div></div></td>
+        </tr>
+        <tr>
+            <td>08</td>
+            <td>Dom</td>
+            <td>#21</td>
+            <td><span class="gp-name"><span class="gp-icon">🎉</span> GP do Brasil</span></td>
+            <td><span class="circuit">Interlagos</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s3"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span></div><div class="diff-label">Difícil</div></div></td>
+        </tr>
+        <tr>
+            <td>21</td>
+            <td>Sáb</td>
+            <td>#22</td>
+            <td><span class="gp-name"><span class="gp-icon">🎲</span> GP de Las Vegas</span></td>
+            <td><span class="circuit">Las Vegas Strip</span></td>
+            <td><span class="badge especial">🌙 Noturna</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s3"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span></div><div class="diff-label">Difícil</div></div></td>
+        </tr>
+        <tr>
+            <td>29</td>
+            <td>Dom</td>
+            <td>#23</td>
+            <td><span class="gp-name"><span class="gp-icon">🏟️</span> GP do Catar</span></td>
+            <td><span class="circuit">Lusail</span></td>
+            <td><span class="badge corrida">🏁 Corrida</span></td>
+        
+        <td class="diff-cell"><div class="diff-stars diff-s4"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span></div><div class="diff-label">Muito Difícil</div></div></td>
+        </tr>
+    </table>
+
+    <!-- DEZEMBRO -->
+    <h2><span class="month-icon">📅</span> Dezembro</h2>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Dia</th>
+            <th>Etapa</th>
+            <th>Evento</th>
+            <th>Circuito</th>
+            <th>Tipo</th>
+            <th>Dificuldade</th>
+        </tr>
+        <tr>
+            <td>06</td>
+            <td>Dom</td>
+            <td>#24</td>
+            <td><span class="gp-name"><span class="gp-icon">🏆</span> GP de Abu Dhabi</span></td>
+            <td><span class="circuit">Yas Marina</span></td>
+            <td><span class="badge final">🏆 Grande Final</span></td>
+        
+        <td>—</td>
+        </tr>
+    </table>
+
+    <!-- RESUMO DA TEMPORADA -->
+    <div class="resumo-section">
+        <h2><span class="month-icon">📊</span> Resumo da Temporada</h2>
+        
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-icon">🏁</div>
+                <div class="stat-number">24</div>
+                <div class="stat-label">Grandes Prêmios</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-number">6</div>
+                <div class="stat-label">Corridas Sprint</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon">🌙</div>
+                <div class="stat-number">2</div>
+                <div class="stat-label">Corridas no Sábado</div>
+            </div>
+        </div>
+
+        <div class="sprint-list">
+            <h3><span>⚡</span> Etapas com Sprint</h3>
+            <table>
+                <tr>
+                    <th>Etapa</th>
+                    <th>Grande Prêmio</th>
+                    <th>Data Sprint</th>
+                    <th>Data Corrida</th>
+                </tr>
+                <tr>
+                    <td>#02</td>
+                    <td><span class="gp-name"><span class="gp-icon">🐉</span> China</span></td>
+                    <td>14/Mar (Sáb)</td>
+                    <td>15/Mar (Dom)</td>
+                
+        <td>—</td>
+        </tr>
+                <tr>
+                    <td>#06</td>
+                    <td><span class="gp-name"><span class="gp-icon">🌴</span> Miami</span></td>
+                    <td>02/Mai (Sáb)</td>
+                    <td>03/Mai (Dom)</td>
+                
+        <td>—</td>
+        </tr>
+                <tr>
+                    <td>#07</td>
+                    <td><span class="gp-name"><span class="gp-icon">🍁</span> Canadá</span></td>
+                    <td>23/Mai (Sáb)</td>
+                    <td>24/Mai (Dom)</td>
+                
+        <td>—</td>
+        </tr>
+                <tr>
+                    <td>#11</td>
+                    <td><span class="gp-name"><span class="gp-icon">👑</span> Grã-Bretanha</span></td>
+                    <td>04/Jul (Sáb)</td>
+                    <td>05/Jul (Dom)</td>
+                
+        <td>—</td>
+        </tr>
+                <tr>
+                    <td>#14</td>
+                    <td><span class="gp-name"><span class="gp-icon">🌷</span> Holanda</span></td>
+                    <td>22/Ago (Sáb)</td>
+                    <td>23/Ago (Dom)</td>
+                
+        <td>—</td>
+        </tr>
+                <tr>
+                    <td>#18</td>
+                    <td><span class="gp-name"><span class="gp-icon">🦁</span> Singapura</span></td>
+                    <td>10/Out (Sáb)</td>
+                    <td>11/Out (Dom)</td>
+                
+        <td>—</td>
+        </tr>
+            </table>
+        </div>
+
+        <!-- PARTICIPANTES -->
+        <div class="participantes-section">
+            <h3><span>🎮</span> Participantes do Campeonato</h3>
+            <div class="participantes-grid">
+                <div class="participante-box">
+                    <span class="position">1º</span>
+                    <span class="piloto-name">Cleber</span>
+                </div>
+                <div class="participante-box">
+                    <span class="position">2º</span>
+                    <span class="piloto-name">Exodo</span>
+                </div>
+                <div class="participante-box">
+                    <span class="position">3º</span>
+                    <span class="piloto-name">Denis</span>
+                </div>
+                <div class="participante-box">
+                    <span class="position">4º</span>
+                    <span class="piloto-name">Lucas.B</span>
+                </div>
+                <div class="participante-box">
+                    <span class="position">5º</span>
+                    <span class="piloto-name">Marcio</span>
+                </div>
+                <div class="participante-box">
+                    <span class="position">6º</span>
+                    <span class="piloto-name">Lucas.H</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SISTEMA DE PONTUAÇÃO -->
+        <div class="pontuacao-section">
+            <h3><span>🏅</span> Sistema de Pontuação</h3>
+            <div class="pontuacao-grid">
+                <table class="pontuacao-table">
+                    <tr>
+                        <th colspan="2">🏁 Corrida Principal</th>
+                    </tr>
+                    <tr><td>1º Lugar</td><td><strong>25 pts</strong></td>
+        <td>—</td>
+        </tr>
+                    <tr><td>2º Lugar</td><td><strong>18 pts</strong></td>
+        <td>—</td>
+        </tr>
+                    <tr><td>3º Lugar</td><td><strong>15 pts</strong></td>
+        <td>—</td>
+        </tr>
+                    <tr><td>4º Lugar</td><td><strong>12 pts</strong></td>
+        <td>—</td>
+        </tr>
+                    <tr><td>5º Lugar</td><td><strong>10 pts</strong></td>
+        <td>—</td>
+        </tr>
+                    <tr><td>6º Lugar</td><td><strong>8 pts</strong></td>
+        <td>—</td>
+        </tr>
+                    <tr><td>7º Lugar</td><td><strong>6 pts</strong></td>
+        <td>—</td>
+        </tr>
+                    <tr><td>8º Lugar</td><td><strong>4 pts</strong></td>
+        <td>—</td>
+        </tr>
+                    <tr><td>9º Lugar</td><td><strong>2 pts</strong></td>
+        <td>—</td>
+        </tr>
+                    <tr><td>10º Lugar</td><td><strong>1 pt</strong></td>
+        <td>—</td>
+        </tr>
+                    <tr><td>Volta + Rápida*</td><td><strong>+1 pt</strong></td>
+        <td>—</td>
+        </tr>
+                </table>
+                <table class="pontuacao-table">
+                    <tr>
+                        <th colspan="2">⚡ Sprint</th>
+                    </tr>
+                    <tr><td>1º Lugar</td><td><strong>8 pts</strong></td>
+        <td>—</td>
+        </tr>
+                    <tr><td>2º Lugar</td><td><strong>7 pts</strong></td>
+        <td>—</td>
+        </tr>
+                    <tr><td>3º Lugar</td><td><strong>6 pts</strong></td>
+        <td>—</td>
+        </tr>
+                    <tr><td>4º Lugar</td><td><strong>5 pts</strong></td>
+        <td>—</td>
+        </tr>
+                    <tr><td>5º Lugar</td><td><strong>4 pts</strong></td>
+        <td>—</td>
+        </tr>
+                    <tr><td>6º Lugar</td><td><strong>3 pts</strong></td>
+        <td>—</td>
+        </tr>
+                    <tr><td>7º Lugar</td><td><strong>2 pts</strong></td>
+        <td>—</td>
+        </tr>
+                    <tr><td>8º Lugar</td><td><strong>1 pt</strong></td>
+        <td>—</td>
+        </tr>
+                    <tr><td colspan="2" class="nota">*Volta rápida: apenas top 10</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- REGRAS DO CAMPEONATO -->
+    <div class="regras-section">
+        <h2><span class="month-icon">📜</span> Regras do Campeonato</h2>
+        <div class="regras-grid">
+            <div class="regra-box">
+                <div class="regra-icon">🎮</div>
+                <div class="regra-title">Jogo Oficial</div>
+                <div class="regra-desc">Jogo utilizado F1 2025</div>
+            </div>
+            <div class="regra-box">
+                <div class="regra-icon">⚙️</div>
+                <div class="regra-title">Configurações</div>
+                <div class="regra-desc">Dificuldade, assists, danos e condições climáticas</div>
+            </div>
+            <div class="regra-box">
+                <div class="regra-icon">🔄</div>
+                <div class="regra-title">Voltas</div>
+                <div class="regra-desc">Quantidade de voltas por corrida 35%</div>
+            </div>
+            <div class="regra-box">
+                <div class="regra-icon">⚠️</div>
+                <div class="regra-title">Penalidades</div>
+                <div class="regra-desc">Regras para colisões e comportamento anti-esportivo</div>
+            </div>
+            <div class="regra-box">
+                <div class="regra-icon">📅</div>
+                <div class="regra-title">Frequência</div>
+                <div class="regra-desc">Dias e horários das corridas semanais</div>
+            </div>
+            <div class="regra-box">
+                <div class="regra-icon">🏆</div>
+                <div class="regra-title">Premiação</div>
+                <div class="regra-desc">Definir prêmios para os campeões</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div>🏎️ Velocidade Baixa 2026 • Campeonato Entre Amigos 🏎️</div>
+        <div class="footer-icons">🎸 🔥 🏁 🏆 🎮 ⚡ 🤘</div>
+        <div style="margin-top: 15px; font-size: 0.8em; opacity: 0.5;">Que vença o melhor piloto!</div>
+    </div>
+
+</body>
+</html>
