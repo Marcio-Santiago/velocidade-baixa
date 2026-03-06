@@ -472,93 +472,42 @@
     <div style="margin-top:12px;font-size:0.75em;opacity:0.4;">Temporada 2026 — Regulamento Versão Final V2</div>
   </div>
 
+  <script src="dados.js"></script>
   <script>
     const PILOTS = [
-      {
-        name: "Lando",   foto: "foto_lando.jpg",        fullname: "Lando N.",
-        number: "04",         equipe: "McLaren",
-        teamIcon: "🥭",       cor: "#ff8000",
-        nacionalidade: "GBR", categoria: "Formula 1",
-        pts: 13,
-      },
-      {
-        name: "Oscar",   foto: "foto_oscar.jpg",        fullname: "Oscar P.",
-        number: "81",         equipe: "McLaren",
-        teamIcon: "🥭",       cor: "#ff8000",
-        nacionalidade: "AUS", categoria: "Formula 1",
-        pts: 13,
-      },
-      {
-        name: "Lewis",   foto: "foto_lewis.jpg",        fullname: "Lewis H.",
-        number: "44",         equipe: "Ferrari",
-        teamIcon: "🐴",       cor: "#e8002d",
-        nacionalidade: "GBR", categoria: "Formula 1",
-        pts: 13,
-      },
-      {
-        name: "Charles", foto: "foto_charles.jpg",      fullname: "Charles L.",
-        number: "16",         equipe: "Ferrari",
-        teamIcon: "🐴",       cor: "#e8002d",
-        nacionalidade: "MON", categoria: "Formula 1",
-        pts: 13,
-      },
-      {
-        name: "Lucas.B", foto: "foto_lucasb.jpg",      fullname: "Lucas B.",
-        number: "63",         equipe: "Mercedes",
-        teamIcon: "🏹",       cor: "#00d2be",
-        nacionalidade: "BRA", categoria: "Formula 1",
-        pts: 13,
-      },
-      {
-        name: "Lucas.H", foto: null,      fullname: "Lucas H.",
-        number: "10",         equipe: "Mercedes",
-        teamIcon: "🏹",       cor: "#00d2be",
-        nacionalidade: "BRA", categoria: "Formula 1",
-        pts: 13,
-      },
-      {
-        name: "Exodo",        foto: "foto_exodo.jpg",        fullname: "Exodo",
-        number: "14",         equipe: "Aston Martin",
-        teamIcon: "🪽",       cor: "#006f62",
-        nacionalidade: "BRA", categoria: "Formula 1",
-        pts: 13,
-      },
-      {
-        name: "Cleber",       foto: "foto_cleber.jpg",        fullname: "Cleber",
-        number: "18",         equipe: "Aston Martin",
-        teamIcon: "🪽",       cor: "#006f62",
-        nacionalidade: "BRA", categoria: "Formula 1",
-        pts: 13,
-      },
-      {
-        name: "Marcio",       foto: "foto_marcio.jpg",        fullname: "Marcio",
-        number: "77",         equipe: "Kick Sauber",
-        teamIcon: "🚜",       cor: "#b4dc00",
-        nacionalidade: "BRA", categoria: "Formula 1",
-        pts: 13,
-      },
-      {
-        name: "Denis",        foto: "foto_denis.jpg",        fullname: "Denis",
-        number: "99",         equipe: "Kick Sauber",
-        teamIcon: "🚜",       cor: "#b4dc00",
-        nacionalidade: "BRA", categoria: "Formula 1",
-        pts: 13,
-      },
+      { name: "Lando",   foto: "foto_lando.jpg",   fullname: "Lando N.",   number: "04", equipe: "McLaren",      teamIcon: "🥭", cor: "#ff8000", nacionalidade: "GBR", categoria: "Formula 1" },
+      { name: "Oscar",   foto: "foto_oscar.jpg",   fullname: "Oscar P.",   number: "81", equipe: "McLaren",      teamIcon: "🥭", cor: "#ff8000", nacionalidade: "AUS", categoria: "Formula 1" },
+      { name: "Lewis",   foto: "foto_lewis.jpg",   fullname: "Lewis H.",   number: "44", equipe: "Ferrari",      teamIcon: "🐴", cor: "#e8002d", nacionalidade: "GBR", categoria: "Formula 1" },
+      { name: "Charles", foto: "foto_charles.jpg", fullname: "Charles L.", number: "16", equipe: "Ferrari",      teamIcon: "🐴", cor: "#e8002d", nacionalidade: "MON", categoria: "Formula 1" },
+      { name: "Lucas.B", foto: "foto_lucasb.jpg",  fullname: "Lucas B.",   number: "63", equipe: "Mercedes",     teamIcon: "🏹", cor: "#00d2be", nacionalidade: "BRA", categoria: "Formula 1" },
+      { name: "Lucas.H", foto: null,               fullname: "Lucas H.",   number: "10", equipe: "Mercedes",     teamIcon: "🏹", cor: "#00d2be", nacionalidade: "BRA", categoria: "Formula 1" },
+      { name: "Exodo",   foto: "foto_exodo.jpg",   fullname: "Exodo",      number: "14", equipe: "Aston Martin", teamIcon: "🪽", cor: "#006f62", nacionalidade: "BRA", categoria: "Formula 1" },
+      { name: "Cleber",  foto: "foto_cleber.jpg",  fullname: "Cleber",     number: "18", equipe: "Aston Martin", teamIcon: "🪽", cor: "#006f62", nacionalidade: "BRA", categoria: "Formula 1" },
+      { name: "Marcio",  foto: "foto_marcio.jpg",  fullname: "Marcio",     number: "77", equipe: "Kick Sauber",  teamIcon: "🚜", cor: "#b4dc00", nacionalidade: "BRA", categoria: "Formula 1" },
+      { name: "Denis",   foto: "foto_denis.jpg",   fullname: "Denis",      number: "99", equipe: "Kick Sauber",  teamIcon: "🚜", cor: "#b4dc00", nacionalidade: "BRA", categoria: "Formula 1" },
     ];
 
-    const KEY = 'vb_licenca_2026';
-
-    function loadPts() {
-      const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
-      PILOTS.forEach((p, i) => {
-        if (saved[i] !== undefined) p.pts = saved[i];
-      });
+    // ── Calcula pontos de licença lendo infracoes do dados.js ────
+    function calcLicenca(nome) {
+      const entrada = infracoes.find(x => x.piloto === nome);
+      if (!entrada) return 13;
+      const deduzido = entrada.ocorrencias.reduce((sum, o) => sum + (o.pontosLicenca || 0), 0);
+      return Math.max(0, 13 + deduzido); // pontosLicenca já vem negativo
     }
 
-    function savePts() {
-      const data = {};
-      PILOTS.forEach((p, i) => data[i] = p.pts);
-      localStorage.setItem(KEY, JSON.stringify(data));
+    // ── Busca histórico de infrações formatado ────────────────────
+    function getHistorico(nome) {
+      const entrada = infracoes.find(x => x.piloto === nome);
+      if (!entrada || entrada.ocorrencias.length === 0)
+        return `<span style="opacity:0.35;font-size:0.85em;">Nenhuma infração registrada ✅</span>`;
+      return entrada.ocorrencias.map(o => {
+        const cor = o.gravidade === 'BAIXA' ? '#4ade80' : o.gravidade === 'ALTA' ? '#fb923c' : '#f87171';
+        return `<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
+          <span style="color:${cor};font-family:'Bebas Neue',sans-serif;letter-spacing:2px;font-size:0.9em;">${o.gravidade}</span>
+          <span style="opacity:0.6;font-size:0.8em;">Etapa ${o.etapa}</span>
+          <span style="color:#f87171;font-family:'Bebas Neue',sans-serif;">${o.pontosLicenca}</span>
+        </div>`;
+      }).join('');
     }
 
     function pct(pts) { return Math.round((pts / 13) * 100); }
@@ -573,61 +522,40 @@
       const wrapper = document.createElement('div');
       wrapper.className = 'flip-wrapper';
       wrapper.style.setProperty('--team-color', p.cor);
-
-      // Click to flip on mobile
       wrapper.addEventListener('click', () => wrapper.classList.toggle('flipped'));
 
-      const pctVal = pct(p.pts);
+      const pts = calcLicenca(p.nome || p.name);
+      const pctVal = pct(pts);
+      const historico = getHistorico(p.nome || p.name);
 
       wrapper.innerHTML = `
         <div class="flip-inner">
-
           <!-- FRENTE -->
           <div class="card-face card-front" style="--team-color:${p.cor}">
             <div class="card-front-bg"></div>
             <div class="card-stripe"></div>
             <div class="card-content">
-
-              <!-- FOTO -->
               <div class="photo-slot">
-                ${p.foto
-                  ? `<img src="${p.foto}" alt="${p.name}" />`
-                  : `<span class="ph-icon">📷</span><span class="ph-text">FOTO<br>PILOTO</span>`
-                }
+                ${p.foto ? `<img src="${p.foto}" alt="${p.name}" />` : `<span class="ph-icon">📷</span><span class="ph-text">FOTO<br>PILOTO</span>`}
               </div>
-
-              <!-- INFO -->
               <div class="card-info">
                 <div class="card-top">
-                  <div class="fia-badge">
-                    VELOCIDADE BAIXA<br>
-                    <span>SUPER LICENÇA</span>
-                  </div>
+                  <div class="fia-badge">VELOCIDADE BAIXA<br><span>SUPER LICENÇA</span></div>
                   <div class="card-number">${p.number}</div>
                 </div>
-
                 <div>
                   <div class="card-name">${p.name}</div>
-                  <div class="card-team">
-                    <div class="team-dot"></div>
-                    <span class="team-name-text">${p.teamIcon} ${p.equipe}</span>
-                  </div>
+                  <div class="card-team"><div class="team-dot"></div><span class="team-name-text">${p.teamIcon} ${p.equipe}</span></div>
                 </div>
-
                 <div class="card-bottom">
                   <div class="license-mini">
                     <span class="license-mini-label">PONTOS DE LICENÇA</span>
-                    <div class="license-mini-bar">
-                      <div class="license-mini-fill" style="width:${pctVal}%; background:${barColor(p.pts)};"></div>
-                    </div>
-                    <span class="license-pts-mini" style="color:${barColor(p.pts)}">${p.pts} / 13 pts</span>
+                    <div class="license-mini-bar"><div class="license-mini-fill" style="width:${pctVal}%;background:${barColor(pts)};"></div></div>
+                    <span class="license-pts-mini" style="color:${barColor(pts)}">${pts} / 13 pts</span>
                   </div>
-                  <div class="card-season">
-                    TEMPORADA<br>2026
-                  </div>
+                  <div class="card-season">TEMPORADA<br>2026</div>
                 </div>
               </div>
-
             </div>
             <div class="flip-hint">↻ virar</div>
           </div>
@@ -638,72 +566,33 @@
               <div class="mag-strip">
                 <span class="mag-text">🏎️ Velocidade Baixa 2026 — ${p.equipe.toUpperCase()} — #${p.number}</span>
               </div>
-
               <div class="back-body">
                 <div class="back-row">
-                  <div class="back-field">
-                    <div class="back-field-label">Piloto</div>
-                    <div class="back-field-value" style="color:${p.cor}">${p.fullname}</div>
-                  </div>
-                  <div class="back-field">
-                    <div class="back-field-label">Nº</div>
-                    <div class="back-field-value">${p.number}</div>
-                  </div>
-                  <div class="back-field">
-                    <div class="back-field-label">Nac.</div>
-                    <div class="back-field-value">${p.nacionalidade}</div>
-                  </div>
+                  <div class="back-field"><div class="back-field-label">Piloto</div><div class="back-field-value" style="color:${p.cor}">${p.fullname}</div></div>
+                  <div class="back-field"><div class="back-field-label">Nº</div><div class="back-field-value">${p.number}</div></div>
+                  <div class="back-field"><div class="back-field-label">Nac.</div><div class="back-field-value">${p.nacionalidade}</div></div>
                 </div>
-
-                <div class="back-row">
-                  <div class="back-field">
-                    <div class="back-field-label">Equipe</div>
-                    <div class="back-field-value" style="color:${p.cor}">${p.teamIcon} ${p.equipe}</div>
-                  </div>
-                  <div class="back-field">
-                    <div class="back-field-label">Categoria</div>
-                    <div class="back-field-value">${p.categoria}</div>
-                  </div>
-                </div>
-
-                <div class="back-pts-row" style="border-color:color-mix(in srgb, ${p.cor} 30%, transparent)">
+                <div class="back-pts-row" style="border-color:color-mix(in srgb,${p.cor} 30%,transparent)">
                   <div style="flex:1">
                     <div class="back-pts-label">PONTOS DE<br>SUPER LICENÇA</div>
-                    <div class="license-bar-back" style="margin-top:6px">
-                      <div class="license-bar-fill" style="width:${pctVal}%; background:${barColor(p.pts)};"></div>
-                    </div>
+                    <div class="license-bar-back" style="margin-top:6px"><div class="license-bar-fill" style="width:${pctVal}%;background:${barColor(pts)};"></div></div>
                   </div>
-                  <div class="back-pts-number" style="color:${barColor(p.pts)}" id="pts-display-${idx}">${p.pts}</div>
+                  <div class="back-pts-number" style="color:${barColor(pts)}">${pts}</div>
                   <div class="back-pts-max">/ 13</div>
                 </div>
-
-                <!-- EDITAR PONTOS -->
-                <div style="display:flex;align-items:center;gap:8px;margin-top:2px">
-                  <span style="font-family:'Share Tech Mono',monospace;font-size:0.62em;opacity:0.4;letter-spacing:1px;flex:1">AJUSTAR PONTOS:</span>
-                  <button onclick="changePts(${idx},-1)" style="background:rgba(248,113,113,0.15);border:1px solid #f87171;color:#f87171;border-radius:6px;width:28px;height:28px;font-size:1em;cursor:pointer;font-weight:700">−</button>
-                  <button onclick="changePts(${idx},+1)" style="background:rgba(74,222,128,0.15);border:1px solid #4ade80;color:#4ade80;border-radius:6px;width:28px;height:28px;font-size:1em;cursor:pointer;font-weight:700">+</button>
-                </div>
+                <!-- HISTÓRICO DE INFRAÇÕES -->
+                <div style="font-family:'Share Tech Mono',monospace;font-size:0.6em;opacity:0.4;letter-spacing:2px;margin-top:4px;">HISTÓRICO DE INFRAÇÕES</div>
+                <div style="font-family:'Rajdhani',sans-serif;font-size:0.85em;margin-top:4px;max-height:52px;overflow-y:auto;">${historico}</div>
               </div>
-
               <div class="holo"></div>
             </div>
           </div>
-
-        </div>
-      `;
-
+        </div>`;
       return wrapper;
-    }
-
-    function changePts(idx, delta) {
-      PILOTS[idx].pts = Math.max(0, Math.min(13, PILOTS[idx].pts + delta));
-      savePts();
-      renderCards();
     }
 
     function renderCards() {
       const grid = document.getElementById('cardsGrid');
-      // preserve flip state
       const flipped = [...grid.querySelectorAll('.flip-wrapper')].map(w => w.classList.contains('flipped'));
       grid.innerHTML = '';
       PILOTS.forEach((p, i) => {
@@ -713,7 +602,6 @@
       });
     }
 
-    loadPts();
     renderCards();
   </script>
 </body>

@@ -321,157 +321,30 @@
         <a href="index.html">📅 Calendário</a>
         <a href="pilotos.html" class="active">🏎️ Pilotos</a>
         <a href="construtores.html">🏭 Construtores</a>
+        <a href="regras.html">📜 Regras</a>
+        <a href="classificacao_de_corrida.html">🏅 Classificação</a>
+        <a href="superlicenca.html">🪪 Super Licença</a>
     </div>
 
     <!-- PÓDIO TOP 3 -->
     <h2>🏆 Pódio da Temporada</h2>
-    <div class="podium">
-        <div class="podium-card p2">
-            <div class="podium-trophy">🥈</div>
-            <div class="podium-pos">2º</div>
-            <div class="podium-name">___________</div>
-            <div class="podium-team">— equipe —</div>
-            <div class="podium-pts">0 <span>PTS</span></div>
-        </div>
-        <div class="podium-card p1">
-            <div class="podium-trophy">👑</div>
-            <div class="podium-pos">1º</div>
-            <div class="podium-name">___________</div>
-            <div class="podium-team">— equipe —</div>
-            <div class="podium-pts">0 <span>PTS</span></div>
-        </div>
-        <div class="podium-card p3">
-            <div class="podium-trophy">🥉</div>
-            <div class="podium-pos">3º</div>
-            <div class="podium-name">___________</div>
-            <div class="podium-team">— equipe —</div>
-            <div class="podium-pts">0 <span>PTS</span></div>
-        </div>
+    <div class="podium" id="podium">
+        <div class="podium-card p2"><div class="podium-trophy">🥈</div><div class="podium-pos">2º</div><div class="podium-name" id="p2name">—</div><div class="podium-team" id="p2team">—</div><div class="podium-pts" id="p2pts">0 <span>PTS</span></div></div>
+        <div class="podium-card p1"><div class="podium-trophy">👑</div><div class="podium-pos">1º</div><div class="podium-name" id="p1name">—</div><div class="podium-team" id="p1team">—</div><div class="podium-pts" id="p1pts">0 <span>PTS</span></div></div>
+        <div class="podium-card p3"><div class="podium-trophy">🥉</div><div class="podium-pos">3º</div><div class="podium-name" id="p3name">—</div><div class="podium-team" id="p3team">—</div><div class="podium-pts" id="p3pts">0 <span>PTS</span></div></div>
     </div>
 
     <!-- TABELA GERAL -->
     <h2>📊 Classificação Completa</h2>
     <table>
         <tr>
-            <th>Pos</th>
-            <th>Piloto</th>
-            <th>Equipe</th>
+            <th>Pos</th><th>Piloto</th><th>Equipe</th>
             <th style="text-align:center">Vitórias</th>
             <th style="text-align:center">Pódios</th>
             <th style="text-align:center">Gap</th>
             <th style="text-align:center">Pontos</th>
         </tr>
-
-        <!-- #1 -->
-        <tr class="pos-1">
-            <td class="pos-num">1</td>
-            <td><span class="driver-name">Lando</span></td>
-            <td><span class="team-badge team-mclaren">McLaren</span></td>
-            <td class="wins-cell">—</td>
-            <td class="wins-cell" style="color:#c0c0c0">—</td>
-            <td class="gap-cell">—</td>
-            <td class="pts-cell">0</td>
-        </tr>
-
-        <!-- #2 -->
-        <tr class="pos-2">
-            <td class="pos-num">2</td>
-            <td><span class="driver-name">Oscar</span></td>
-            <td><span class="team-badge team-mclaren">McLaren</span></td>
-            <td class="wins-cell">—</td>
-            <td class="wins-cell" style="color:#c0c0c0">—</td>
-            <td class="gap-cell">—</td>
-            <td class="pts-cell">0</td>
-        </tr>
-
-        <!-- #3 -->
-        <tr class="pos-3">
-            <td class="pos-num">3</td>
-            <td><span class="driver-name">Lewis</span></td>
-            <td><span class="team-badge team-ferrari">Ferrari</span></td>
-            <td class="wins-cell">—</td>
-            <td class="wins-cell" style="color:#c0c0c0">—</td>
-            <td class="gap-cell">—</td>
-            <td class="pts-cell">0</td>
-        </tr>
-
-        <!-- #4 -->
-        <tr>
-            <td class="pos-num">4</td>
-            <td><span class="driver-name">Charles</span></td>
-            <td><span class="team-badge team-ferrari">Ferrari</span></td>
-            <td class="wins-cell">—</td>
-            <td class="wins-cell" style="color:#c0c0c0">—</td>
-            <td class="gap-cell">—</td>
-            <td class="pts-cell">0</td>
-        </tr>
-
-        <!-- #5 -->
-        <tr>
-            <td class="pos-num">5</td>
-            <td><span class="driver-name">Lucas.B</span></td>
-            <td><span class="team-badge team-mercedes">Mercedes</span></td>
-            <td class="wins-cell">—</td>
-            <td class="wins-cell" style="color:#c0c0c0">—</td>
-            <td class="gap-cell">—</td>
-            <td class="pts-cell">0</td>
-        </tr>
-
-        <!-- #6 -->
-        <tr>
-            <td class="pos-num">6</td>
-            <td><span class="driver-name">Lucas.H</span></td>
-            <td><span class="team-badge team-mercedes">Mercedes</span></td>
-            <td class="wins-cell">—</td>
-            <td class="wins-cell" style="color:#c0c0c0">—</td>
-            <td class="gap-cell">—</td>
-            <td class="pts-cell">0</td>
-        </tr>
-
-        <!-- #7 -->
-        <tr>
-            <td class="pos-num">7</td>
-            <td><span class="driver-name">Exodo</span></td>
-            <td><span class="team-badge team-aston">Aston Martin</span></td>
-            <td class="wins-cell">—</td>
-            <td class="wins-cell" style="color:#c0c0c0">—</td>
-            <td class="gap-cell">—</td>
-            <td class="pts-cell">0</td>
-        </tr>
-
-        <!-- #8 -->
-        <tr>
-            <td class="pos-num">8</td>
-            <td><span class="driver-name">Cleber</span></td>
-            <td><span class="team-badge team-aston">Aston Martin</span></td>
-            <td class="wins-cell">—</td>
-            <td class="wins-cell" style="color:#c0c0c0">—</td>
-            <td class="gap-cell">—</td>
-            <td class="pts-cell">0</td>
-        </tr>
-
-        <!-- #9 -->
-        <tr>
-            <td class="pos-num">9</td>
-            <td><span class="driver-name">Marcio</span></td>
-            <td><span class="team-badge team-sauber">Kick Sauber</span></td>
-            <td class="wins-cell">—</td>
-            <td class="wins-cell" style="color:#c0c0c0">—</td>
-            <td class="gap-cell">—</td>
-            <td class="pts-cell">0</td>
-        </tr>
-
-        <!-- #10 -->
-        <tr>
-            <td class="pos-num">10</td>
-            <td><span class="driver-name">Denis</span></td>
-            <td><span class="team-badge team-sauber">Kick Sauber</span></td>
-            <td class="wins-cell">—</td>
-            <td class="wins-cell" style="color:#c0c0c0">—</td>
-            <td class="gap-cell">—</td>
-            <td class="pts-cell">0</td>
-        </tr>
-
+        <tbody id="rankingBody"></tbody>
     </table>
 
     <div class="footer">
@@ -480,5 +353,90 @@
         <div style="margin-top:15px; font-size:0.8em; opacity:0.5;">Que vença o melhor piloto!</div>
     </div>
 
+  <script src="dados.js"></script>
+  <script>
+    const TEAM_BADGE = {
+      "McLaren":      "team-mclaren",
+      "Ferrari":      "team-ferrari",
+      "Mercedes":     "team-mercedes",
+      "Aston Martin": "team-aston",
+      "Kick Sauber":  "team-sauber",
+    };
+
+    // ── Calcular pontuação total de cada piloto ──────────────────
+    function calcularPilotos() {
+      const stats = {};
+      PILOTOS.forEach(p => {
+        stats[p.nome] = { nome: p.nome, equipe: p.equipe, pts: 0, vitorias: 0, podios: 0 };
+      });
+
+      resultados.forEach(etapa => {
+        // pontos da corrida
+        etapa.resultado.forEach(r => {
+          if (!stats[r.piloto]) return;
+          stats[r.piloto].pts += r.pontos || 0;
+          if (r.pos === 1) stats[r.piloto].vitorias++;
+          if (r.pos <= 3)  stats[r.piloto].podios++;
+        });
+        // pontos do sprint
+        (etapa.sprint || []).forEach(r => {
+          if (!stats[r.piloto]) return;
+          stats[r.piloto].pts += r.pontos || 0;
+        });
+        // bônus pole +1
+        if (etapa.polePosition && stats[etapa.polePosition])
+          stats[etapa.polePosition].pts += 1;
+        // bônus volta rápida +1 (apenas se terminou top10)
+        if (etapa.voltaRapida && stats[etapa.voltaRapida]) {
+          const r = etapa.resultado.find(x => x.piloto === etapa.voltaRapida);
+          if (r && r.pos <= 10) stats[etapa.voltaRapida].pts += 1;
+        }
+        // bônus corrida limpa +1
+        if (etapa.corridaLimpa && stats[etapa.corridaLimpa])
+          stats[etapa.corridaLimpa].pts += 1;
+      });
+
+      // ordenar por pontos → vitórias → pódios
+      return Object.values(stats).sort((a,b) =>
+        b.pts - a.pts || b.vitorias - a.vitorias || b.podios - a.podios
+      );
+    }
+
+    function renderPilotos() {
+      const ranking = calcularPilotos();
+      const lider = ranking[0]?.pts || 0;
+
+      // Pódio
+      [1,2,3].forEach(pos => {
+        const p = ranking[pos-1];
+        if (!p) return;
+        document.getElementById(`p${pos}name`).textContent = p.nome;
+        document.getElementById(`p${pos}team`).textContent = p.equipe;
+        document.getElementById(`p${pos}pts`).innerHTML = `${p.pts} <span>PTS</span>`;
+      });
+
+      // Tabela
+      const tbody = document.getElementById('rankingBody');
+      tbody.innerHTML = '';
+      ranking.forEach((p, i) => {
+        const pos = i + 1;
+        const gap = pos === 1 ? '—' : `-${lider - p.pts}`;
+        const cls = pos <= 3 ? ` class="pos-${pos}"` : '';
+        const badge = TEAM_BADGE[p.equipe] || '';
+        tbody.innerHTML += `
+          <tr${cls}>
+            <td class="pos-num">${pos}</td>
+            <td><span class="driver-name">${p.nome}</span></td>
+            <td><span class="team-badge ${badge}">${p.equipe}</span></td>
+            <td class="wins-cell">${p.vitorias || '—'}</td>
+            <td class="wins-cell" style="color:#c0c0c0">${p.podios || '—'}</td>
+            <td class="gap-cell">${gap}</td>
+            <td class="pts-cell">${p.pts}</td>
+          </tr>`;
+      });
+    }
+
+    renderPilotos();
+  </script>
 </body>
 </html>
