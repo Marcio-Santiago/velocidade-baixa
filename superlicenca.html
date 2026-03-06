@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Super Licença — Velocidade Baixa 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Titillium+Web:wght@400;600;700&family=Metal+Mania&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg0: #0a0a0f; --bg1: #1a1a2e; --bg2: #0d0d1a;
+      --neon: #00f5d4; --gold: #fbbf24; --purple: #7c3aed;
+    }
+
+    body {
+      font-family: 'Titillium Web', sans-serif;
+      background: linear-gradient(135deg, var(--bg0) 0%, var(--bg1) 50%, var(--bg2) 100%);
+      color: #fff;
+      min-height: 100vh;
+      padding: 24px 32px 60px;
+    }
+
+    /* scanline overlay */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── HEADER ─────────────────────────────── */
+    .header {
+      text-align: center; margin-bottom: 30px;
+      padding: 36px 30px; border-radius: 20px; position: relative; overflow: hidden;
+      background: linear-gradient(135deg, rgba(79,70,229,0.9), rgba(124,58,237,0.9), rgba(99,102,241,0.9));
+      border: 2px solid rgba(255,255,255,0.1);
+      box-shadow: 0 20px 60px rgba(99,102,241,0.5), 0 0 100px rgba(124,58,237,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+
+    .header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px);
+      pointer-events: none;
+    }
+
+    .header::after { content: '🪪⚡🪪'; position: absolute; top: 10px; right: 20px; font-size: 1.4em; opacity: 0.8; }
+
+    .icon-top { font-size: 2.6em; margin-bottom: 8px; display: block; filter: drop-shadow(0 0 20px rgba(255,255,255,0.5)); position: relative; z-index: 1; }
+
+    .header h1 {
+      font-family: 'Metal Mania', cursive; font-size: 3em;
+      text-transform: uppercase; letter-spacing: 6px; line-height: 1.1;
+      text-shadow: 4px 4px 0 rgba(0,0,0,0.5), 0 0 40px rgba(255,255,255,0.4), 0 0 80px rgba(124,58,237,0.8);
+      position: relative; z-index: 1;
+    }
+
+    .header h1 .year {
+      display: block; font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.48em; letter-spacing: 20px; margin-top: 8px;
+      color: var(--neon); text-shadow: 0 0 30px rgba(0,245,212,0.8);
+    }
+
+    .subtitle {
+      font-family: 'Rajdhani', sans-serif; font-size: 1.2em; font-weight: 600;
+      opacity: 0.95; margin-top: 14px; letter-spacing: 5px; text-transform: uppercase;
+      position: relative; z-index: 1;
+    }
+
+    /* ── NAV ────────────────────────────────── */
+    .nav-links {
+      display: flex; justify-content: center; gap: 14px;
+      margin-bottom: 28px; flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.05em; letter-spacing: 3px;
+      padding: 9px 22px; border-radius: 25px; color: #fff;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      transition: all 0.3s;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      border-color: #7c3aed; box-shadow: 0 4px 20px rgba(124,58,237,0.5);
+    }
+
+    /* ── INFO BANNER ────────────────────────── */
+    .info-banner {
+      background: rgba(0,245,212,0.07); border: 1px solid rgba(0,245,212,0.2);
+      border-radius: 14px; padding: 16px 24px; margin-bottom: 32px;
+      display: flex; align-items: center; gap: 16px;
+      font-family: 'Rajdhani', sans-serif; font-size: 1em; line-height: 1.5;
+    }
+
+    .info-banner .bi { font-size: 1.8em; }
+
+    .info-banner strong { color: var(--neon); }
+
+    /* ── GRID ───────────────────────────────── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      position: relative; z-index: 1;
+    }
+
+    /* ── FLIP CARD ──────────────────────────── */
+    .flip-wrapper {
+      perspective: 1200px;
+      height: 240px;
+      cursor: pointer;
+    }
+
+    .flip-inner {
+      position: relative; width: 100%; height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    }
+
+    .flip-wrapper:hover .flip-inner,
+    .flip-wrapper.flipped .flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute; inset: 0;
+      backface-visibility: hidden;
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+    }
+
+    /* ── FRENTE DA CARTEIRA ─────────────────── */
+    .card-front {
+      display: flex; flex-direction: column;
+      border: 2px solid var(--team-color, #00f5d4);
+      box-shadow: 0 0 30px color-mix(in srgb, var(--team-color, #00f5d4) 30%, transparent),
+                  0 15px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .card-front-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg,
+        color-mix(in srgb, var(--team-color, #00f5d4) 18%, #0d0d1a) 0%,
+        #0a0a14 60%, #0d0d1a 100%);
+    }
+
+    /* racing stripe */
+    .card-front-bg::after {
+      content: '';
+      position: absolute; top: 0; bottom: 0; right: 0; width: 8px;
+      background: var(--team-color, #00f5d4);
+      opacity: 0.6;
+    }
+
+    /* diagonal stripe decoration */
+    .card-stripe {
+      position: absolute; top: -30px; right: 60px;
+      width: 180px; height: 300px;
+      background: linear-gradient(135deg,
+        color-mix(in srgb, var(--team-color, #00f5d4) 12%, transparent) 0%,
+        transparent 70%);
+      transform: rotate(-20deg);
+      pointer-events: none;
+    }
+
+    .card-content {
+      position: relative; z-index: 2;
+      display: flex; height: 100%; padding: 18px 20px;
+      gap: 16px; align-items: stretch;
+    }
+
+    /* Photo placeholder */
+    .photo-slot {
+      width: 100px; min-width: 100px; border-radius: 10px;
+      overflow: hidden; border: 2px solid var(--team-color, #00f5d4);
+      background: linear-gradient(135deg,
+        color-mix(in srgb, var(--team-color, #00f5d4) 10%, #111) 0%, #0a0a14 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 4px;
+      box-shadow: 0 0 16px color-mix(in srgb, var(--team-color, #00f5d4) 20%, transparent);
+      position: relative;
+    }
+
+    .photo-slot img {
+      width: 100%; height: 100%; object-fit: contain; object-position: top center;
+      position: absolute; inset: 0;
+    }
+
+    .photo-slot .ph-icon { font-size: 2.4em; opacity: 0.4; }
+    .photo-slot .ph-text {
+      font-family: 'Rajdhani', sans-serif; font-size: 0.65em;
+      opacity: 0.4; letter-spacing: 1px; text-align: center; line-height: 1.2;
+    }
+
+    /* Right info */
+    .card-info { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+
+    .card-top { display: flex; align-items: flex-start; justify-content: space-between; }
+
+    .fia-badge {
+      font-family: 'Bebas Neue', sans-serif; font-size: 0.65em; letter-spacing: 3px;
+      color: rgba(255,255,255,0.35); line-height: 1.1;
+    }
+
+    .fia-badge span { display: block; font-size: 1.6em; color: var(--neon); letter-spacing: 1px; }
+
+    .card-number {
+      font-family: 'Bebas Neue', sans-serif; font-size: 2.8em; line-height: 1;
+      color: var(--team-color, #00f5d4);
+      text-shadow: 0 0 20px color-mix(in srgb, var(--team-color, #00f5d4) 60%, transparent);
+      opacity: 0.7;
+    }
+
+    .card-name {
+      font-family: 'Metal Mania', cursive; font-size: 1.55em;
+      color: #fff; letter-spacing: 2px; line-height: 1.1;
+      text-shadow: 0 0 16px rgba(255,255,255,0.2);
+    }
+
+    .card-team {
+      display: flex; align-items: center; gap: 8px; margin-top: 4px;
+    }
+
+    .team-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--team-color, #00f5d4);
+      box-shadow: 0 0 8px var(--team-color, #00f5d4);
+    }
+
+    .team-name-text {
+      font-family: 'Rajdhani', sans-serif; font-size: 0.9em;
+      font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--team-color, #00f5d4);
+    }
+
+    .card-bottom {
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+
+    .license-mini {
+      display: flex; flex-direction: column; gap: 4px;
+    }
+
+    .license-mini-label {
+      font-family: 'Share Tech Mono', monospace; font-size: 0.6em;
+      color: rgba(255,255,255,0.35); letter-spacing: 2px;
+    }
+
+    .license-mini-bar {
+      width: 110px; height: 6px; border-radius: 3px;
+      background: rgba(255,255,255,0.1);
+      overflow: hidden;
+    }
+
+    .license-mini-fill {
+      height: 100%; border-radius: 3px;
+      background: linear-gradient(90deg, #f87171 0%, #fbbf24 40%, #4ade80 100%);
+      transition: width 0.8s ease;
+    }
+
+    .license-pts-mini {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1em; letter-spacing: 2px;
+      color: var(--neon);
+    }
+
+    .card-season {
+      font-family: 'Share Tech Mono', monospace; font-size: 0.65em;
+      color: rgba(255,255,255,0.25); text-align: right; line-height: 1.5;
+    }
+
+    /* hover hint */
+    .flip-hint {
+      position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+      font-family: 'Rajdhani', sans-serif; font-size: 0.7em; letter-spacing: 2px;
+      color: rgba(255,255,255,0.2); z-index: 3;
+      transition: opacity 0.3s;
+    }
+
+    .flip-wrapper:hover .flip-hint { opacity: 0; }
+
+    /* ── VERSO DA CARTEIRA ──────────────────── */
+    .card-back-inner {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #0e0e1a 0%, #12121f 100%);
+      border: 2px solid var(--team-color, #00f5d4);
+      box-shadow: 0 0 30px color-mix(in srgb, var(--team-color, #00f5d4) 30%, transparent),
+                  0 15px 40px rgba(0,0,0,0.6);
+      border-radius: 18px; overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+
+    /* magnetic strip top */
+    .mag-strip {
+      height: 36px;
+      background: linear-gradient(90deg,
+        color-mix(in srgb, var(--team-color, #00f5d4) 25%, #111) 0%,
+        color-mix(in srgb, var(--team-color, #00f5d4) 15%, #111) 100%);
+      border-bottom: 1px solid color-mix(in srgb, var(--team-color, #00f5d4) 30%, transparent);
+      display: flex; align-items: center; padding: 0 16px; gap: 8px;
+    }
+
+    .mag-text {
+      font-family: 'Share Tech Mono', monospace; font-size: 0.7em;
+      letter-spacing: 3px; opacity: 0.6; text-transform: uppercase;
+    }
+
+    .back-body {
+      flex: 1; padding: 14px 18px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+
+    .back-row {
+      display: flex; gap: 12px;
+    }
+
+    .back-field {
+      flex: 1; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
+      padding: 8px 12px;
+    }
+
+    .back-field-label {
+      font-family: 'Share Tech Mono', monospace; font-size: 0.58em;
+      color: rgba(255,255,255,0.35); letter-spacing: 2px; text-transform: uppercase;
+    }
+
+    .back-field-value {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.1em;
+      letter-spacing: 2px; margin-top: 2px;
+      color: var(--team-color, #00f5d4);
+    }
+
+    /* license points big display */
+    .back-pts-row {
+      display: flex; align-items: center; gap: 14px;
+      background: rgba(0,0,0,0.25); border-radius: 10px; padding: 10px 14px;
+      border: 1px solid color-mix(in srgb, var(--team-color, #00f5d4) 20%, transparent);
+    }
+
+    .back-pts-label {
+      font-family: 'Share Tech Mono', monospace; font-size: 0.6em;
+      letter-spacing: 2px; opacity: 0.5; flex: 1; line-height: 1.4;
+    }
+
+    .back-pts-number {
+      font-family: 'Bebas Neue', sans-serif; font-size: 2.6em; line-height: 1;
+      color: var(--neon); text-shadow: 0 0 20px rgba(0,245,212,0.6);
+    }
+
+    .back-pts-max {
+      font-family: 'Rajdhani', sans-serif; font-size: 0.8em; opacity: 0.4;
+      align-self: flex-end; padding-bottom: 4px;
+    }
+
+    .license-bar-back {
+      height: 8px; border-radius: 4px; background: rgba(255,255,255,0.08); overflow: hidden;
+    }
+
+    .license-bar-fill {
+      height: 100%; border-radius: 4px;
+      background: linear-gradient(90deg, #f87171 0%, #fbbf24 40%, #4ade80 100%);
+      transition: width 1s ease;
+    }
+
+    /* hologram sticker */
+    .holo {
+      position: absolute; bottom: 12px; right: 14px;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: conic-gradient(
+        #ff0080, #ff8c00, #ffd700, #00ff80, #00cfff, #7b2dff, #ff0080
+      );
+      opacity: 0.4; filter: blur(1px);
+    }
+
+    /* ── SECTION TITLE ──────────────────────── */
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6em; letter-spacing: 5px; color: var(--neon);
+      text-transform: uppercase; text-shadow: 0 0 20px rgba(0,245,212,0.4);
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(0,245,212,0.2);
+      position: relative; z-index: 1;
+    }
+
+    /* ── FOOTER ─────────────────────────────── */
+    .footer {
+      text-align: center; margin-top: 56px; padding: 28px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1em; letter-spacing: 5px;
+      text-transform: uppercase; opacity: 0.6;
+      border-top: 2px solid rgba(255,255,255,0.1);
+      position: relative; z-index: 1;
+    }
+
+    .footer-icons { font-size: 1.4em; margin-top: 8px; letter-spacing: 15px; }
+
+    /* ── ANIMATIONS ─────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .flip-wrapper {
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .flip-wrapper:nth-child(1)  { animation-delay: 0.05s; }
+    .flip-wrapper:nth-child(2)  { animation-delay: 0.10s; }
+    .flip-wrapper:nth-child(3)  { animation-delay: 0.15s; }
+    .flip-wrapper:nth-child(4)  { animation-delay: 0.20s; }
+    .flip-wrapper:nth-child(5)  { animation-delay: 0.25s; }
+    .flip-wrapper:nth-child(6)  { animation-delay: 0.30s; }
+    .flip-wrapper:nth-child(7)  { animation-delay: 0.35s; }
+    .flip-wrapper:nth-child(8)  { animation-delay: 0.40s; }
+    .flip-wrapper:nth-child(9)  { animation-delay: 0.45s; }
+    .flip-wrapper:nth-child(10) { animation-delay: 0.50s; }
+
+    @media (max-width: 900px) {
+      .cards-grid { grid-template-columns: 1fr; gap: 20px; }
+    }
+  @media (max-width: 768px) {
+      body { padding: 16px 16px 40px; }
+      .header h1 { font-size: 2.2em; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <span class="icon-top">🪪</span>
+    <h1>Super Licença<span class="year">— Velocidade Baixa 2026 —</span></h1>
+    <div class="subtitle">Carteiras Oficiais dos Pilotos • Temporada 2026</div>
+  </div>
+
+  <!-- NAV -->
+  <div class="nav-links">
+    <a href="index.html">📅 Calendário</a>
+    <a href="pilotos.html">🏎️ Pilotos</a>
+    <a href="construtores.html">🏭 Construtores</a>
+    <a href="regras.html">📜 Regras</a>
+    <a href="superlicenca.html" class="active">🪪 Super Licença</a>
+  </div>
+
+  <!-- INFO -->
+  <div class="info-banner">
+    <span class="bi">💡</span>
+    <div>Todo piloto inicia com <strong>13 pontos de licença</strong>. Infrações deduzem pontos — ao zerar, suspensão de 1 corrida. <strong>Clique</strong> na carteira para virar! 🃏</div>
+  </div>
+
+  <!-- SECTION TITLE -->
+  <div class="section-title">
+    <span>🏁</span> Pilotos Licenciados — 2026
+  </div>
+
+  <!-- CARDS GRID -->
+  <div class="cards-grid" id="cardsGrid"></div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>🏎️ Velocidade Baixa 2026 • Super Licença Oficial 🏎️</div>
+    <div class="footer-icons">🎸 🔥 🏁 🪪 ⚡ 🤘</div>
+    <div style="margin-top:12px;font-size:0.75em;opacity:0.4;">Temporada 2026 — Regulamento Versão Final V2</div>
+  </div>
+
+  <script>
+    const PILOTS = [
+      {
+        name: "Lando",   foto: "foto_lando.jpg",        fullname: "Lando N.",
+        number: "04",         equipe: "McLaren",
+        teamIcon: "🥭",       cor: "#ff8000",
+        nacionalidade: "GBR", categoria: "Formula 1",
+        pts: 13,
+      },
+      {
+        name: "Oscar",   foto: "foto_oscar.jpg",        fullname: "Oscar P.",
+        number: "81",         equipe: "McLaren",
+        teamIcon: "🥭",       cor: "#ff8000",
+        nacionalidade: "AUS", categoria: "Formula 1",
+        pts: 13,
+      },
+      {
+        name: "Lewis",   foto: "foto_lewis.jpg",        fullname: "Lewis H.",
+        number: "44",         equipe: "Ferrari",
+        teamIcon: "🐴",       cor: "#e8002d",
+        nacionalidade: "GBR", categoria: "Formula 1",
+        pts: 13,
+      },
+      {
+        name: "Charles", foto: "foto_charles.jpg",      fullname: "Charles L.",
+        number: "16",         equipe: "Ferrari",
+        teamIcon: "🐴",       cor: "#e8002d",
+        nacionalidade: "MON", categoria: "Formula 1",
+        pts: 13,
+      },
+      {
+        name: "Lucas.B", foto: "foto_lucasb.jpg",      fullname: "Lucas B.",
+        number: "63",         equipe: "Mercedes",
+        teamIcon: "🏹",       cor: "#00d2be",
+        nacionalidade: "BRA", categoria: "Formula 1",
+        pts: 13,
+      },
+      {
+        name: "Lucas.H", foto: null,      fullname: "Lucas H.",
+        number: "10",         equipe: "Mercedes",
+        teamIcon: "🏹",       cor: "#00d2be",
+        nacionalidade: "BRA", categoria: "Formula 1",
+        pts: 13,
+      },
+      {
+        name: "Exodo",        foto: "foto_exodo.jpg",        fullname: "Exodo",
+        number: "14",         equipe: "Aston Martin",
+        teamIcon: "🪽",       cor: "#006f62",
+        nacionalidade: "BRA", categoria: "Formula 1",
+        pts: 13,
+      },
+      {
+        name: "Cleber",       foto: "foto_cleber.jpg",        fullname: "Cleber",
+        number: "18",         equipe: "Aston Martin",
+        teamIcon: "🪽",       cor: "#006f62",
+        nacionalidade: "BRA", categoria: "Formula 1",
+        pts: 13,
+      },
+      {
+        name: "Marcio",       foto: "foto_marcio.jpg",        fullname: "Marcio",
+        number: "77",         equipe: "Kick Sauber",
+        teamIcon: "🚜",       cor: "#b4dc00",
+        nacionalidade: "BRA", categoria: "Formula 1",
+        pts: 13,
+      },
+      {
+        name: "Denis",        foto: "foto_denis.jpg",        fullname: "Denis",
+        number: "99",         equipe: "Kick Sauber",
+        teamIcon: "🚜",       cor: "#b4dc00",
+        nacionalidade: "BRA", categoria: "Formula 1",
+        pts: 13,
+      },
+    ];
+
+    const KEY = 'vb_licenca_2026';
+
+    function loadPts() {
+      const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+      PILOTS.forEach((p, i) => {
+        if (saved[i] !== undefined) p.pts = saved[i];
+      });
+    }
+
+    function savePts() {
+      const data = {};
+      PILOTS.forEach((p, i) => data[i] = p.pts);
+      localStorage.setItem(KEY, JSON.stringify(data));
+    }
+
+    function pct(pts) { return Math.round((pts / 13) * 100); }
+
+    function barColor(pts) {
+      if (pts >= 10) return '#4ade80';
+      if (pts >= 5)  return '#fbbf24';
+      return '#f87171';
+    }
+
+    function buildCard(p, idx) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'flip-wrapper';
+      wrapper.style.setProperty('--team-color', p.cor);
+
+      // Click to flip on mobile
+      wrapper.addEventListener('click', () => wrapper.classList.toggle('flipped'));
+
+      const pctVal = pct(p.pts);
+
+      wrapper.innerHTML = `
+        <div class="flip-inner">
+
+          <!-- FRENTE -->
+          <div class="card-face card-front" style="--team-color:${p.cor}">
+            <div class="card-front-bg"></div>
+            <div class="card-stripe"></div>
+            <div class="card-content">
+
+              <!-- FOTO -->
+              <div class="photo-slot">
+                ${p.foto
+                  ? `<img src="${p.foto}" alt="${p.name}" />`
+                  : `<span class="ph-icon">📷</span><span class="ph-text">FOTO<br>PILOTO</span>`
+                }
+              </div>
+
+              <!-- INFO -->
+              <div class="card-info">
+                <div class="card-top">
+                  <div class="fia-badge">
+                    VELOCIDADE BAIXA<br>
+                    <span>SUPER LICENÇA</span>
+                  </div>
+                  <div class="card-number">${p.number}</div>
+                </div>
+
+                <div>
+                  <div class="card-name">${p.name}</div>
+                  <div class="card-team">
+                    <div class="team-dot"></div>
+                    <span class="team-name-text">${p.teamIcon} ${p.equipe}</span>
+                  </div>
+                </div>
+
+                <div class="card-bottom">
+                  <div class="license-mini">
+                    <span class="license-mini-label">PONTOS DE LICENÇA</span>
+                    <div class="license-mini-bar">
+                      <div class="license-mini-fill" style="width:${pctVal}%; background:${barColor(p.pts)};"></div>
+                    </div>
+                    <span class="license-pts-mini" style="color:${barColor(p.pts)}">${p.pts} / 13 pts</span>
+                  </div>
+                  <div class="card-season">
+                    TEMPORADA<br>2026
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="flip-hint">↻ virar</div>
+          </div>
+
+          <!-- VERSO -->
+          <div class="card-face card-back" style="--team-color:${p.cor}">
+            <div class="card-back-inner">
+              <div class="mag-strip">
+                <span class="mag-text">🏎️ Velocidade Baixa 2026 — ${p.equipe.toUpperCase()} — #${p.number}</span>
+              </div>
+
+              <div class="back-body">
+                <div class="back-row">
+                  <div class="back-field">
+                    <div class="back-field-label">Piloto</div>
+                    <div class="back-field-value" style="color:${p.cor}">${p.fullname}</div>
+                  </div>
+                  <div class="back-field">
+                    <div class="back-field-label">Nº</div>
+                    <div class="back-field-value">${p.number}</div>
+                  </div>
+                  <div class="back-field">
+                    <div class="back-field-label">Nac.</div>
+                    <div class="back-field-value">${p.nacionalidade}</div>
+                  </div>
+                </div>
+
+                <div class="back-row">
+                  <div class="back-field">
+                    <div class="back-field-label">Equipe</div>
+                    <div class="back-field-value" style="color:${p.cor}">${p.teamIcon} ${p.equipe}</div>
+                  </div>
+                  <div class="back-field">
+                    <div class="back-field-label">Categoria</div>
+                    <div class="back-field-value">${p.categoria}</div>
+                  </div>
+                </div>
+
+                <div class="back-pts-row" style="border-color:color-mix(in srgb, ${p.cor} 30%, transparent)">
+                  <div style="flex:1">
+                    <div class="back-pts-label">PONTOS DE<br>SUPER LICENÇA</div>
+                    <div class="license-bar-back" style="margin-top:6px">
+                      <div class="license-bar-fill" style="width:${pctVal}%; background:${barColor(p.pts)};"></div>
+                    </div>
+                  </div>
+                  <div class="back-pts-number" style="color:${barColor(p.pts)}" id="pts-display-${idx}">${p.pts}</div>
+                  <div class="back-pts-max">/ 13</div>
+                </div>
+
+                <!-- EDITAR PONTOS -->
+                <div style="display:flex;align-items:center;gap:8px;margin-top:2px">
+                  <span style="font-family:'Share Tech Mono',monospace;font-size:0.62em;opacity:0.4;letter-spacing:1px;flex:1">AJUSTAR PONTOS:</span>
+                  <button onclick="changePts(${idx},-1)" style="background:rgba(248,113,113,0.15);border:1px solid #f87171;color:#f87171;border-radius:6px;width:28px;height:28px;font-size:1em;cursor:pointer;font-weight:700">−</button>
+                  <button onclick="changePts(${idx},+1)" style="background:rgba(74,222,128,0.15);border:1px solid #4ade80;color:#4ade80;border-radius:6px;width:28px;height:28px;font-size:1em;cursor:pointer;font-weight:700">+</button>
+                </div>
+              </div>
+
+              <div class="holo"></div>
+            </div>
+          </div>
+
+        </div>
+      `;
+
+      return wrapper;
+    }
+
+    function changePts(idx, delta) {
+      PILOTS[idx].pts = Math.max(0, Math.min(13, PILOTS[idx].pts + delta));
+      savePts();
+      renderCards();
+    }
+
+    function renderCards() {
+      const grid = document.getElementById('cardsGrid');
+      // preserve flip state
+      const flipped = [...grid.querySelectorAll('.flip-wrapper')].map(w => w.classList.contains('flipped'));
+      grid.innerHTML = '';
+      PILOTS.forEach((p, i) => {
+        const card = buildCard(p, i);
+        if (flipped[i]) card.classList.add('flipped');
+        grid.appendChild(card);
+      });
+    }
+
+    loadPts();
+    renderCards();
+  </script>
+</body>
+</html>

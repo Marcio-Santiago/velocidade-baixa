@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Regras — Velocidade Baixa 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Titillium+Web:wght@400;600;700&family=Metal+Mania&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Titillium Web', sans-serif;
+      background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0d0d1a 100%);
+      color: #fff;
+      min-height: 100vh;
+      padding: 24px 32px 48px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 36px 30px;
+      background: linear-gradient(135deg, rgba(79,70,229,0.9) 0%, rgba(124,58,237,0.9) 50%, rgba(99,102,241,0.9) 100%);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(99,102,241,0.5), 0 0 100px rgba(124,58,237,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+      position: relative; overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+
+    .header::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px);
+      pointer-events: none;
+    }
+
+    .header::after { content: '📜⚖️📜'; position: absolute; top: 10px; right: 20px; font-size: 1.4em; opacity: 0.8; }
+
+    .icon-top { font-size: 2.6em; margin-bottom: 8px; display: block; filter: drop-shadow(0 0 20px rgba(255,255,255,0.5)); }
+
+    .header h1 {
+      font-family: 'Metal Mania', cursive;
+      font-size: 3em;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      text-shadow: 4px 4px 0 rgba(0,0,0,0.5), 0 0 40px rgba(255,255,255,0.4), 0 0 80px rgba(124,58,237,0.8);
+      position: relative; z-index: 1; line-height: 1.1;
+    }
+
+    .header h1 .year {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.48em; letter-spacing: 20px;
+      margin-top: 8px; color: #00f5d4;
+      text-shadow: 0 0 30px rgba(0,245,212,0.8);
+    }
+
+    .subtitle {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.2em; font-weight: 600;
+      opacity: 0.95; margin-top: 14px;
+      letter-spacing: 5px; text-transform: uppercase;
+      position: relative; z-index: 1;
+    }
+
+    /* NAV */
+    .nav-links {
+      display: flex; justify-content: center; gap: 14px;
+      margin-bottom: 28px; flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.05em; letter-spacing: 3px;
+      padding: 9px 22px; border-radius: 25px;
+      text-decoration: none; color: #fff;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: all 0.3s;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      border-color: #7c3aed;
+      box-shadow: 0 4px 20px rgba(124,58,237,0.5);
+    }
+
+    /* SECTION CARDS */
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 100%);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.7em; letter-spacing: 5px;
+      color: #00f5d4; text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(0,245,212,0.4);
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(0,245,212,0.2);
+    }
+
+    .section-icon { font-size: 1.3em; }
+
+    /* SUB HEADERS */
+    .sub-h {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15em; letter-spacing: 3px;
+      text-transform: uppercase;
+      margin: 20px 0 10px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+
+    .sub-h.teal  { color: #00f5d4; background: rgba(0,245,212,0.08); border-left: 3px solid #00f5d4; }
+    .sub-h.gold  { color: #fbbf24; background: rgba(251,191,36,0.08); border-left: 3px solid #fbbf24; }
+    .sub-h.purple{ color: #a855f7; background: rgba(168,85,247,0.08); border-left: 3px solid #a855f7; }
+    .sub-h.red   { color: #f87171; background: rgba(248,113,113,0.08); border-left: 3px solid #f87171; }
+
+    /* TABLES */
+    table {
+      width: 100%;
+      border-collapse: separate; border-spacing: 0;
+      margin-bottom: 6px;
+      border-radius: 12px; overflow: hidden;
+    }
+
+    thead tr {
+      background: linear-gradient(90deg, rgba(79,70,229,0.8), rgba(124,58,237,0.8));
+      border-bottom: 3px solid #00f5d4;
+    }
+
+    th {
+      font-family: 'Bebas Neue', sans-serif;
+      padding: 12px 16px; text-align: left;
+      font-size: 1em; letter-spacing: 3px;
+      color: #fff; font-weight: 400;
+    }
+
+    th:first-child { border-radius: 12px 0 0 0; }
+    th:last-child  { border-radius: 0 12px 0 0; }
+
+    tbody tr { transition: background 0.2s; }
+    tbody tr:hover { background: rgba(0,245,212,0.06); }
+    tbody tr:nth-child(odd)  td { background: rgba(255,255,255,0.04); }
+    tbody tr:nth-child(even) td { background: rgba(255,255,255,0.01); }
+    tr:last-child td:first-child { border-radius: 0 0 0 12px; }
+    tr:last-child td:last-child  { border-radius: 0 0 12px 0; }
+
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1em; font-weight: 500;
+      vertical-align: middle; line-height: 1.5;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    td.col-key {
+      font-weight: 700; color: #fbbf24;
+      width: 200px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      font-family: 'Titillium Web', sans-serif;
+    }
+
+    td.col-sev {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.05em; letter-spacing: 2px;
+      width: 120px;
+    }
+
+    .sev-baixa  { color: #4ade80; }
+    .sev-alta   { color: #fb923c; }
+    .sev-grave  { color: #f87171; }
+
+    /* PONTUAÇÃO GRID */
+    .pts-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 6px; margin: 10px 0;
+    }
+
+    .pts-box {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 8px 4px;
+      text-align: center;
+    }
+
+    .pts-box .pos {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.75em; opacity: 0.6;
+      letter-spacing: 1px;
+    }
+
+    .pts-box .val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4em; color: #00f5d4;
+      line-height: 1;
+    }
+
+    .pts-box.p1 { border-color: rgba(251,191,36,0.4); background: rgba(251,191,36,0.1); }
+    .pts-box.p1 .val { color: #fbbf24; }
+    .pts-box.p2 .val { color: #c0c0c0; }
+    .pts-box.p3 .val { color: #cd7f32; }
+
+    /* SPRINT PONTUAÇÃO */
+    .pts-grid-sprint {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 6px; margin: 10px 0;
+    }
+
+    /* BONUS BOXES */
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-top: 12px;
+    }
+
+    .bonus-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 14px 16px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .bonus-box:hover { transform: translateY(-3px); }
+
+    .bonus-box .b-icon { font-size: 1.6em; margin-bottom: 6px; }
+
+    .bonus-box .b-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1em; letter-spacing: 2px;
+      color: #fbbf24; margin-bottom: 4px;
+    }
+
+    .bonus-box .b-pts {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8em; color: #00f5d4;
+      text-shadow: 0 0 10px rgba(0,245,212,0.5);
+    }
+
+    .bonus-box .b-desc {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.82em; opacity: 0.65;
+      margin-top: 4px;
+    }
+
+    /* TIEBREAK STEPS */
+    .tiebreak-list {
+      counter-reset: tb;
+      list-style: none;
+      display: flex; flex-direction: column; gap: 8px;
+      margin-top: 10px;
+    }
+
+    .tiebreak-list li {
+      counter-increment: tb;
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px; padding: 10px 14px;
+      font-family: 'Rajdhani', sans-serif; font-size: 1em;
+    }
+
+    .tiebreak-list li::before {
+      content: counter(tb);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4em; color: #00f5d4;
+      min-width: 28px; text-align: center;
+      background: rgba(0,245,212,0.1);
+      border-radius: 6px; padding: 0 6px;
+    }
+
+    /* DESCONEXÃO GRID */
+    .disco-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-top: 12px;
+    }
+
+    .disco-card {
+      border-radius: 12px; padding: 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      text-align: center;
+    }
+
+    .disco-card .d-icon { font-size: 1.8em; margin-bottom: 6px; }
+    .disco-card .d-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1em; letter-spacing: 2px; margin-bottom: 6px;
+    }
+
+    .disco-card .d-desc {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.9em; opacity: 0.75; line-height: 1.5;
+    }
+
+    .disco-card.green { border-color: rgba(74,222,128,0.3); }
+    .disco-card.green .d-title { color: #4ade80; }
+    .disco-card.red   { border-color: rgba(248,113,113,0.3); }
+    .disco-card.red   .d-title { color: #f87171; }
+    .disco-card.blue  { border-color: rgba(96,165,250,0.3); }
+    .disco-card.blue  .d-title { color: #60a5fa; }
+
+    /* STEWARDS */
+    .stewards-row {
+      display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap;
+    }
+
+    .steward-badge {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.35);
+      border-radius: 10px; padding: 10px 16px;
+    }
+
+    .steward-badge .s-icon { font-size: 1.5em; }
+    .steward-badge .s-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1em; letter-spacing: 2px; color: #a855f7;
+    }
+
+    .steward-badge .s-role {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.8em; opacity: 0.6;
+    }
+
+    /* PREMIAÇÕES */
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-top: 12px;
+    }
+
+    .award-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 16px;
+      text-align: center; transition: transform 0.2s;
+    }
+
+    .award-card:hover { transform: translateY(-4px); }
+    .award-card .a-icon { font-size: 2em; margin-bottom: 8px; }
+    .award-card .a-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.05em; letter-spacing: 2px; color: #fbbf24; margin-bottom: 4px;
+    }
+    .award-card .a-desc {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.9em; opacity: 0.7; line-height: 1.4;
+    }
+
+    /* INFO / WARNING BOXES */
+    .info-box {
+      background: rgba(0,245,212,0.07);
+      border-left: 4px solid #00f5d4;
+      padding: 12px 16px; border-radius: 8px;
+      margin-top: 14px; font-size: 0.92em;
+      font-family: 'Rajdhani', sans-serif; line-height: 1.5;
+    }
+
+    .warn-box {
+      background: rgba(251,191,36,0.07);
+      border-left: 4px solid #fbbf24;
+      padding: 12px 16px; border-radius: 8px;
+      margin-top: 14px; font-size: 0.92em;
+      font-family: 'Rajdhani', sans-serif; line-height: 1.5;
+    }
+
+    .danger-box {
+      background: rgba(248,113,113,0.07);
+      border-left: 4px solid #f87171;
+      padding: 12px 16px; border-radius: 8px;
+      margin-top: 14px; font-size: 0.92em;
+      font-family: 'Rajdhani', sans-serif; line-height: 1.5;
+    }
+
+    /* LICENÇA */
+    .license-bar-wrap {
+      background: rgba(255,255,255,0.06);
+      border-radius: 10px; height: 12px;
+      overflow: hidden; margin: 10px 0 4px;
+    }
+
+    .license-bar {
+      height: 100%; border-radius: 10px;
+      background: linear-gradient(90deg, #f87171 0%, #fbbf24 40%, #4ade80 100%);
+      width: 100%;
+    }
+
+    .license-labels {
+      display: flex; justify-content: space-between;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.82em; opacity: 0.6;
+    }
+
+    /* FOOTER */
+    .footer {
+      text-align: center; margin-top: 48px; padding: 28px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2em; letter-spacing: 5px;
+      text-transform: uppercase; opacity: 0.7;
+      border-top: 2px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-icons { font-size: 1.4em; margin-top: 8px; letter-spacing: 15px; }
+
+    @media (max-width: 768px) {
+      body { padding: 16px 16px 40px; }
+      .pts-grid { grid-template-columns: repeat(5, 1fr); }
+      .pts-grid-sprint { grid-template-columns: repeat(4, 1fr); }
+      .bonus-grid, .disco-grid, .awards-grid { grid-template-columns: repeat(2, 1fr); }
+      .header h1 { font-size: 2em; }
+    }
+
+    @media (max-width: 480px) {
+      .bonus-grid, .disco-grid, .awards-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <span class="icon-top">📜⚖️</span>
+    <h1>Regulamento Oficial<span class="year">— Velocidade Baixa 2026 —</span></h1>
+    <div class="subtitle">Guia Completo de Regras • Temporada 2026</div>
+  </div>
+
+  <!-- NAV -->
+  <div class="nav-links">
+    <a href="index.html">📅 Calendário</a>
+    <a href="pilotos.html">🏎️ Pilotos</a>
+    <a href="construtores.html">🏭 Construtores</a>
+    <a href="regras.html" class="active">📜 Regras</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 1. CONFIGURAÇÕES TÉCNICAS              -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="card">
+    <div class="section-title">
+      <span class="section-icon">🛠️</span> 1. Configurações Técnicas do Lobby
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Item</th><th>Configuração</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="col-key">Distância da Corrida</td><td>35%</td></tr>
+        <tr><td class="col-key">Distância da Sprint</td><td>25%</td></tr>
+        <tr><td class="col-key">Pit Stop</td><td>Obrigatório — mínimo 1 parada por corrida</td></tr>
+        <tr><td class="col-key">Clima</td><td>Dinâmico</td></tr>
+        <tr><td class="col-key">Danos</td><td>Desativado — para evitar abandonos por acidente</td></tr>
+        <tr><td class="col-key">Safety Car</td><td>Ativado</td></tr>
+        <tr><td class="col-key">Box — Entrada</td><td>Manual</td></tr>
+        <tr><td class="col-key">Limites de Pista</td><td>Médio a Rigoroso — varia por circuito</td></tr>
+        <tr><td class="col-key">Pneus</td><td>Simulação Normal</td></tr>
+        <tr><td class="col-key">IA / Bots</td><td>Nível 40–80 — definido por sorteio aleatório a cada etapa</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sub-h teal">📅 Formato do Campeonato</div>
+    <table>
+      <tbody>
+        <tr><td class="col-key">Calendário</td><td>Segue o calendário oficial da F1 2026, com etapas em datas próximas às reais</td></tr>
+        <tr><td class="col-key">Corridas e Sprints</td><td>Realizadas conforme o cronograma oficial da temporada</td></tr>
+        <tr><td class="col-key">Pistas Indisponíveis</td><td>Se uma pista não existir no jogo, será sorteada uma pista substituta</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 2. PONTUAÇÃO                           -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="card">
+    <div class="section-title">
+      <span class="section-icon">📊</span> 2. Sistema de Pontuação e Bônus
+    </div>
+
+    <div class="sub-h teal">🏁 Corrida Principal — Top 10</div>
+    <div class="pts-grid">
+      <div class="pts-box p1"><div class="pos">1º</div><div class="val">25</div></div>
+      <div class="pts-box p2"><div class="pos">2º</div><div class="val">18</div></div>
+      <div class="pts-box p3"><div class="pos">3º</div><div class="val">15</div></div>
+      <div class="pts-box"><div class="pos">4º</div><div class="val">12</div></div>
+      <div class="pts-box"><div class="pos">5º</div><div class="val">10</div></div>
+      <div class="pts-box"><div class="pos">6º</div><div class="val">8</div></div>
+      <div class="pts-box"><div class="pos">7º</div><div class="val">6</div></div>
+      <div class="pts-box"><div class="pos">8º</div><div class="val">4</div></div>
+      <div class="pts-box"><div class="pos">9º</div><div class="val">2</div></div>
+      <div class="pts-box"><div class="pos">10º</div><div class="val">1</div></div>
+    </div>
+
+    <div class="sub-h gold">⚡ Corrida Sprint — Top 8</div>
+    <div class="pts-grid-sprint">
+      <div class="pts-box p1"><div class="pos">1º</div><div class="val">8</div></div>
+      <div class="pts-box p2"><div class="pos">2º</div><div class="val">7</div></div>
+      <div class="pts-box p3"><div class="pos">3º</div><div class="val">6</div></div>
+      <div class="pts-box"><div class="pos">4º</div><div class="val">5</div></div>
+      <div class="pts-box"><div class="pos">5º</div><div class="val">4</div></div>
+      <div class="pts-box"><div class="pos">6º</div><div class="val">3</div></div>
+      <div class="pts-box"><div class="pos">7º</div><div class="val">2</div></div>
+      <div class="pts-box"><div class="pos">8º</div><div class="val">1</div></div>
+    </div>
+
+    <div class="sub-h purple">🎁 Bônus Extras — Acumulativos</div>
+    <div class="bonus-grid">
+      <div class="bonus-box">
+        <div class="b-icon">⏱️</div>
+        <div class="b-title">Volta Mais Rápida</div>
+        <div class="b-pts">+1 pt</div>
+        <div class="b-desc">Apenas se terminar no Top 10</div>
+      </div>
+      <div class="bonus-box">
+        <div class="b-icon">🏁</div>
+        <div class="b-title">Pole Position</div>
+        <div class="b-pts">+1 pt</div>
+        <div class="b-desc">Por classificação mais rápida</div>
+      </div>
+      <div class="bonus-box">
+        <div class="b-icon">🛡️</div>
+        <div class="b-title">Corrida Limpa</div>
+        <div class="b-pts">+1 pt</div>
+        <div class="b-desc">Definido pela escolha do jogo</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 3. CRITÉRIOS DE DESEMPATE             -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="card">
+    <div class="section-title">
+      <span class="section-icon">⚖️</span> 3. Critérios de Desempate
+    </div>
+
+    <p style="font-family:'Rajdhani',sans-serif; opacity:0.8; margin-bottom:4px;">Em caso de igualdade de pontos na classificação, os critérios são aplicados nesta ordem:</p>
+    <ol class="tiebreak-list">
+      <li>Maior número de vitórias</li>
+      <li>Maior número de pole positions</li>
+      <li>Maior número de voltas rápidas em corrida</li>
+      <li>Maior número de 2º lugares</li>
+      <li>Frequência em posições superiores (3º, 4º, etc.)</li>
+    </ol>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 4. SUPER LICENÇA                       -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="card">
+    <div class="section-title">
+      <span class="section-icon">🪪</span> 4. Sistema de Super Licença
+    </div>
+
+    <p style="font-family:'Rajdhani',sans-serif; opacity:0.85; margin-bottom:14px;">
+      Todo piloto começa a temporada com <strong style="color:#00f5d4;">13 pontos de licença</strong>. Infrações deduzem pontos. Ao chegar a zero, o piloto é suspenso por 1 corrida.
+    </p>
+
+    <div class="license-bar-wrap"><div class="license-bar"></div></div>
+    <div class="license-labels"><span>0 — Suspensão</span><span>13 — Início da Temporada</span></div>
+
+    <div class="sub-h red">⚠️ Tabela de Infrações e Deduções de Licença</div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:110px">Gravidade</th>
+          <th>Infração Típica</th>
+          <th>Punição no Campeonato / Licença</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-sev sev-baixa">BAIXA</td>
+          <td>Retorno perigoso de baixo impacto, bloqueio proposital na zona de DRS ou toque imprudente evitável</td>
+          <td>🟡 Bandeira amarela como aviso. Na 3ª infração: bandeira vermelha e −2 pontos na licença</td>
+        </tr>
+        <tr>
+          <td class="col-sev sev-alta">ALTA</td>
+          <td>Causar colisão que force o abandono de outro piloto ou perda de posições prejudiciais</td>
+          <td>−2 posições na classificação final e −2 pontos na licença</td>
+        </tr>
+        <tr>
+          <td class="col-sev sev-grave">GRAVE</td>
+          <td>Desqualificado pelo jogo por excesso de infrações</td>
+          <td>−3 pontos na licença</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="warn-box">
+      ⚠️ <strong>Suspensão:</strong> Ao atingir 0 pontos de licença, o piloto fica automaticamente suspenso por 1 corrida e retorna com 13 pontos reiniciados.
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 5. PAINEL DE STEWARDS / PENALIDADES    -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="card">
+    <div class="section-title">
+      <span class="section-icon">👨‍⚖️</span> 5. Painel de Stewards e Penalidades
+    </div>
+
+    <div class="sub-h teal">👥 Composição do Painel</div>
+    <div class="stewards-row">
+      <div class="steward-badge"><span class="s-icon">⚖️</span><div><div class="s-name">Lucas.B</div><div class="s-role">Steward Oficial</div></div></div>
+      <div class="steward-badge"><span class="s-icon">⚖️</span><div><div class="s-name">Lucas.H</div><div class="s-role">Steward Oficial</div></div></div>
+      <div class="steward-badge"><span class="s-icon">⚖️</span><div><div class="s-name">Márcio</div><div class="s-role">Steward Oficial</div></div></div>
+      <div class="steward-badge"><span class="s-icon">⚖️</span><div><div class="s-name">Exodo</div><div class="s-role">Steward Oficial</div></div></div>
+      <div class="steward-badge"><span class="s-icon">⚖️</span><div><div class="s-name">Cleber</div><div class="s-role">Steward Oficial</div></div></div>
+      <div class="steward-badge"><span class="s-icon">⚖️</span><div><div class="s-name">Denis</div><div class="s-role">Steward Oficial</div></div></div>
+    </div>
+
+    <div class="sub-h gold">📋 Regras do Painel</div>
+    <table>
+      <tbody>
+        <tr>
+          <td class="col-key">Impedimento</td>
+          <td>Se um steward estiver diretamente envolvido no incidente analisado, ele é impedido de julgar. Outro piloto é designado para substituí-lo</td>
+        </tr>
+        <tr>
+          <td class="col-key">Transparência</td>
+          <td>Todas as decisões e punições serão comunicadas no grupo oficial do campeonato</td>
+        </tr>
+        <tr>
+          <td class="col-key">Apelação</td>
+          <td>O piloto penalizado pode apresentar provas (replay ou prints) para contestar a decisão do painel</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-h purple">🤝 Código de Conduta em Pista</div>
+    <table>
+      <tbody>
+        <tr>
+          <td class="col-key">Sem Retaliação</td>
+          <td>Proibido bater de propósito ou usar o carro para retaliar incidentes anteriores</td>
+        </tr>
+        <tr>
+          <td class="col-key">Defesa de Posição</td>
+          <td>Máximo de 1 mudança de direção permitida; múltiplas mudanças configuram bloqueio perigoso</td>
+        </tr>
+        <tr>
+          <td class="col-key">Espaço em Pista</td>
+          <td>Deixar espaço suficiente em disputas lado a lado; proibido espremer o adversário na grama ou muro</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 6. PROVAS E APELAÇÕES                  -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="card">
+    <div class="section-title">
+      <span class="section-icon">📹</span> 6. Provas e Apelações
+    </div>
+
+    <table>
+      <tbody>
+        <tr>
+          <td class="col-key">💾 Salvar Replay</td>
+          <td>Cada piloto pode e deve salvar o replay de suas corridas. O host irá salvar todas as corridas para quem não consiga</td>
+        </tr>
+        <tr>
+          <td class="col-key">⚖️ Provas Aceitas</td>
+          <td>Replays e prints são as <strong>únicas provas aceitas</strong> pelo painel para contestação ou análise de incidentes</td>
+        </tr>
+        <tr>
+          <td class="col-key">📋 Conduta Fora da Pista</td>
+          <td>Xingamentos ou ofensas em chats e grupos resultam em suspensão; reincidência pode resultar em expulsão do campeonato</td>
+        </tr>
+        <tr>
+          <td class="col-key">📅 Presença</td>
+          <td>Avisar com antecedência no canal oficial caso não possa participar de uma etapa</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 7. DESCONEXÕES                         -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="card">
+    <div class="section-title">
+      <span class="section-icon">🔌</span> 7. Regras de Desconexão
+    </div>
+
+    <div class="disco-grid">
+      <div class="disco-card green">
+        <div class="d-icon">✅</div>
+        <div class="d-title">Até a 10ª Volta</div>
+        <div class="d-desc">Queda de piloto — pode reiniciar <strong>uma vez</strong>, se o grupo concordar</div>
+      </div>
+      <div class="disco-card red">
+        <div class="d-icon">🚫</div>
+        <div class="d-title">Após a 10ª Volta</div>
+        <div class="d-desc">Queda de piloto — <strong>sem reinício</strong>. Piloto fica em último lugar na classificação</div>
+      </div>
+      <div class="disco-card blue">
+        <div class="d-icon">🌐</div>
+        <div class="d-title">Queda do HOST</div>
+        <div class="d-desc">Em qualquer momento — corrida <strong>totalmente reiniciada</strong></div>
+      </div>
+    </div>
+
+    <div class="sub-h gold">🤖 Carro Automático (IA)</div>
+    <table>
+      <tbody>
+        <tr>
+          <td class="col-key">Comportamento</td>
+          <td>Carro do piloto desconectado permanece na pista como IA lenta — outros pilotos devem evitá-lo normalmente</td>
+        </tr>
+        <tr>
+          <td class="col-key">Múltiplas Quedas</td>
+          <td>A ordem de classificação segue a volta em que cada piloto caiu — quem caiu primeiro fica mais atrás</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="warn-box">
+      ⚠️ <strong>Decisão Rápida:</strong> O grupo tem autonomia para decidir em casos específicos, mas a decisão deve ser tomada rapidamente para não atrasar a competição.
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 8. EQUIPES E CONSTRUTORES              -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="card">
+    <div class="section-title">
+      <span class="section-icon">🏭</span> 8. Equipes e Construtores
+    </div>
+
+    <table>
+      <tbody>
+        <tr>
+          <td class="col-key">Formação</td>
+          <td>Duplas de pilotos — com mais de 8 participantes, os pontos de ambos somam para o Mundial de Construtores</td>
+        </tr>
+        <tr>
+          <td class="col-key">Pontuação</td>
+          <td>A soma dos pontos dos dois pilotos da mesma equipe conta para a classificação de construtores</td>
+        </tr>
+        <tr>
+          <td class="col-key">Comunicação</td>
+          <td>Uso de rádio via Discord é permitido e incentivado entre companheiros de equipe durante as corridas</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 9. PREMIAÇÕES                          -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="card">
+    <div class="section-title">
+      <span class="section-icon">🏆</span> 9. Premiações e Títulos
+    </div>
+
+    <p style="font-family:'Rajdhani',sans-serif; opacity:0.8; margin-bottom:14px;">Os resultados oficiais de cada etapa serão publicados via tabelas após cada corrida. Ao final da temporada, os títulos são concedidos:</p>
+
+    <div class="awards-grid">
+      <div class="award-card">
+        <div class="a-icon">🥇</div>
+        <div class="a-title">Campeão de Pilotos</div>
+        <div class="a-desc">Piloto com mais pontos na temporada</div>
+      </div>
+      <div class="award-card">
+        <div class="a-icon">🏭</div>
+        <div class="a-title">Equipe Campeã</div>
+        <div class="a-desc">Equipe com maior soma de pontos — Construtores</div>
+      </div>
+      <div class="award-card">
+        <div class="a-icon">⚡</div>
+        <div class="a-title">Troféu Velocidade</div>
+        <div class="a-desc">Piloto com mais voltas rápidas na temporada</div>
+      </div>
+      <div class="award-card">
+        <div class="a-icon">🎯</div>
+        <div class="a-title">Rei da Pole</div>
+        <div class="a-desc">Piloto com mais pole positions conquistadas</div>
+      </div>
+      <div class="award-card">
+        <div class="a-icon">🤝</div>
+        <div class="a-title">Drivers' Driver</div>
+        <div class="a-desc">Piloto mais respeitado — eleito pelos próprios pilotos</div>
+      </div>
+      <div class="award-card">
+        <div class="a-icon">🛡️</div>
+        <div class="a-title">Corrida Mais Limpa</div>
+        <div class="a-desc">Piloto com mais bônus de corrida limpa acumulados</div>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top:16px; text-align:center; font-size:1em;">
+      🏁 <strong>Boa sorte a todos os pilotos! Que vença o melhor!</strong> 💨
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>🏎️ Velocidade Baixa 2026 • Regulamento Oficial 🏎️</div>
+    <div class="footer-icons">🎸 🔥 🏁 🏆 🎮 ⚡ 🤘</div>
+    <div style="margin-top:12px; font-size:0.75em; opacity:0.5;">Versão Final V2 — Temporada 2026</div>
+  </div>
+
+</body>
+</html>

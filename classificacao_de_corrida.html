@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="neon">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pontuações — Velocidade Baixa 2026</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Titillium+Web:wght@400;600;700&family=Metal+Mania&display=swap" rel="stylesheet"><style>
+    :root{
+      --bg0:#0a0a0f; --bg1:#1a1a2e; --bg2:#0d0d1a;
+      --cardA: rgba(255,255,255,.10); --cardB: rgba(255,255,255,.03);
+      --text:#fff; --muted: rgba(255,255,255,.78);
+      --neon:#00f5d4; --purple:#7c3aed; --indigo:#4f46e5; --gold:#fbbf24;
+      --radius: 20px; --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --navH: 74px;
+    }
+    html[data-theme="soft"]{ --cardA: rgba(255,255,255,.12); --cardB: rgba(255,255,255,.04); }
+    *{box-sizing:border-box; margin:0; padding:0}
+    body{
+      font-family:'Titillium Web',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background: linear-gradient(135deg, var(--bg0) 0%, var(--bg1) 50%, var(--bg2) 100%);
+      color: var(--text);
+      min-height:100vh;
+      padding: calc(var(--navH) + 20px) 32px 32px;
+    }
+    a{color:inherit; text-decoration:none}
+    .nav{
+      position:fixed; top:0; left:0; right:0; z-index:50;
+      height: var(--navH);
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 0 22px;
+      background: linear-gradient(135deg, rgba(10,10,15,.70) 0%, rgba(26,26,46,.80) 50%, rgba(13,13,26,.70) 100%);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 10px 30px rgba(0,0,0,.30);
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+      font-family:'Rajdhani',sans-serif; font-weight:800;
+      letter-spacing:1px; text-transform:uppercase; font-size:12px;
+      cursor:pointer;
+    }
+    .pill.ghost{ background: transparent; box-shadow:none; }
+    .dot{ width:10px; height:10px; border-radius:999px; background: var(--neon); box-shadow: 0 0 16px rgba(0,245,212,.65); }
+    .brand{ display:flex; align-items:center; gap:12px; }
+    .logo{
+      width:44px; height:44px; border-radius:14px; display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(79,70,229,.95) 0%, rgba(124,58,237,.95) 50%, rgba(99,102,241,.95) 100%);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 12px 30px rgba(99,102,241,.30);
+    }
+
+    h1{
+      font-family:'Bebas Neue',sans-serif;
+      font-size: 2.4em;
+      letter-spacing: 7px;
+      margin: 12px 0 24px;
+      color: var(--gold);
+      text-transform: uppercase;
+      text-shadow: 0 0 25px rgba(251,191,36,.35);
+    }
+
+    h2{
+      font-family:'Bebas Neue',sans-serif;
+      font-size: 1.6em;
+      letter-spacing: 3px;
+      margin: 20px 0 14px;
+      color: var(--neon);
+      text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(0,245,212,.30);
+    }
+
+    .card{
+      background: linear-gradient(180deg, var(--cardA), var(--cardB));
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-top: 20px;
+      padding: 20px;
+    }
+
+    .standings-table{
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Rajdhani', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    .standings-table thead tr{
+      background: linear-gradient(90deg, var(--neon), var(--gold));
+    }
+
+    .standings-table th{
+      padding: 14px 12px;
+      text-align: left;
+      font-size: 1em;
+      font-weight: 700;
+      color: var(--bg0);
+      letter-spacing: 1px;
+      border-right: 1px solid rgba(0,0,0,.2);
+    }
+
+    .standings-table th:last-child{
+      border-right: none;
+    }
+
+    .standings-table td{
+      padding: 14px 12px;
+      border-right: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .standings-table td:last-child{
+      border-right: none;
+    }
+
+    .standings-table tbody tr:nth-child(odd) td{
+      background: var(--cardB);
+    }
+
+    .standings-table tbody tr:nth-child(even) td{
+      background: var(--cardA);
+    }
+
+    .standings-table tbody tr:hover td{
+      background: rgba(0,245,212,.12);
+    }
+
+    .pilot-name{
+      font-weight: 700;
+      color: var(--neon);
+      min-width: 140px;
+      padding: 14px 12px !important;
+      position: sticky;
+      left: 0;
+      background: linear-gradient(90deg, var(--bg1), rgba(26,26,46,.8));
+      z-index: 10;
+    }
+
+    .position-input{
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      text-align: center;
+      font-size: 1em;
+      font-weight: 700;
+      background: rgba(0,245,212,.06);
+      border: 2px solid rgba(0,245,212,.4);
+      border-radius: 4px;
+      color: var(--neon);
+      cursor: pointer;
+      font-family: 'Rajdhani', sans-serif;
+      transition: all 0.15s ease;
+    }
+
+    .position-input:focus{
+      outline: none;
+      box-shadow: 0 0 10px rgba(0,245,212,.4);
+      background: rgba(0,245,212,.12);
+      border-color: var(--neon);
+    }
+
+    .position-input:hover{
+      border-color: var(--gold);
+      background: rgba(251,191,36,.08);
+      color: var(--gold);
+    }
+
+    .info-box{
+      background: rgba(0,245,212,.08);
+      border-left: 4px solid var(--neon);
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin-top: 14px;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+
+    .points-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .points-card{
+      background: linear-gradient(180deg, var(--cardA), var(--cardB));
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .points-table{
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .points-table thead tr{
+      background: linear-gradient(135deg, var(--indigo) 0%, var(--purple) 100%);
+    }
+
+    .points-table th{
+      padding: 12px 14px;
+      letter-spacing: 2px;
+      font-size: 1em;
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--neon);
+    }
+
+    .points-table td{
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+    }
+
+    .points-table td:last-child{
+      text-align: right;
+      color: var(--neon);
+      font-size: 1.1em;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .points-table tbody tr:last-child td{
+      border-bottom: none;
+    }
+
+    .editable{
+      padding: 16px;
+    }
+
+    textarea{
+      width: 100%;
+      min-height: 140px;
+      resize: vertical;
+      background: rgba(0,0,0,.25);
+      border: 1px solid rgba(255,255,255,.12);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: .9em;
+      line-height: 1.4;
+    }
+
+    .btn-group{
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1200px){
+      .points-grid{
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 980px){
+      body{ padding: 118px 18px 28px; }
+      .nav{ height:auto; padding: 12px 14px; flex-wrap:wrap; gap:10px; }
+      h1{ font-size: 1.8em; letter-spacing: 4px; }
+      .standings-table{
+        font-size: 0.9em;
+      }
+      .standings-table th, .standings-table td{
+        padding: 10px 8px;
+      }
+      .position-input{
+        width: 45px;
+        height: 45px;
+        font-size: 1em;
+      }
+      .pilot-name{
+        min-width: 110px;
+      }
+    }
+
+    @media (max-width: 640px){
+      body{ padding: 100px 12px 20px; }
+      .card{ padding: 12px; }
+      h1{ font-size: 1.4em; letter-spacing: 2px; }
+      .standings-table{
+        font-size: 0.8em;
+        display: block;
+        overflow-x: auto;
+      }
+      .position-input{
+        width: 40px;
+        height: 40px;
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav" aria-label="Navegação principal">
+    <a class="brand" href="index.html">
+      <div class="logo" aria-hidden="true">🏎️</div>
+      <div style="line-height:1.1">
+        <div style="font-family:'Bebas Neue',sans-serif; letter-spacing:3px;">Velocidade Baixa</div>
+        <div style="font-family:'Rajdhani',sans-serif; font-weight:800; letter-spacing:2px; font-size:12px; opacity:.85;">Pontuações 2026</div>
+      </div>
+    </a>
+
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <a class="pill" href="index.html"><span class="dot"></span> Calendário</a>
+      <a class="pill" href="pilotos.html"><span class="dot"></span> Pilotos</a>
+      <a class="pill" href="construtores.html"><span class="dot"></span> Construtores</a>
+      <a class="pill ghost" href="regras.html">📜 Regras</a>
+    </div>
+  </nav>
+
+  <main>
+    <h1>🏅 Classificação de Corrida</h1>
+
+    <div class="card">
+      <h2>📊 Tabela Geral de Posições</h2>
+      <div style="overflow-x: auto; background: linear-gradient(180deg, var(--cardA), var(--cardB)); border-radius: 12px; border: 1px solid rgba(255,255,255,.08);">
+        <table class="standings-table" id="standingsTable">
+          <thead>
+            <tr style="background: linear-gradient(90deg, var(--neon), var(--gold));">
+              <th style="min-width: 120px; padding: 14px 10px; text-align: left; font-size: 0.95em; color: var(--bg0); font-weight: 700; letter-spacing: 1px;">Piloto</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">AUS</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">CHI</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">CHI S</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">JAP</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">BHR</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">SAU</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">MIA</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">MIA S</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">CAN</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">CAN S</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">MON</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">BCN</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">AUT</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">GBR</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">GBR S</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">BEL</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">HUN</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">NED</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">NED S</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">ITA</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">ESP</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">AZE</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">SIN</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">SIN S</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">USA</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">MEX</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">BRA</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">LAS</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">QAT</th>
+              <th style="padding: 14px 6px; text-align: center; font-size: 0.85em; color: var(--bg0); font-weight: 700; width: 45px;">ABU</th>
+              <th style="padding: 14px 10px; text-align: center; font-size: 0.95em; color: var(--gold); font-weight: 700; letter-spacing: 1px; min-width: 50px;">PTS.</th>
+            </tr>
+          </thead>
+          <tbody id="pilotsBody">
+            <!-- Linhas adicionadas dinamicamente -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const KEY_STANDINGS = "vb_standings_2026";
+    const pilotsBody = document.getElementById('pilotsBody');
+
+    const pointsTable = {
+      1: 25, 2: 18, 3: 15, 4: 12, 5: 10,
+      6: 8, 7: 6, 8: 4, 9: 2, 10: 1
+    };
+
+    let standings = [];
+
+    const DEFAULT_PILOTS = [
+      { name: "Lando",   equipe: "McLaren",   cor: "#ff8000" },
+      { name: "Oscar",   equipe: "McLaren",   cor: "#ff8000" },
+      { name: "Lewis",   equipe: "Ferrari",   cor: "#e8002d" },
+      { name: "Charles", equipe: "Ferrari",   cor: "#e8002d" },
+      { name: "Lucas.B", equipe: "Mercedes",  cor: "#00d2be" },
+      { name: "Lucas.H", equipe: "Mercedes",  cor: "#00d2be" },
+      { name: "Exodo",   equipe: "Aston Martin", cor: "#006f62" },
+      { name: "Cleber",  equipe: "Aston Martin", cor: "#006f62" },
+      { name: "Marcio",  equipe: "Kick Sauber",  cor: "#b4dc00" },
+      { name: "Denis",   equipe: "Kick Sauber",  cor: "#b4dc00" }
+    ];
+
+    function loadData(){
+      standings = JSON.parse(localStorage.getItem(KEY_STANDINGS)) || [];
+      if (standings.length === 0) {
+        DEFAULT_PILOTS.forEach(p => {
+          standings.push({ name: p.name, equipe: p.equipe, cor: p.cor, positions: new Array(30).fill(0) });
+        });
+      }
+      // ensure all entries have cor/equipe
+      standings.forEach((s, i) => {
+        if (!s.cor && DEFAULT_PILOTS[i]) s.cor = DEFAULT_PILOTS[i].cor;
+        if (!s.equipe && DEFAULT_PILOTS[i]) s.equipe = DEFAULT_PILOTS[i].equipe;
+      });
+      renderStandings();
+    }
+
+    function renderStandings(){
+      pilotsBody.innerHTML = '';
+      standings.forEach((pilot, idx) => {
+        const row = document.createElement('tr');
+        let total = 0;
+        let positionsHTML = '';
+
+        for (let i = 0; i < 30; i++){
+          const pos = pilot.positions[i] || '';
+          const points = pos && pointsTable[pos] ? pointsTable[pos] : 0;
+          total += points;
+          positionsHTML += `<td><input type="number" class="position-input" min="1" max="25" value="${pos}" data-pilot="${idx}" data-race="${i}" placeholder="-"></td>`;
+        }
+
+        const cor = pilot.cor || '#00f5d4';
+        const equipe = pilot.equipe || '';
+        const pilotNameInput = `<div style="display:flex;flex-direction:column;gap:2px;">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:1.05em;letter-spacing:2px;color:${cor};text-shadow:0 0 8px ${cor}66;">${pilot.name || '—'}</span>
+          <span style="font-family:'Rajdhani',sans-serif;font-size:0.78em;opacity:0.55;letter-spacing:1px;">${equipe}</span>
+        </div>`;
+        
+        row.innerHTML = `
+          <td style="padding:10px 12px;">${pilotNameInput}</td>
+          ${positionsHTML}
+          <td style="font-size: 1.1em; color: var(--gold); font-weight: 700; text-align: center; padding: 10px 8px; min-width:50px;">${total}</td>
+        `;
+        pilotsBody.appendChild(row);
+      });
+
+      document.querySelectorAll('.position-input').forEach(input => {
+        input.addEventListener('change', (e) => {
+          const pilot = parseInt(e.target.dataset.pilot);
+          const race = parseInt(e.target.dataset.race);
+          const val = e.target.value ? parseInt(e.target.value) : '';
+          standings[pilot].positions[race] = val;
+          saveData();
+          renderStandings();
+        });
+      });
+
+      document.querySelectorAll('.pilot-name-input').forEach(input => {
+        input.addEventListener('change', (e) => {
+          const pilot = parseInt(e.target.dataset.pilot);
+          standings[pilot].name = e.target.value;
+          saveData();
+        });
+      });
+    }
+
+    function saveData(){
+      localStorage.setItem(KEY_STANDINGS, JSON.stringify(standings));
+    }
+
+    document.getElementById('saveBtn') && document.getElementById('saveBtn').addEventListener('click', () => {
+      saveData();
+      alert("✅ Dados salvos com sucesso!");
+    });
+
+    document.getElementById('resetBtn') && document.getElementById('resetBtn').addEventListener('click', () => {
+      if (!confirm("Tem certeza que quer limpar TUDO?")) return;
+      localStorage.removeItem(KEY_STANDINGS);
+      standings = [];
+      loadData();
+      alert("♻️ Dados limpos!");
+    });
+
+    loadData();
+  </script>
+</body>
+</html>
