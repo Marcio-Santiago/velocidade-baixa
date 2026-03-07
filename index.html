@@ -16,113 +16,105 @@
             line-height: 1.6;
         }
 
-        /* HEADER ROCK N ROLL */
+                /* HEADER */
         .header {
             text-align: center;
-            margin-bottom: 28px;
-            padding: 36px 30px;
-            background: linear-gradient(135deg, rgba(79, 70, 229, 0.9) 0%, rgba(124, 58, 237, 0.9) 50%, rgba(99, 102, 241, 0.9) 100%);
-            border-radius: 20px;
-            box-shadow: 
-                0 20px 60px rgba(99, 102, 241, 0.5),
-                0 0 100px rgba(124, 58, 237, 0.3),
-                inset 0 1px 0 rgba(255,255,255,0.2),
-                0 0 0 3px rgba(255,255,255,0.1);
+            margin-bottom: 32px;
+            padding: 40px 40px 36px;
+            background: linear-gradient(145deg,
+                #0e0818 0%,
+                #1c0f38 30%,
+                #2e1560 60%,
+                #1a0d32 100%);
+            border-radius: 18px;
+            box-shadow:
+                0 24px 64px rgba(0,0,0,0.65),
+                inset 0 1px 0 rgba(255,255,255,0.07),
+                0 0 0 1px rgba(201,162,39,0.18);
             position: relative;
             overflow: hidden;
-            border: 2px solid rgba(255,255,255,0.1);
         }
-        
+
+        /* diagonal texture lines */
         .header::before {
             content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            position: absolute; inset: 0;
             background: repeating-linear-gradient(
-                45deg,
+                -55deg,
                 transparent,
-                transparent 2px,
-                rgba(0,0,0,0.1) 2px,
-                rgba(0,0,0,0.1) 4px
+                transparent 6px,
+                rgba(255,255,255,0.018) 6px,
+                rgba(255,255,255,0.018) 7px
             );
             pointer-events: none;
         }
 
-        .header::after {
-            content: '⚡🔥⚡';
+        /* thin gold bottom bar */
+                .header::after {
+            content: '';
             position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 1.5em;
-            opacity: 0.8;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                #c9a227 25%,
+                #e6c84a 50%,
+                #c9a227 75%,
+                transparent 100%);
         }
 
-        .icon-top {
-            font-size: 3em;
-            margin-bottom: 10px;
-            display: block;
-            filter: drop-shadow(0 0 20px rgba(255,255,255,0.5));
-        }
-        
-        .header h1 { 
+        .header h1 {
             font-family: 'Metal Mania', cursive;
-            font-size: 4.5em;
+            font-size: 4em;
             font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 6px;
-            text-shadow: 
-                4px 4px 0 rgba(0,0,0,0.5),
-                0 0 40px rgba(255,255,255,0.4),
-                0 0 80px rgba(124, 58, 237, 0.8);
+            letter-spacing: 4px;
+            color: #fff;
+            text-shadow:
+                3px 3px 0 rgba(0,0,0,0.55),
+                0 0 50px rgba(180,140,255,0.30);
             position: relative;
             z-index: 1;
-            line-height: 1.1;
+            line-height: 1.05;
+            margin: 0;
         }
 
         .header h1 .year {
             display: block;
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 0.5em;
-            letter-spacing: 20px;
+            font-size: 0.32em;
+            letter-spacing: 18px;
             margin-top: 10px;
-            color: #00f5d4;
-            text-shadow: 0 0 30px rgba(0, 245, 212, 0.8);
+            color: #c9a227;
+            text-shadow: 0 0 20px rgba(201,162,39,0.55);
         }
-        
-        .subtitle { 
+
+        .subtitle {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 1.4em;
-            font-weight: 600;
-            opacity: 0.95;
-            margin-top: 20px;
+            font-size: 1em;
+            font-weight: 500;
+            color: rgba(255,255,255,0.50);
+            margin-top: 14px;
             letter-spacing: 5px;
             text-transform: uppercase;
             position: relative;
             z-index: 1;
         }
 
-        .subtitle-icons {
-            margin-top: 15px;
-            font-size: 1.8em;
-            letter-spacing: 10px;
-        }
-
         /* TÍTULOS DOS MESES */
         h2 { 
             font-family: 'Bebas Neue', sans-serif;
-            color: #00f5d4;
+            color: #c9a227;
             font-size: 2.2em;
             font-weight: 400;
             letter-spacing: 8px;
             text-transform: uppercase;
             margin: 30px 0 16px 0;
             padding: 18px 30px;
-            background: linear-gradient(90deg, rgba(0, 245, 212, 0.2) 0%, rgba(0, 245, 212, 0.05) 50%, transparent 100%);
-            border-left: 6px solid #00f5d4;
+            background: linear-gradient(90deg, rgba(201,162,39,0.15) 0%, rgba(201,162,39,0.05) 50%, transparent 100%);
+            border-left: 6px solid #c9a227;
             border-radius: 0 15px 15px 0;
-            text-shadow: 0 0 30px rgba(0, 245, 212, 0.6);
+            text-shadow: 0 0 30px rgba(201,162,39,0.55);
             display: flex;
             align-items: center;
             gap: 15px;
@@ -149,7 +141,7 @@
         
         th { 
             font-family: 'Bebas Neue', sans-serif;
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #6366f1 100%);
+            background: linear-gradient(135deg, #1a0f35 0%, #2d1b55 60%, #4a1f8a 100%);
             color: white; 
             padding: 20px 18px; 
             text-align: left; 
@@ -157,7 +149,7 @@
             font-size: 1.2em;
             letter-spacing: 3px;
             text-transform: uppercase;
-            border-bottom: 4px solid #00f5d4;
+            border-bottom: 4px solid #c9a227;
             position: relative;
         }
 
@@ -176,7 +168,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #00f5d4, #00d2be, #00f5d4);
+            background: linear-gradient(90deg, #c9a227, #e6b830, #c9a227);
         }
         
         td { 
@@ -201,13 +193,13 @@
         }
 
         tbody tr:hover { 
-            background: linear-gradient(90deg, rgba(124, 58, 237, 0.2) 0%, rgba(0, 245, 212, 0.1) 50%, rgba(99, 102, 241, 0.1) 100%);
+            background: linear-gradient(90deg, rgba(74,31,138,0.30) 0%, rgba(45,27,85,0.20) 100%);
             transform: scale(1.01);
             box-shadow: 0 5px 20px rgba(124, 58, 237, 0.3);
         }
 
         tbody tr:hover td {
-            border-bottom-color: rgba(0, 245, 212, 0.3);
+            border-bottom-color: rgba(201,162,39,0.25);
         }
         
         tr:last-child td {
@@ -218,8 +210,8 @@
         td:first-child {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.6em;
-            color: #00f5d4;
-            text-shadow: 0 0 15px rgba(0, 245, 212, 0.5);
+            color: #a78be0;
+            text-shadow: 0 0 10px rgba(167,139,224,0.35);
             letter-spacing: 2px;
         }
 
@@ -237,7 +229,7 @@
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.3em;
             color: #a855f7;
-            text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+            text-shadow: 0 0 8px rgba(168,85,247,0.30);
         }
 
         /* NOME DO GP */
@@ -303,9 +295,9 @@
         }
         
         .corrida { 
-            background: linear-gradient(135deg, #00f5d4 0%, #00b894 100%);
-            color: #000;
-            box-shadow: 0 4px 20px rgba(0, 245, 212, 0.5), inset 0 1px 0 rgba(255,255,255,0.3);
+            background: linear-gradient(135deg, #6b21a8 0%, #4a1282 100%);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(107,33,168,0.45), inset 0 1px 0 rgba(255,255,255,0.3);
         }
         
         .especial { 
@@ -402,11 +394,11 @@
             font-family: 'Bebas Neue', sans-serif;
             font-size: 5em;
             font-weight: 400;
-            background: linear-gradient(135deg, #00f5d4 0%, #00d2be 100%);
+            background: linear-gradient(135deg, #c9a227 0%, #e6b830 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            filter: drop-shadow(0 0 25px rgba(0, 245, 212, 0.6));
+            filter: drop-shadow(0 0 25px rgba(201,162,39,0.55));
             line-height: 1;
         }
         
@@ -490,7 +482,7 @@
         .position {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.8em;
-            color: #00f5d4;
+            color: #a78be0;
             text-shadow: 0 0 15px rgba(0, 245, 212, 0.5);
             min-width: 50px;
         }
@@ -540,7 +532,7 @@
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.3em;
             letter-spacing: 3px;
-            border-bottom: 3px solid #00f5d4;
+            border-bottom: 3px solid #c9a227;
         }
 
         .pontuacao-table td {
@@ -552,7 +544,7 @@
 
         .pontuacao-table td:last-child {
             text-align: right;
-            color: #00f5d4;
+            color: #c9a227;
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.2em;
             letter-spacing: 1px;
@@ -575,12 +567,12 @@
             box-shadow: 
                 0 25px 70px rgba(0,0,0,0.4),
                 0 0 0 1px rgba(255,255,255,0.1);
-            border: 2px solid rgba(0, 245, 212, 0.2);
+            border: 2px solid rgba(201,162,39,0.15);
         }
 
         .regras-section h2 {
-            border-left: 6px solid #00f5d4;
-            color: #00f5d4;
+            border-left: 6px solid #c9a227;
+            color: #c9a227;
             margin-top: 0;
             margin-bottom: 35px;
         }
@@ -601,7 +593,7 @@
         }
 
         .regra-box:hover {
-            border-color: rgba(0, 245, 212, 0.4);
+            border-color: rgba(201,162,39,0.35);
             transform: translateY(-8px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.4);
         }
@@ -615,10 +607,10 @@
         .regra-title {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.5em;
-            color: #00f5d4;
+            color: #c9a227;
             letter-spacing: 3px;
             margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(0, 245, 212, 0.4);
+            text-shadow: 0 0 12px rgba(201,162,39,0.40);
         }
 
         .regra-desc {
@@ -772,13 +764,8 @@
 
     <!-- HEADER -->
     <div class="header">
-        <span class="icon-top">🏎️💨</span>
-        <h1>
-            Velocidade Baixa
-            <span class="year">— 2026 —</span>
-        </h1>
+        <h1>Velocidade Baixa<span class="year">— 2026 —</span></h1>
         <div class="subtitle">Quem vai erguer o capacete à Lenda?</div>
-        <div class="subtitle-icons">🏁 🔥 🎮 🏆 🎸</div>
     </div>
 
 
@@ -786,12 +773,12 @@
     <a class="nav-brand" href="index.html">🏎️ <em>VELOCIDADE BAIXA</em>&nbsp;2026</a>
     <span class="nav-spacer"></span>
     <div class="nav-items">
-      <a href="index.html" class="active">📅 Calendário</a>
-      <a href="pilotos.html">🏎️ Pilotos</a>
-      <a href="construtores.html">🏭 Construtores</a>
-      <a href="regras.html">📜 Regras</a>
-      <a href="classificacao_de_corrida.html">🏅 Classificação</a>
-      <a href="superlicenca.html">🪪 Super Licença</a>
+      <a href="index.html" class="active">Calendário</a>
+      <a href="pilotos.html">Pilotos</a>
+      <a href="construtores.html">Construtores</a>
+      <a href="regras.html">Regras</a>
+      <a href="classificacao_de_corrida.html">Classificação</a>
+      <a href="superlicenca.html">Super Licença</a>
     </div>
   </nav>
 

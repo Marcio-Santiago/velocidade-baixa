@@ -16,58 +16,92 @@
             line-height: 1.6;
         }
 
-        /* HEADER */
+                /* HEADER */
         .header {
             text-align: center;
-            margin-bottom: 28px;
-            padding: 36px 30px;
-            background: linear-gradient(135deg, rgba(79,70,229,0.9) 0%, rgba(124,58,237,0.9) 50%, rgba(99,102,241,0.9) 100%);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(99,102,241,0.5), 0 0 100px rgba(124,58,237,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+            margin-bottom: 32px;
+            padding: 40px 40px 36px;
+            background: linear-gradient(145deg,
+                #0e0818 0%,
+                #1c0f38 30%,
+                #2e1560 60%,
+                #1a0d32 100%);
+            border-radius: 18px;
+            box-shadow:
+                0 24px 64px rgba(0,0,0,0.65),
+                inset 0 1px 0 rgba(255,255,255,0.07),
+                0 0 0 1px rgba(201,162,39,0.18);
             position: relative;
             overflow: hidden;
-            border: 2px solid rgba(255,255,255,0.1);
         }
 
+        /* diagonal texture lines */
         .header::before {
             content: '';
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px);
+            position: absolute; inset: 0;
+            background: repeating-linear-gradient(
+                -55deg,
+                transparent,
+                transparent 6px,
+                rgba(255,255,255,0.018) 6px,
+                rgba(255,255,255,0.018) 7px
+            );
             pointer-events: none;
         }
 
-        .header::after { content: '🏆🔥🏆'; position: absolute; top: 10px; right: 20px; font-size: 1.5em; opacity: 0.8; }
-
-        .icon-top { font-size: 3em; margin-bottom: 10px; display: block; filter: drop-shadow(0 0 20px rgba(255,255,255,0.5)); }
+        /* thin gold bottom bar */
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                #c9a227 25%,
+                #e6c84a 50%,
+                #c9a227 75%,
+                transparent 100%);
+        }
 
         .header h1 {
             font-family: 'Metal Mania', cursive;
-            font-size: 3em;
+            font-size: 4em;
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 6px;
-            text-shadow: 4px 4px 0 rgba(0,0,0,0.5), 0 0 40px rgba(255,255,255,0.4), 0 0 80px rgba(124,58,237,0.8);
-            position: relative; z-index: 1; line-height: 1.1;
+            letter-spacing: 4px;
+            color: #fff;
+            text-shadow:
+                3px 3px 0 rgba(0,0,0,0.55),
+                0 0 50px rgba(180,140,255,0.30);
+            position: relative;
+            z-index: 1;
+            line-height: 1.05;
+            margin: 0;
         }
 
         .header h1 .year {
             display: block;
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 0.5em;
-            letter-spacing: 20px;
+            font-size: 0.32em;
+            letter-spacing: 18px;
             margin-top: 10px;
-            color: #00f5d4;
-            text-shadow: 0 0 30px rgba(0,245,212,0.8);
+            color: #c9a227;
+            text-shadow: 0 0 20px rgba(201,162,39,0.55);
         }
 
         .subtitle {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 1.4em; font-weight: 600;
-            opacity: 0.95; margin-top: 20px;
-            letter-spacing: 5px; text-transform: uppercase;
-            position: relative; z-index: 1;
+            font-size: 1em;
+            font-weight: 500;
+            color: rgba(255,255,255,0.50);
+            margin-top: 14px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
         }
 
-        .nav-links {
+    .nav-links {
             display: flex; justify-content: center; gap: 16px;
             margin-bottom: 22px; flex-wrap: wrap;
         }
@@ -97,16 +131,16 @@
 
         h2 {
             font-family: 'Bebas Neue', sans-serif;
-            color: #00f5d4;
+            color: #c9a227;
             font-size: 2.2em;
             letter-spacing: 8px;
             text-transform: uppercase;
             margin: 28px 0 14px 0;
             padding: 18px 30px;
-            background: linear-gradient(90deg, rgba(0,245,212,0.2) 0%, rgba(0,245,212,0.05) 50%, transparent 100%);
-            border-left: 6px solid #00f5d4;
+            background: linear-gradient(90deg, rgba(201,162,39,0.15) 0%, rgba(201,162,39,0.05) 50%, transparent 100%);
+            border-left: 6px solid #c9a227;
             border-radius: 0 15px 15px 0;
-            text-shadow: 0 0 30px rgba(0,245,212,0.6);
+            text-shadow: 0 0 30px rgba(201,162,39,0.55);
             display: flex; align-items: center; gap: 15px;
         }
 
@@ -174,8 +208,8 @@
         .podium-pts {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.6em; letter-spacing: 3px;
-            color: #00f5d4;
-            text-shadow: 0 0 15px rgba(0,245,212,0.6);
+            color: #c9a227;
+            text-shadow: 0 0 15px rgba(201,162,39,0.55);
         }
 
         .podium-pts span { font-size: 0.5em; opacity: 0.7; }
@@ -192,12 +226,12 @@
 
         th {
             font-family: 'Bebas Neue', sans-serif;
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #6366f1 100%);
+            background: linear-gradient(135deg, #1a0f35 0%, #2d1b55 60%, #4a1f8a 100%);
             color: white; padding: 18px 16px;
             text-align: left; font-weight: 400;
             font-size: 1.1em; letter-spacing: 3px;
             text-transform: uppercase;
-            border-bottom: 4px solid #00f5d4;
+            border-bottom: 4px solid #c9a227;
         }
 
         th:first-child { border-radius: 18px 0 0 0; }
@@ -215,14 +249,14 @@
 
         tbody tr { transition: all 0.3s; }
         tbody tr:hover {
-            background: linear-gradient(90deg, rgba(124,58,237,0.2) 0%, rgba(0,245,212,0.1) 50%, rgba(99,102,241,0.1) 100%);
+            background: linear-gradient(90deg, rgba(74,31,138,0.30) 0%, rgba(45,27,85,0.20) 100%);
             transform: scale(1.01);
         }
 
         .pos-num {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8em; color: #00f5d4;
-            text-shadow: 0 0 15px rgba(0,245,212,0.5);
+            font-size: 1.8em; color: #c9a227;
+            text-shadow: 0 0 15px rgba(201,162,39,0.45);
             letter-spacing: 2px;
         }
 
@@ -242,16 +276,16 @@
             font-size: 0.85em; letter-spacing: 2px;
         }
 
-        .team-ferrari    { background: rgba(220,0,0,0.2);    color: #ff4444; border: 1px solid rgba(220,0,0,0.4); }
+        .team-ferrari    { background: rgba(232,0,45,0.18);  color: #e8002d; border: 1px solid rgba(232,0,45,0.40); }
         .team-mclaren    { background: rgba(255,128,0,0.2);  color: #ff8000; border: 1px solid rgba(255,128,0,0.4); }
         .team-mercedes   { background: rgba(0,210,190,0.2);  color: #00d2be; border: 1px solid rgba(0,210,190,0.4); }
-        .team-aston      { background: rgba(0,110,60,0.2);   color: #00b050; border: 1px solid rgba(0,110,60,0.4); }
+        .team-aston      { background: rgba(0,111,98,0.18);  color: #006f62; border: 1px solid rgba(0,111,98,0.40); }
         .team-sauber     { background: rgba(180,220,0,0.2);  color: #b4dc00; border: 1px solid rgba(180,220,0,0.4); }
 
         .pts-cell {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.6em; color: #00f5d4;
-            text-shadow: 0 0 10px rgba(0,245,212,0.4);
+            font-size: 1.6em; color: #c9a227;
+            text-shadow: 0 0 10px rgba(201,162,39,0.40);
             text-align: center; letter-spacing: 2px;
         }
 
@@ -361,21 +395,20 @@
 <body>
 
     <div class="header">
-        <span class="icon-top">🏎️🏆</span>
-        <h1>Campeonato de Pilotos<span class="year">— Velocidade Baixa 2026 —</span></h1>
-        <div class="subtitle">Classificação Geral • Temporada 2026</div>
+        <h1>Campeonato de Pilotos<span class="year">— Temporada 2026 —</span></h1>
+        <div class="subtitle">Classificação Geral</div>
     </div>
 
       <nav class="fixed-nav">
     <a class="nav-brand" href="index.html">🏎️ <em>VELOCIDADE BAIXA</em>&nbsp;2026</a>
     <span class="nav-spacer"></span>
     <div class="nav-items">
-      <a href="index.html">📅 Calendário</a>
-      <a href="pilotos.html" class="active">🏎️ Pilotos</a>
-      <a href="construtores.html">🏭 Construtores</a>
-      <a href="regras.html">📜 Regras</a>
-      <a href="classificacao_de_corrida.html">🏅 Classificação</a>
-      <a href="superlicenca.html">🪪 Super Licença</a>
+      <a href="index.html">Calendário</a>
+      <a href="pilotos.html" class="active">Pilotos</a>
+      <a href="construtores.html">Construtores</a>
+      <a href="regras.html">Regras</a>
+      <a href="classificacao_de_corrida.html">Classificação</a>
+      <a href="superlicenca.html">Super Licença</a>
     </div>
   </nav>
 

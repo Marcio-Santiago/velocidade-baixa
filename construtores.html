@@ -16,52 +16,89 @@
             line-height: 1.6;
         }
 
+                /* HEADER */
         .header {
             text-align: center;
-            margin-bottom: 30px;
-            padding: 36px 30px;
-            background: linear-gradient(135deg, rgba(79,70,229,0.9) 0%, rgba(124,58,237,0.9) 50%, rgba(99,102,241,0.9) 100%);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(99,102,241,0.5), 0 0 100px rgba(124,58,237,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
-            position: relative; overflow: hidden;
-            border: 2px solid rgba(255,255,255,0.1);
+            margin-bottom: 32px;
+            padding: 40px 40px 36px;
+            background: linear-gradient(145deg,
+                #0e0818 0%,
+                #1c0f38 30%,
+                #2e1560 60%,
+                #1a0d32 100%);
+            border-radius: 18px;
+            box-shadow:
+                0 24px 64px rgba(0,0,0,0.65),
+                inset 0 1px 0 rgba(255,255,255,0.07),
+                0 0 0 1px rgba(201,162,39,0.18);
+            position: relative;
+            overflow: hidden;
         }
 
         .header::before {
             content: '';
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px);
+            position: absolute; inset: 0;
+            background: repeating-linear-gradient(
+                -55deg,
+                transparent,
+                transparent 6px,
+                rgba(255,255,255,0.018) 6px,
+                rgba(255,255,255,0.018) 7px
+            );
             pointer-events: none;
         }
 
-        .header::after { content: '🏭⚙️🏭'; position: absolute; top: 10px; right: 20px; font-size: 1.5em; opacity: 0.8; }
-
-        .icon-top { font-size: 3em; margin-bottom: 10px; display: block; filter: drop-shadow(0 0 20px rgba(255,255,255,0.5)); }
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                #c9a227 25%,
+                #e6c84a 50%,
+                #c9a227 75%,
+                transparent 100%);
+        }
 
         .header h1 {
             font-family: 'Metal Mania', cursive;
-            font-size: 2.6em;
+            font-size: 3.6em;
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 6px;
-            text-shadow: 4px 4px 0 rgba(0,0,0,0.5), 0 0 40px rgba(255,255,255,0.4), 0 0 80px rgba(124,58,237,0.8);
-            position: relative; z-index: 1; line-height: 1.1;
+            letter-spacing: 4px;
+            color: #fff;
+            text-shadow:
+                3px 3px 0 rgba(0,0,0,0.55),
+                0 0 50px rgba(180,140,255,0.28);
+            position: relative;
+            z-index: 1;
+            line-height: 1.05;
+            margin: 0;
         }
 
         .header h1 .year {
             display: block;
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 0.5em; letter-spacing: 20px;
-            margin-top: 10px; color: #00f5d4;
-            text-shadow: 0 0 30px rgba(0,245,212,0.8);
+            font-size: 0.32em;
+            letter-spacing: 18px;
+            margin-top: 10px;
+            color: #c9a227;
+            text-shadow: 0 0 20px rgba(201,162,39,0.55);
         }
 
         .subtitle {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 1.4em; font-weight: 600;
-            opacity: 0.95; margin-top: 20px;
-            letter-spacing: 5px; text-transform: uppercase;
-            position: relative; z-index: 1;
+            font-size: 1em;
+            font-weight: 500;
+            color: rgba(255,255,255,0.45);
+            margin-top: 14px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
         }
+
 
         .nav-links {
             display: flex; justify-content: center; gap: 16px;
@@ -86,14 +123,14 @@
 
         h2 {
             font-family: 'Bebas Neue', sans-serif;
-            color: #00f5d4; font-size: 2.2em;
+            color: #c9a227; font-size: 2.2em;
             letter-spacing: 8px; text-transform: uppercase;
             margin: 30px 0 16px 0;
             padding: 18px 30px;
-            background: linear-gradient(90deg, rgba(0,245,212,0.2) 0%, rgba(0,245,212,0.05) 50%, transparent 100%);
-            border-left: 6px solid #00f5d4;
+            background: linear-gradient(90deg, rgba(201,162,39,0.15) 0%, rgba(201,162,39,0.05) 50%, transparent 100%);
+            border-left: 6px solid #c9a227;
             border-radius: 0 15px 15px 0;
-            text-shadow: 0 0 30px rgba(0,245,212,0.6);
+            text-shadow: 0 0 30px rgba(201,162,39,0.55);
             display: flex; align-items: center; gap: 15px;
         }
 
@@ -169,11 +206,11 @@
             margin-bottom: 6px;
         }
 
-        .ferrari  .team-name { color: #ff4444; text-shadow: 0 0 20px rgba(255,68,68,0.5); }
+        .ferrari  .team-name { color: #e8002d; text-shadow: 0 0 18px rgba(232,0,45,0.50); }
         .mclaren  .team-name { color: #ff8000; text-shadow: 0 0 20px rgba(255,128,0,0.5); }
         .mercedes .team-name { color: #00d2be; text-shadow: 0 0 20px rgba(0,210,190,0.5); }
-        .aston    .team-name { color: #00b050; text-shadow: 0 0 20px rgba(0,176,80,0.5); }
-        .sauber   .team-name { color: #00c864; text-shadow: 0 0 20px rgba(0,200,100,0.5); }
+        .aston    .team-name { color: #006f62; text-shadow: 0 0 18px rgba(0,111,98,0.50); }
+        .sauber   .team-name { color: #b4dc00; text-shadow: 0 0 18px rgba(180,220,0,0.45); }
 
         .team-drivers {
             font-family: 'Rajdhani', sans-serif;
@@ -184,8 +221,8 @@
         .team-pts-big {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 2.4em; line-height: 1;
-            color: #00f5d4;
-            text-shadow: 0 0 20px rgba(0,245,212,0.5);
+            color: #c9a227;
+            text-shadow: 0 0 20px rgba(201,162,39,0.45);
         }
 
         .team-pts-big span {
@@ -226,12 +263,12 @@
 
         th {
             font-family: 'Bebas Neue', sans-serif;
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #6366f1 100%);
+            background: linear-gradient(135deg, #1a0f35 0%, #2d1b55 60%, #4a1f8a 100%);
             color: white; padding: 18px 16px;
             text-align: left; font-weight: 400;
             font-size: 1.1em; letter-spacing: 3px;
             text-transform: uppercase;
-            border-bottom: 4px solid #00f5d4;
+            border-bottom: 4px solid #c9a227;
         }
 
         th:first-child { border-radius: 18px 0 0 0; }
@@ -249,14 +286,14 @@
 
         tbody tr { transition: all 0.3s; }
         tbody tr:hover {
-            background: linear-gradient(90deg, rgba(124,58,237,0.2) 0%, rgba(0,245,212,0.1) 50%, rgba(99,102,241,0.1) 100%);
+            background: linear-gradient(90deg, rgba(74,31,138,0.30) 0%, rgba(45,27,85,0.20) 100%);
             transform: scale(1.01);
         }
 
         .pos-num {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8em; color: #00f5d4;
-            text-shadow: 0 0 15px rgba(0,245,212,0.5);
+            font-size: 1.8em; color: #c9a227;
+            text-shadow: 0 0 15px rgba(201,162,39,0.45);
             letter-spacing: 2px;
         }
 
@@ -269,10 +306,10 @@
             font-size: 1.4em; letter-spacing: 3px;
         }
 
-        .ferrari-c  { color: #ff4444; }
+        .ferrari-c  { color: #e8002d; }
         .mclaren-c  { color: #ff8000; }
         .mercedes-c { color: #00d2be; }
-        .aston-c    { color: #00b050; }
+        .aston-c    { color: #006f62; }
         .sauber-c   { color: #b4dc00; }
 
         .drivers-cell {
@@ -282,8 +319,8 @@
 
         .pts-cell {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.6em; color: #00f5d4;
-            text-shadow: 0 0 10px rgba(0,245,212,0.4);
+            font-size: 1.6em; color: #c9a227;
+            text-shadow: 0 0 10px rgba(201,162,39,0.40);
             text-align: center; letter-spacing: 2px;
         }
 
@@ -305,11 +342,11 @@
             transition: width 0.8s ease;
         }
 
-        .bar-ferrari  { background: linear-gradient(90deg, #dc0000, #ff4444); }
+        .bar-ferrari  { background: linear-gradient(90deg, #b8001e, #e8002d); }
         .bar-mclaren  { background: linear-gradient(90deg, #ff8000, #ffaa44); }
         .bar-mercedes { background: linear-gradient(90deg, #00d2be, #00f5e0); }
-        .bar-aston    { background: linear-gradient(90deg, #006e3c, #00b050); }
-        .bar-sauber   { background: linear-gradient(90deg, #8ab200, #c8f000); }
+        .bar-aston    { background: linear-gradient(90deg, #004d45, #006f62); }
+        .bar-sauber   { background: linear-gradient(90deg, #8aac00, #b4dc00); }
 
         .footer {
             text-align: center; margin-top: 60px; padding: 35px;
@@ -384,21 +421,20 @@
 <body>
 
     <div class="header">
-        <span class="icon-top">🏭⚙️</span>
-        <h1>Campeonato de Construtores<span class="year">— Velocidade Baixa 2026 —</span></h1>
-        <div class="subtitle">Classificação por Equipes • Temporada 2026</div>
+        <h1>Campeonato de Construtores<span class="year">— Temporada 2026 —</span></h1>
+        <div class="subtitle">Classificação por Equipes</div>
     </div>
 
       <nav class="fixed-nav">
     <a class="nav-brand" href="index.html">🏎️ <em>VELOCIDADE BAIXA</em>&nbsp;2026</a>
     <span class="nav-spacer"></span>
     <div class="nav-items">
-      <a href="index.html">📅 Calendário</a>
-      <a href="pilotos.html">🏎️ Pilotos</a>
-      <a href="construtores.html" class="active">🏭 Construtores</a>
-      <a href="regras.html">📜 Regras</a>
-      <a href="classificacao_de_corrida.html">🏅 Classificação</a>
-      <a href="superlicenca.html">🪪 Super Licença</a>
+      <a href="index.html">Calendário</a>
+      <a href="pilotos.html">Pilotos</a>
+      <a href="construtores.html" class="active">Construtores</a>
+      <a href="regras.html">Regras</a>
+      <a href="classificacao_de_corrida.html">Classificação</a>
+      <a href="superlicenca.html">Super Licença</a>
     </div>
   </nav>
 

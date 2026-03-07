@@ -12,7 +12,7 @@
       --bg0:#0a0a0f; --bg1:#1a1a2e; --bg2:#0d0d1a;
       --cardA: rgba(255,255,255,.10); --cardB: rgba(255,255,255,.03);
       --text:#fff; --muted: rgba(255,255,255,.78);
-      --neon:#00f5d4; --purple:#7c3aed; --indigo:#4f46e5; --gold:#fbbf24;
+      --neon:#c9a227; --purple:#7c3aed; --indigo:#4f46e5; --gold:#fbbf24;
       --radius: 20px; --shadow: 0 20px 60px rgba(0,0,0,.45);
       --navH: 74px;
     }
@@ -26,36 +26,6 @@
       padding: 76px 32px 32px;
     }
     a{color:inherit; text-decoration:none}
-    .nav{
-      position:fixed; top:0; left:0; right:0; z-index:50;
-      height: var(--navH);
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 0 22px;
-      background: linear-gradient(135deg, rgba(10,10,15,.70) 0%, rgba(26,26,46,.80) 50%, rgba(13,13,26,.70) 100%);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,.10);
-      box-shadow: 0 10px 30px rgba(0,0,0,.30);
-    }
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: 0 10px 25px rgba(0,0,0,.25);
-      font-family:'Rajdhani',sans-serif; font-weight:800;
-      letter-spacing:1px; text-transform:uppercase; font-size:12px;
-      cursor:pointer;
-    }
-    .pill.ghost{ background: transparent; box-shadow:none; }
-    .dot{ width:10px; height:10px; border-radius:999px; background: var(--neon); box-shadow: 0 0 16px rgba(0,245,212,.65); }
-    .brand{ display:flex; align-items:center; gap:12px; }
-    .logo{
-      width:44px; height:44px; border-radius:14px; display:grid; place-items:center;
-      background: linear-gradient(135deg, rgba(79,70,229,.95) 0%, rgba(124,58,237,.95) 50%, rgba(99,102,241,.95) 100%);
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 12px 30px rgba(99,102,241,.30);
-    }
 
     h1{
       font-family:'Bebas Neue',sans-serif;
@@ -72,9 +42,9 @@
       font-size: 1.6em;
       letter-spacing: 3px;
       margin: 20px 0 14px;
-      color: var(--neon);
+      color: #c9a227;
       text-transform: uppercase;
-      text-shadow: 0 0 20px rgba(0,245,212,.30);
+      text-shadow: 0 0 20px rgba(201,162,39,.40);
     }
 
     .card{
@@ -95,17 +65,18 @@
     }
 
     .standings-table thead tr{
-      background: linear-gradient(90deg, var(--neon), var(--gold));
+      background: linear-gradient(135deg, #180d30 0%, #2a1850 55%, #3d1a78 100%);
+      border-bottom: 3px solid #c9a227;
     }
 
     .standings-table th{
       padding: 14px 12px;
-      text-align: left;
-      font-size: 1em;
+      text-align: center;
+      font-size: 0.9em;
       font-weight: 700;
-      color: var(--bg0);
+      color: rgba(255,255,255,0.92);
       letter-spacing: 1px;
-      border-right: 1px solid rgba(0,0,0,.2);
+      border-right: 1px solid rgba(255,255,255,0.08);
     }
 
     .standings-table th:last-child{
@@ -131,7 +102,7 @@
     }
 
     .standings-table tbody tr:hover td{
-      background: rgba(0,245,212,.12);
+      background: rgba(201,162,39,.10);
     }
 
     .pilot-name{
@@ -152,10 +123,10 @@
       text-align: center;
       font-size: 1em;
       font-weight: 700;
-      background: rgba(0,245,212,.06);
-      border: 2px solid rgba(0,245,212,.4);
+      background: rgba(201,162,39,.05);
+      border: 2px solid rgba(201,162,39,.35);
       border-radius: 4px;
-      color: var(--neon);
+      color: #c9a227;
       cursor: pointer;
       font-family: 'Rajdhani', sans-serif;
       transition: all 0.15s ease;
@@ -163,9 +134,9 @@
 
     .position-input:focus{
       outline: none;
-      box-shadow: 0 0 10px rgba(0,245,212,.4);
-      background: rgba(0,245,212,.12);
-      border-color: var(--neon);
+      box-shadow: 0 0 10px rgba(201,162,39,.40);
+      background: rgba(201,162,39,.10);
+      border-color: #c9a227;
     }
 
     .position-input:hover{
@@ -175,8 +146,8 @@
     }
 
     .info-box{
-      background: rgba(0,245,212,.08);
-      border-left: 4px solid var(--neon);
+      background: rgba(201,162,39,.06);
+      border-left: 4px solid #c9a227;
       padding: 14px 16px;
       border-radius: 8px;
       margin-top: 14px;
@@ -213,7 +184,7 @@
       letter-spacing: 2px;
       font-size: 1em;
       text-transform: uppercase;
-      border-bottom: 2px solid var(--neon);
+      border-bottom: 2px solid #c9a227;
     }
 
     .points-table td{
@@ -321,7 +292,7 @@
       white-space: nowrap; text-decoration: none;
       margin-right: 18px; flex-shrink: 0;
     }
-    .nav-brand em { color: #00f5d4; font-style: normal; }
+    .nav-brand em { color: #c9a227; font-style: normal; }
     .nav-spacer { flex: 1; }
     .nav-items {
       display: flex; gap: 6px; align-items: center; flex-wrap: nowrap;
@@ -360,12 +331,12 @@
     <a class="nav-brand" href="index.html">🏎️ <em>VELOCIDADE BAIXA</em>&nbsp;2026</a>
     <span class="nav-spacer"></span>
     <div class="nav-items">
-      <a href="index.html">📅 Calendário</a>
-      <a href="pilotos.html">🏎️ Pilotos</a>
-      <a href="construtores.html">🏭 Construtores</a>
-      <a href="regras.html">📜 Regras</a>
-      <a href="classificacao_de_corrida.html" class="active">🏅 Classificação</a>
-      <a href="superlicenca.html">🪪 Super Licença</a>
+      <a href="index.html">Calendário</a>
+      <a href="pilotos.html">Pilotos</a>
+      <a href="construtores.html">Construtores</a>
+      <a href="regras.html">Regras</a>
+      <a href="classificacao_de_corrida.html" class="active">Classificação</a>
+      <a href="superlicenca.html">Super Licença</a>
     </div>
   </nav>
 
@@ -387,16 +358,16 @@
   <script>
     // ── Cabeçalho dinâmico gerado a partir de dados.js ───────────
     function buildHeader() {
-      const thStyle = 'padding:14px 6px;text-align:center;font-size:0.85em;color:var(--bg0);font-weight:700;width:45px;';
-      let ths = `<th style="min-width:120px;padding:14px 10px;text-align:left;font-size:0.95em;color:var(--bg0);font-weight:700;">Piloto</th>`;
+      const thStyle = 'padding:14px 6px;text-align:center;font-size:0.9em;color:rgba(255,255,255,0.88);font-weight:700;width:45px;';
+      let ths = `<th style="min-width:120px;padding:14px 10px;text-align:left;font-size:0.95em;color:rgba(255,255,255,0.95);font-weight:700;letter-spacing:2px;font-family:'Bebas Neue',sans-serif;">PILOTO</th>`;
       resultados.forEach(et => {
         ths += `<th style="${thStyle}" title="${et.gp}">${et.bandeira}</th>`;
         if (et.hasSprint)
           ths += `<th style="${thStyle};opacity:0.7;" title="${et.gp} — Sprint">S</th>`;
       });
-      ths += `<th style="padding:14px 10px;text-align:center;font-size:0.95em;color:var(--gold);font-weight:700;min-width:55px;">PTS.</th>`;
+      ths += `<th style="padding:14px 10px;text-align:center;font-size:0.95em;color:#e6c84a;font-weight:700;min-width:55px;letter-spacing:2px;font-family:'Bebas Neue',sans-serif;">PTS.</th>`;
       document.getElementById('standingsHead').innerHTML =
-        `<tr style="background:linear-gradient(90deg,var(--neon),var(--gold));">${ths}</tr>`;
+        `<tr style="background:linear-gradient(135deg,#1a0f35 0%,#2d1b55 60%,#4a1f8a 100%);">${ths}</tr>`;
     }
 
     // ── Pontos por posição ───────────────────────────────────────
@@ -443,7 +414,7 @@
             total += (r.pontos||0) + bonus;
             const bonusStr = bonus > 0 ? `<span style="color:var(--gold);font-size:0.7em">+${bonus}</span>` : '';
             tds += `<td style="text-align:center;padding:8px 4px;">
-              <span style="color:var(--neon);font-weight:700;">${r.pos}º</span>${bonusStr}
+              <span style="color:#c9a227;font-weight:700;">${r.pos}º</span>${bonusStr}
               <div style="font-size:0.65em;opacity:0.5;">${r.pontos}p</div>
             </td>`;
           } else if (et.resultado.length > 0) {
