@@ -9,7 +9,7 @@
 
         body {
             font-family: 'Titillium Web', sans-serif;
-            padding: 24px 32px;
+            padding: 76px 32px 32px;
             background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0d0d1a 100%);
             color: #ffffff;
             min-height: 100vh;
@@ -306,7 +306,57 @@
             .podium { grid-template-columns: 1fr; }
             .header h1 { font-size: 2.5em; }
         }
-    </style>
+        /* ── FIXED NAV ─────────────────────────────────────────── */
+    .fixed-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+      height: 60px;
+      display: flex; align-items: center;
+      padding: 0 22px; gap: 0;
+      background: linear-gradient(135deg, rgba(8,8,14,0.94) 0%, rgba(20,20,38,0.96) 50%, rgba(10,10,18,0.94) 100%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.09);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.55);
+    }
+    .nav-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1em; letter-spacing: 3px; color: #fff;
+      display: flex; align-items: center; gap: 8px;
+      white-space: nowrap; text-decoration: none;
+      margin-right: 18px; flex-shrink: 0;
+    }
+    .nav-brand em { color: #00f5d4; font-style: normal; }
+    .nav-spacer { flex: 1; }
+    .nav-items {
+      display: flex; gap: 6px; align-items: center; flex-wrap: nowrap;
+    }
+    .nav-items a {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.85em; letter-spacing: 2px;
+      padding: 7px 13px; border-radius: 20px;
+      text-decoration: none; color: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      transition: all 0.2s; white-space: nowrap;
+    }
+    .nav-items a:hover {
+      color: #fff;
+      background: rgba(124,58,237,0.28);
+      border-color: rgba(124,58,237,0.5);
+    }
+    .nav-items a.active {
+      color: #fff;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      border-color: #7c3aed;
+      box-shadow: 0 2px 16px rgba(124,58,237,0.45);
+    }
+    @media (max-width: 768px) {
+      .fixed-nav { height: auto; padding: 10px 14px; flex-wrap: wrap; gap: 8px; }
+      .nav-spacer { display: none; }
+      .nav-items { flex-wrap: wrap; gap: 5px; }
+      .nav-items a { font-size: 0.78em; padding: 6px 10px; }
+    }
+</style>
 </head>
 <body>
 
@@ -316,15 +366,18 @@
         <div class="subtitle">Classificação Geral • Temporada 2026</div>
     </div>
 
-    <!-- NAV -->
-    <div class="nav-links">
-        <a href="index.html">📅 Calendário</a>
-        <a href="pilotos.html" class="active">🏎️ Pilotos</a>
-        <a href="construtores.html">🏭 Construtores</a>
-        <a href="regras.html">📜 Regras</a>
-        <a href="classificacao_de_corrida.html">🏅 Classificação</a>
-        <a href="superlicenca.html">🪪 Super Licença</a>
+      <nav class="fixed-nav">
+    <a class="nav-brand" href="index.html">🏎️ <em>VELOCIDADE BAIXA</em>&nbsp;2026</a>
+    <span class="nav-spacer"></span>
+    <div class="nav-items">
+      <a href="index.html">📅 Calendário</a>
+      <a href="pilotos.html" class="active">🏎️ Pilotos</a>
+      <a href="construtores.html">🏭 Construtores</a>
+      <a href="regras.html">📜 Regras</a>
+      <a href="classificacao_de_corrida.html">🏅 Classificação</a>
+      <a href="superlicenca.html">🪪 Super Licença</a>
     </div>
+  </nav>
 
     <!-- PÓDIO TOP 3 -->
     <h2>🏆 Pódio da Temporada</h2>

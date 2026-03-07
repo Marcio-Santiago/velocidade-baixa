@@ -57,7 +57,7 @@ const resultados = [
     gp: "GP da China",
     circuito: "Xangai",
     bandeira: "🐉",
-    data: "22/03",
+    data: "15/03",
     hasSprint: true,
     resultado: [],
     sprint: [],
@@ -72,7 +72,7 @@ const resultados = [
     gp: "GP do Japão",
     circuito: "Suzuka",
     bandeira: "🗾",
-    data: "05/04",
+    data: "29/03",
     hasSprint: false,
     resultado: [],
     sprint: [],
@@ -87,7 +87,7 @@ const resultados = [
     gp: "GP do Bahrein",
     circuito: "Sakhir",
     bandeira: "🇧🇭",
-    data: "19/04",
+    data: "12/04",
     hasSprint: false,
     resultado: [],
     sprint: [],
@@ -102,7 +102,7 @@ const resultados = [
     gp: "GP da Arábia Saudita",
     circuito: "Jeddah",
     bandeira: "🌙",
-    data: "26/04",
+    data: "19/04",
     hasSprint: false,
     resultado: [],
     sprint: [],
@@ -160,9 +160,9 @@ const resultados = [
   {
     etapa: "09",
     gp: "GP da Espanha",
-    circuito: "Barcelona",
+    circuito: "Barcelona-Catalunha",
     bandeira: "🐂",
-    data: "21/06",
+    data: "14/06",
     hasSprint: false,
     resultado: [],
     sprint: [],
@@ -175,7 +175,7 @@ const resultados = [
   {
     etapa: "10",
     gp: "GP da Áustria",
-    circuito: "Spielberg",
+    circuito: "Red Bull Ring",
     bandeira: "⛰️",
     data: "28/06",
     hasSprint: false,
@@ -207,7 +207,7 @@ const resultados = [
     gp: "GP da Bélgica",
     circuito: "Spa-Francorchamps",
     bandeira: "🍺",
-    data: "26/07",
+    data: "19/07",
     hasSprint: false,
     resultado: [],
     sprint: [],
@@ -220,9 +220,9 @@ const resultados = [
   {
     etapa: "13",
     gp: "GP da Hungria",
-    circuito: "Budapeste",
+    circuito: "Hungaroring",
     bandeira: "🌶️",
-    data: "02/08",
+    data: "26/07",
     hasSprint: false,
     resultado: [],
     sprint: [],
@@ -264,10 +264,10 @@ const resultados = [
   // ── ETAPA 16 ────────────────────────────────────────────────
   {
     etapa: "16",
-    gp: "GP do Azerbaijão",
-    circuito: "Baku",
-    bandeira: "🔥",
-    data: "20/09",
+    gp: "GP da Espanha (Madrid)",
+    circuito: "Novo Circuito de Madrid",
+    bandeira: "🏟️",
+    data: "13/09",
     hasSprint: false,
     resultado: [],
     sprint: [],
@@ -279,11 +279,11 @@ const resultados = [
   // ── ETAPA 17 ────────────────────────────────────────────────
   {
     etapa: "17",
-    gp: "GP de Singapura",
-    circuito: "Marina Bay",
-    bandeira: "🦁",
-    data: "04/10",  // corrida domingo, sprint sábado
-    hasSprint: true,
+    gp: "GP do Azerbaijão",
+    circuito: "Baku",
+    bandeira: "🔥",
+    data: "26/09",
+    hasSprint: false,  // corrida de sábado (não é sprint, é corrida especial)
     resultado: [],
     sprint: [],
     polePosition: null,
@@ -294,11 +294,11 @@ const resultados = [
   // ── ETAPA 18 ────────────────────────────────────────────────
   {
     etapa: "18",
-    gp: "GP dos EUA",
-    circuito: "Austin",
-    bandeira: "🤠",
-    data: "18/10",
-    hasSprint: false,
+    gp: "GP de Singapura",
+    circuito: "Marina Bay",
+    bandeira: "🦁",
+    data: "11/10",
+    hasSprint: true,   // sprint no sábado 10/10
     resultado: [],
     sprint: [],
     polePosition: null,
@@ -309,9 +309,9 @@ const resultados = [
   // ── ETAPA 19 ────────────────────────────────────────────────
   {
     etapa: "19",
-    gp: "GP do México",
-    circuito: "Cidade do México",
-    bandeira: "🌮",
+    gp: "GP dos EUA",
+    circuito: "Austin (COTA)",
+    bandeira: "🤠",
     data: "25/10",
     hasSprint: false,
     resultado: [],
@@ -324,6 +324,21 @@ const resultados = [
   // ── ETAPA 20 ────────────────────────────────────────────────
   {
     etapa: "20",
+    gp: "GP do México",
+    circuito: "Hermanos Rodríguez",
+    bandeira: "💀",
+    data: "01/11",
+    hasSprint: false,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+  },
+
+  // ── ETAPA 21 ────────────────────────────────────────────────
+  {
+    etapa: "21",
     gp: "GP do Brasil",
     circuito: "Interlagos",
     bandeira: "🇧🇷",
@@ -336,14 +351,14 @@ const resultados = [
     corridaLimpa: null,
   },
 
-  // ── ETAPA 21 ────────────────────────────────────────────────
+  // ── ETAPA 22 ────────────────────────────────────────────────
   {
-    etapa: "21",
+    etapa: "22",
     gp: "GP de Las Vegas",
-    circuito: "Las Vegas",
+    circuito: "Las Vegas Strip",
     bandeira: "🎰",
-    data: "22/11",
-    hasSprint: false,
+    data: "21/11",
+    hasSprint: false,  // corrida noturna de sábado (não é sprint)
     resultado: [],
     sprint: [],
     polePosition: null,
@@ -351,9 +366,9 @@ const resultados = [
     corridaLimpa: null,
   },
 
-  // ── ETAPA 22 ────────────────────────────────────────────────
+  // ── ETAPA 23 ────────────────────────────────────────────────
   {
-    etapa: "22",
+    etapa: "23",
     gp: "GP do Catar",
     circuito: "Lusail",
     bandeira: "🐪",
@@ -366,9 +381,9 @@ const resultados = [
     corridaLimpa: null,
   },
 
-  // ── ETAPA 23 ────────────────────────────────────────────────
+  // ── ETAPA 24 ────────────────────────────────────────────────
   {
-    etapa: "23",
+    etapa: "24",
     gp: "GP de Abu Dhabi",
     circuito: "Yas Marina",
     bandeira: "🏙️",
@@ -384,7 +399,7 @@ const resultados = [
 ];
 
 // ═══════════════════════════════════════════════════════════════
-//  EXEMPLO DE ETAPA PREENCHIDA (copie e cole o modelo acima):
+//  EXEMPLO DE ETAPA PREENCHIDA — COPIE ESTE MODELO:
 //
 //  {
 //    etapa: "01",
@@ -405,19 +420,27 @@ const resultados = [
 //      { pos: 9, piloto: "Marcio",  equipe: "Kick Sauber",  pontos:  2 },
 //      { pos:10, piloto: "Denis",   equipe: "Kick Sauber",  pontos:  1 },
 //    ],
-//    sprint: [],   // se hasSprint: true, preencha igual ao resultado mas com pontos 8,7,6,5,4,3,2,1
+//    sprint: [],   // hasSprint: true → preencha igual ao resultado com pontos 8,7,6,5,4,3,2,1
 //    polePosition: "Lando",
 //    voltaRapida:  "Oscar",
 //    corridaLimpa: "Charles",
 //  },
+//
+//  ⚠️  NOMES dos pilotos devem ser EXATAMENTE iguais ao array PILOTOS acima:
+//       "Lando", "Oscar", "Lewis", "Charles", "Lucas.B", "Lucas.H",
+//       "Exodo", "Cleber", "Marcio", "Denis"
+//
+//  ⚠️  PONTOS da corrida:  1º=25  2º=18  3º=15  4º=12  5º=10  6º=8  7º=6  8º=4  9º=2  10º=1
+//  ⚠️  PONTOS do sprint:   1º=8   2º=7   3º=6   4º=5   5º=4   6º=3  7º=2  8º=1
+//  ⚠️  BÔNUS automáticos: pole +1 | volta rápida +1 (apenas top10) | corrida limpa +1
 // ═══════════════════════════════════════════════════════════════
 
 // ═══════════════════════════════════════════════════════════════
 //  INFRAÇÕES DE SUPER LICENÇA
 //  Como preencher quando um piloto receber punição:
 //  { etapa: "03", gravidade: "BAIXA", descricao: "Toque imprudente", pontosLicenca: -2 }
-//  gravidade pode ser: "BAIXA", "ALTA" ou "GRAVE"
-//  pontosLicenca: use o valor negativo conforme as regras
+//  gravidade pode ser: "BAIXA" (-2 pts) | "ALTA" (-2 pts + -2 pos) | "GRAVE" (-3 pts)
+//  pontosLicenca: use SEMPRE o valor NEGATIVO
 // ═══════════════════════════════════════════════════════════════
 
 const infracoes = [
