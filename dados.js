@@ -33,22 +33,21 @@ const resultados = [
     data: "08/03",
     hasSprint: false,
     resultado: [
-      // Preencha após a corrida:
-      // { pos: 1, piloto: "Lando",   equipe: "McLaren",      pontos: 25 },
-      // { pos: 2, piloto: "Oscar",   equipe: "McLaren",      pontos: 18 },
-      // { pos: 3, piloto: "Lewis",   equipe: "Ferrari",      pontos: 15 },
-      // { pos: 4, piloto: "Charles", equipe: "Ferrari",      pontos: 12 },
-      // { pos: 5, piloto: "Lucas.B", equipe: "Mercedes",     pontos: 10 },
-      // { pos: 6, piloto: "Lucas.H", equipe: "Mercedes",     pontos:  8 },
-      // { pos: 7, piloto: "Exodo",   equipe: "Aston Martin", pontos:  6 },
-      // { pos: 8, piloto: "Cleber",  equipe: "Aston Martin", pontos:  4 },
-      // { pos: 9, piloto: "Marcio",  equipe: "Kick Sauber",  pontos:  2 },
-      // { pos:10, piloto: "Denis",   equipe: "Kick Sauber",  pontos:  1 },
+      { pos:  1, piloto: "Lucas.B", equipe: "Mercedes",     pontos: 25 },
+      { pos:  2, piloto: "Marcio",  equipe: "Kick Sauber",  pontos: 18 },
+      { pos:  3, piloto: "Charles", equipe: "Ferrari",      pontos: 15 },
+      { pos:  4, piloto: "Oscar",   equipe: "McLaren",      pontos: 12 },
+      { pos:  5, piloto: "Exodo",   equipe: "Aston Martin", pontos: 10 },
+      { pos:  6, piloto: "Lando",   equipe: "McLaren",      pontos:  8 },
+      { pos:  7, piloto: "Denis",   equipe: "Kick Sauber",  pontos:  6 },
+      { pos:  8, piloto: "Lucas.H", equipe: "Mercedes",     pontos:  4 },
+      { pos:  9, piloto: "Cleber",  equipe: "Aston Martin", pontos:  2 },
+      { pos: 10, piloto: "Lewis",   equipe: "Ferrari",      pontos:  0 },  // NC — não somou pontos
     ],
     sprint: [],
-    polePosition: null,
-    voltaRapida:  null,
-    corridaLimpa: null,
+    polePosition: "Lucas.B",  // +1 pt
+    voltaRapida:  "Lucas.B",  // +1 pt (1º lugar, dentro do top 10 ✅)
+    corridaLimpa: "Marcio",   // +1 pt
   },
 
   // ── ETAPA 02 ────────────────────────────────────────────────
