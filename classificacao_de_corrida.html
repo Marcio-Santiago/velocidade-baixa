@@ -273,6 +273,39 @@
         font-size: 0.9em;
       }
     }
+
+    /* MINI HEADER for classificacao */
+    .page-header {
+        text-align: center;
+        margin-bottom: 24px;
+        padding: 28px 40px 24px;
+        background: linear-gradient(145deg, #0e0818 0%, #1c0f38 30%, #2e1560 60%, #1a0d32 100%);
+        border-radius: 18px;
+        box-shadow: 0 24px 64px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.07), 0 0 0 1px rgba(201,162,39,0.18);
+        position: relative; overflow: hidden;
+    }
+    .page-header::before {
+        content: ''; position: absolute; inset: 0;
+        background: repeating-linear-gradient(-55deg, transparent, transparent 6px, rgba(255,255,255,0.018) 6px, rgba(255,255,255,0.018) 7px);
+        pointer-events: none;
+    }
+    .page-header::after {
+        content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+        background: linear-gradient(90deg, transparent 0%, #c9a227 25%, #e6c84a 50%, #c9a227 75%, transparent 100%);
+    }
+    .page-header h1 {
+        font-family: 'Metal Mania', cursive;
+        font-size: 3em; font-weight: 400; text-transform: uppercase;
+        letter-spacing: 4px; color: #fff;
+        text-shadow: 3px 3px 0 rgba(0,0,0,0.55), 0 0 50px rgba(180,140,255,0.28);
+        position: relative; z-index: 1; margin: 0; line-height: 1.05;
+    }
+    .page-header .subtitle {
+        font-family: 'Rajdhani', sans-serif; font-size: 1em; font-weight: 500;
+        color: rgba(255,255,255,0.45); margin-top: 10px;
+        letter-spacing: 5px; text-transform: uppercase; position: relative; z-index: 1;
+    }
+
       /* ── FIXED NAV ─────────────────────────────────────────── */
     .fixed-nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
@@ -340,11 +373,14 @@
     </div>
   </nav>
 
+  <div class="page-header">
+    <h1>Classificação de Corrida</h1>
+    <div class="subtitle">Temporada 2026</div>
+  </div>
   <main>
-    <h1>🏅 Classificação de Corrida</h1>
 
     <div class="card">
-      <h2>📊 Tabela Geral de Posições</h2>
+      <h2>Tabela Geral de Posições</h2>
       <div style="overflow-x: auto; background: linear-gradient(180deg, var(--cardA), var(--cardB)); border-radius: 12px; border: 1px solid rgba(255,255,255,.08);">
         <table class="standings-table" id="standingsTable">
           <thead id="standingsHead"></thead>
