@@ -9,7 +9,7 @@
 //  - Deixe resultado: [] e sprint: [] quando ainda não aconteceu
 // ═══════════════════════════════════════════════════════════════
 
-const PILOTOS = [
+var PILOTOS = [
   { nome: "Lando",   equipe: "McLaren",      cor: "#ff8000" },
   { nome: "Oscar",   equipe: "McLaren",      cor: "#ff8000" },
   { nome: "Lewis",   equipe: "Ferrari",      cor: "#e8002d" },
@@ -22,7 +22,7 @@ const PILOTOS = [
   { nome: "Denis",   equipe: "Kick Sauber",  cor: "#b4dc00" },
 ];
 
-const resultados = [
+var resultados = [
 
   // ── ETAPA 01 ────────────────────────────────────────────────
   {
@@ -475,7 +475,7 @@ const resultados = [
 //  pontosLicenca: use SEMPRE o valor NEGATIVO
 // ═══════════════════════════════════════════════════════════════
 
-const infracoes = [
+var infracoes = [
   { piloto: "Lando",   ocorrencias: [] },
   { piloto: "Oscar",   ocorrencias: [] },
   { piloto: "Lewis",   ocorrencias: [] },
