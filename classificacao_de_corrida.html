@@ -419,8 +419,13 @@
         const s = (et.sprint||[]).find(x => x.piloto === nome);
         if (s) pts += s.pontos || 0;
         if (et.polePosition === nome) pts += 1;
-        if (et.voltaRapida === nome) { const rr = et.resultado.find(x=>x.piloto===nome); if(rr&&rr.pos<=10) pts+=1; }
+        if (et.voltaRapida === nome) {
+          const rr = et.resultado.find(x=>x.piloto===nome);
+          const rs = (et.sprint||[]).find(x=>x.piloto===nome);
+          if ((rr&&rr.pos<=10)||(rs&&rs.pos<=10)) pts+=1;
+        }
         if (et.corridaLimpa === nome) pts += 1;
+        if (et.pilotoDia    === nome) pts += 1;
       });
       return pts;
     }
@@ -444,8 +449,13 @@
           const r = et.resultado.find(x => x.piloto === p.nome);
           let bonus = 0;
           if (et.polePosition === p.nome) bonus++;
-          if (et.voltaRapida === p.nome && r && r.pos <= 10) bonus++;
+          if (et.voltaRapida === p.nome) {
+            const rr = et.resultado.find(x=>x.piloto===p.nome);
+            const rs = (et.sprint||[]).find(x=>x.piloto===p.nome);
+            if ((rr&&rr.pos<=10)||(rs&&rs.pos<=10)) bonus++;
+          }
           if (et.corridaLimpa === p.nome) bonus++;
+          if (et.pilotoDia    === p.nome) bonus++;
 
           if (r) {
             total += (r.pontos||0) + bonus;

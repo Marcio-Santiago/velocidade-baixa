@@ -502,13 +502,18 @@
         }
         if (etapa.voltaRapida) {
           const res = etapa.resultado.find(x => x.piloto === etapa.voltaRapida);
-          if (res && res.pos <= 10) {
+          const rsp = (etapa.sprint||[]).find(x => x.piloto === etapa.voltaRapida);
+          if ((res&&res.pos<=10)||(rsp&&rsp.pos<=10)) {
             const p = PILOTOS.find(x => x.nome === etapa.voltaRapida);
             if (p && stats[p.equipe]) stats[p.equipe].pts += 1;
           }
         }
         if (etapa.corridaLimpa) {
           const p = PILOTOS.find(x => x.nome === etapa.corridaLimpa);
+          if (p && stats[p.equipe]) stats[p.equipe].pts += 1;
+        }
+        if (etapa.pilotoDia) {
+          const p = PILOTOS.find(x => x.nome === etapa.pilotoDia);
           if (p && stats[p.equipe]) stats[p.equipe].pts += 1;
         }
       });

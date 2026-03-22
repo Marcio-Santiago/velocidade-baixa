@@ -547,6 +547,7 @@
         <tr>
             <th>Pos</th><th>Piloto</th><th>Equipe</th>
             <th style="text-align:center">Vitórias</th>
+            <th style="text-align:center">Poles</th>
             <th style="text-align:center">Pódios</th>
             <th style="text-align:center">Gap</th>
             <th style="text-align:center">Pontos</th>
@@ -628,13 +629,15 @@
         const isPole  = etapa.polePosition === r.piloto;
         const isVR    = etapa.voltaRapida  === r.piloto && r.pos <= 10;
         const isLimpa = etapa.corridaLimpa === r.piloto;
-        const bonus   = (isPole?1:0) + (isVR?1:0) + (isLimpa?1:0);
+        const isDia   = etapa.pilotoDia    === r.piloto;
+        const bonus   = (isPole?1:0) + (isVR?1:0) + (isLimpa?1:0) + (isDia?1:0);
         const totalPts = (r.pontos||0) + bonus;
 
         const bonusTags = [
           isPole  ? '<span class="bonus-tag bonus-pole">Pole +1</span>' : '',
           isVR    ? '<span class="bonus-tag bonus-vr">Volta Rápida +1</span>' : '',
           isLimpa ? '<span class="bonus-tag bonus-limpa">Corrida Limpa +1</span>' : '',
+          isDia   ? '<span class="bonus-tag" style="background:rgba(251,191,36,0.15);color:#fde68a;border:1px solid rgba(251,191,36,0.4);">Piloto do Dia +1</span>' : '',
         ].filter(Boolean).join('');
 
         const pilotoInfo = PILOTOS.find(p => p.nome === r.piloto) || {};
@@ -677,11 +680,10 @@
       });
     }
 
-    // ── Calcular pontuação total de cada piloto ──────────────────
     function calcularPilotos() {
       const stats = {};
       PILOTOS.forEach(p => {
-        stats[p.nome] = { nome: p.nome, equipe: p.equipe, cor: p.cor, pts: 0, vitorias: 0, podios: 0 };
+        stats[p.nome] = { nome: p.nome, equipe: p.equipe, cor: p.cor, pts: 0, vitorias: 0, podios: 0, poles: 0 };
       });
 
       resultados.forEach(etapa => {
@@ -695,14 +697,19 @@
           if (!stats[r.piloto]) return;
           stats[r.piloto].pts += r.pontos || 0;
         });
-        if (etapa.polePosition && stats[etapa.polePosition])
+        if (etapa.polePosition && stats[etapa.polePosition]) {
           stats[etapa.polePosition].pts += 1;
+          stats[etapa.polePosition].poles += 1;
+        }
         if (etapa.voltaRapida && stats[etapa.voltaRapida]) {
-          const r = etapa.resultado.find(x => x.piloto === etapa.voltaRapida);
-          if (r && r.pos <= 10) stats[etapa.voltaRapida].pts += 1;
+          const r  = etapa.resultado.find(x => x.piloto === etapa.voltaRapida);
+          const rs = (etapa.sprint||[]).find(x => x.piloto === etapa.voltaRapida);
+          if ((r&&r.pos<=10)||(rs&&rs.pos<=10)) stats[etapa.voltaRapida].pts += 1;
         }
         if (etapa.corridaLimpa && stats[etapa.corridaLimpa])
           stats[etapa.corridaLimpa].pts += 1;
+        if (etapa.pilotoDia && stats[etapa.pilotoDia])
+          stats[etapa.pilotoDia].pts += 1;
       });
 
       return Object.values(stats).sort((a,b) =>
@@ -727,6 +734,7 @@
             <td><span class="driver-name">${p.nome}</span></td>
             <td><span class="team-badge ${badge}">${p.equipe}</span></td>
             <td class="wins-cell">${p.vitorias || '—'}</td>
+            <td class="wins-cell" style="color:#c9a227">${p.poles || '—'}</td>
             <td class="wins-cell" style="color:#c0c0c0">${p.podios || '—'}</td>
             <td class="gap-cell">${gap}</td>
             <td class="pts-cell">${p.pts}</td>

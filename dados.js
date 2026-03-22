@@ -48,6 +48,7 @@ const resultados = [
     polePosition: "Lucas.B",  // +1 pt
     voltaRapida:  "Lucas.B",  // +1 pt (1º lugar, dentro do top 10 ✅)
     corridaLimpa: "Marcio",   // +1 pt
+    pilotoDia:    "Exodo",    // +1 pt
   },
 
   // ── ETAPA 02 ────────────────────────────────────────────────
@@ -59,10 +60,20 @@ const resultados = [
     data: "15/03",
     hasSprint: true,
     resultado: [],
-    sprint: [],
-    polePosition: null,
-    voltaRapida:  null,
-    corridaLimpa: null,
+    sprint: [
+      { pos: 1, piloto: "Marcio",  equipe: "Kick Sauber",  pontos: 8 },
+      { pos: 2, piloto: "Lucas.B", equipe: "Mercedes",     pontos: 7 },
+      { pos: 3, piloto: "Exodo",   equipe: "Aston Martin", pontos: 6 },
+      { pos: 4, piloto: "Denis",   equipe: "Kick Sauber",  pontos: 5 },
+      { pos: 5, piloto: "Lewis",   equipe: "Ferrari",      pontos: 4 },
+      { pos: 6, piloto: "Charles", equipe: "Ferrari",      pontos: 3 },
+      { pos: 7, piloto: "Lando",   equipe: "McLaren",      pontos: 2 },
+      { pos: 8, piloto: "Oscar",   equipe: "McLaren",      pontos: 1 },
+    ],
+    polePosition: "Marcio",   // +1 pt
+    voltaRapida:  "Marcio",   // +1 pt (1º no sprint ✅)
+    corridaLimpa: "Exodo",    // +1 pt
+    pilotoDia:    "Denis",    // +1 pt
   },
 
   // ── ETAPA 03 ────────────────────────────────────────────────
@@ -78,6 +89,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 04 ────────────────────────────────────────────────
@@ -93,6 +105,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 05 ────────────────────────────────────────────────
@@ -108,6 +121,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 06 ────────────────────────────────────────────────
@@ -123,6 +137,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 07 ────────────────────────────────────────────────
@@ -138,6 +153,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 08 ────────────────────────────────────────────────
@@ -153,6 +169,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 09 ────────────────────────────────────────────────
@@ -168,6 +185,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 10 ────────────────────────────────────────────────
@@ -183,6 +201,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 11 ────────────────────────────────────────────────
@@ -198,6 +217,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 12 ────────────────────────────────────────────────
@@ -213,6 +233,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 13 ────────────────────────────────────────────────
@@ -228,6 +249,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 14 ────────────────────────────────────────────────
@@ -243,6 +265,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 15 ────────────────────────────────────────────────
@@ -258,6 +281,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 16 ────────────────────────────────────────────────
@@ -273,6 +297,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 17 ────────────────────────────────────────────────
@@ -288,6 +313,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 18 ────────────────────────────────────────────────
@@ -303,6 +329,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 19 ────────────────────────────────────────────────
@@ -318,6 +345,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 20 ────────────────────────────────────────────────
@@ -333,6 +361,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 21 ────────────────────────────────────────────────
@@ -348,6 +377,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 22 ────────────────────────────────────────────────
@@ -363,6 +393,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 23 ────────────────────────────────────────────────
@@ -378,6 +409,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 24 ────────────────────────────────────────────────
@@ -393,6 +425,7 @@ const resultados = [
     polePosition: null,
     voltaRapida:  null,
     corridaLimpa: null,
+    pilotoDia:    null,
   },
 
 ];
@@ -431,7 +464,7 @@ const resultados = [
 //
 //  ⚠️  PONTOS da corrida:  1º=25  2º=18  3º=15  4º=12  5º=10  6º=8  7º=6  8º=4  9º=2  10º=1
 //  ⚠️  PONTOS do sprint:   1º=8   2º=7   3º=6   4º=5   5º=4   6º=3  7º=2  8º=1
-//  ⚠️  BÔNUS automáticos: pole +1 | volta rápida +1 (apenas top10) | corrida limpa +1
+//  ⚠️  BÔNUS automáticos: pole +1 | volta rápida +1 (apenas top10) | corrida limpa +1 | piloto do dia +1
 // ═══════════════════════════════════════════════════════════════
 
 // ═══════════════════════════════════════════════════════════════
