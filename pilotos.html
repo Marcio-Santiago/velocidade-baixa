@@ -708,10 +708,12 @@
         });
         (etapa.sprint || []).forEach(r => {
           if (!stats[r.piloto]) return;
+          if (r.dsq) return;  // DSQ: ignora pontos e posição
           stats[r.piloto].pts += r.pontos || 0;
-          if (r.pos === 1) stats[r.piloto].vitorias++;  // sprint win conta como vitória
+          if (r.pos === 1) stats[r.piloto].vitorias++;
           if (r.pos <= 3)  stats[r.piloto].podios++;
         });
+        const hasRaceEtapa = etapa.resultado && etapa.resultado.length > 0;
         if (etapa.polePosition && stats[etapa.polePosition]) {
           stats[etapa.polePosition].pts += 1;
           stats[etapa.polePosition].poles += 1;
@@ -719,10 +721,13 @@
         if (etapa.voltaRapida && stats[etapa.voltaRapida]) {
           const r  = etapa.resultado.find(x => x.piloto === etapa.voltaRapida);
           const rs = (etapa.sprint||[]).find(x => x.piloto === etapa.voltaRapida);
-          if ((r&&r.pos<=10)||(rs&&rs.pos<=10)) stats[etapa.voltaRapida].pts += 1;
+          if ((r&&r.pos<=10) || (rs&&!rs.dsq&&rs.pos<=10)) stats[etapa.voltaRapida].pts += 1;
         }
-        if (etapa.corridaLimpa && stats[etapa.corridaLimpa])
-          stats[etapa.corridaLimpa].pts += 1;
+        if (etapa.corridaLimpa && stats[etapa.corridaLimpa]) {
+          // não dar bônus se o piloto da corrida limpa for DSQ no sprint
+          const slDsq = !hasRaceEtapa && (etapa.sprint||[]).find(x=>x.piloto===etapa.corridaLimpa&&x.dsq);
+          if (!slDsq) stats[etapa.corridaLimpa].pts += 1;
+        }
         if (etapa.pilotoDia && stats[etapa.pilotoDia])
           stats[etapa.pilotoDia].pts += 1;
       });

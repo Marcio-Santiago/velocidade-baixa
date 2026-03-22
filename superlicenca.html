@@ -602,10 +602,11 @@
         return `<span style="opacity:0.35;font-size:0.85em;">Nenhuma infração registrada ✅</span>`;
       return entrada.ocorrencias.map(o => {
         const cor = o.gravidade === 'BAIXA' ? '#4ade80' : o.gravidade === 'ALTA' ? '#fb923c' : '#f87171';
-        return `<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
-          <span style="color:${cor};font-family:'Bebas Neue',sans-serif;letter-spacing:2px;font-size:0.9em;">${o.gravidade}</span>
-          <span style="opacity:0.6;font-size:0.8em;">Etapa ${o.etapa}</span>
-          <span style="color:#f87171;font-family:'Bebas Neue',sans-serif;">${o.pontosLicenca}</span>
+        return `<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.06);gap:8px;">
+          <span style="color:${cor};font-family:'Bebas Neue',sans-serif;letter-spacing:2px;font-size:0.9em;min-width:56px;">${o.gravidade}</span>
+          <span style="opacity:0.75;font-size:0.82em;flex:1;">${o.descricao || ''}</span>
+          <span style="opacity:0.5;font-size:0.78em;white-space:nowrap;">Etapa ${o.etapa}</span>
+          <span style="color:#f87171;font-family:'Bebas Neue',sans-serif;min-width:28px;text-align:right;">${o.pontosLicenca}</span>
         </div>`;
       }).join('');
     }

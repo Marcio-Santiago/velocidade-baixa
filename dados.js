@@ -69,6 +69,8 @@ var resultados = [
       { pos: 6, piloto: "Charles", equipe: "Ferrari",      pontos: 3 },
       { pos: 7, piloto: "Lando",   equipe: "McLaren",      pontos: 2 },
       { pos: 8, piloto: "Oscar",   equipe: "McLaren",      pontos: 1 },
+      { pos: 9, piloto: "Cleber",  equipe: "Aston Martin", pontos: 0 },
+      { pos:10, piloto: "Lucas.H", equipe: "Mercedes",     pontos: 0, dsq: true },  // DSQ
     ],
     polePosition: "Marcio",   // +1 pt
     voltaRapida:  "Marcio",   // +1 pt (1º no sprint ✅)
@@ -481,7 +483,9 @@ var infracoes = [
   { piloto: "Lewis",   ocorrencias: [] },
   { piloto: "Charles", ocorrencias: [] },
   { piloto: "Lucas.B", ocorrencias: [] },
-  { piloto: "Lucas.H", ocorrencias: [] },
+  { piloto: "Lucas.H", ocorrencias: [
+    { etapa: "02", gravidade: "GRAVE", descricao: "DSQ — Sprint da China", pontosLicenca: -3 }
+  ] },
   { piloto: "Exodo",   ocorrencias: [] },
   { piloto: "Cleber",  ocorrencias: [] },
   { piloto: "Marcio",  ocorrencias: [] },

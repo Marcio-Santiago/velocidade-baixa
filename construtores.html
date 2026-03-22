@@ -487,25 +487,20 @@
         });
         (etapa.sprint || []).forEach(r => {
           if (!stats[r.equipe]) return;
+          if (r.dsq) return;  // DSQ: sem pontos nem pódio
           stats[r.equipe].pts += r.pontos || 0;
           if (r.pos === 1) stats[r.equipe].vitorias++;
           if (r.pos <= 3)  stats[r.equipe].podios++;
         });
-        // pole bônus vai ao piloto, mas conta pole para equipe
+        // pole bônus vai ao piloto, mas conta pole e pts para equipe
         if (etapa.polePosition) {
           const p = PILOTOS.find(x => x.nome === etapa.polePosition);
-          if (p && stats[p.equipe]) stats[p.equipe].poles++;
-        }
-        // bônus de pontos (pole, volta rápida, corrida limpa) já somados no piloto,
-        // mas precisamos somar aqui também para a equipe
-        if (etapa.polePosition) {
-          const p = PILOTOS.find(x => x.nome === etapa.polePosition);
-          if (p && stats[p.equipe]) stats[p.equipe].pts += 1;
+          if (p && stats[p.equipe]) { stats[p.equipe].poles++; stats[p.equipe].pts += 1; }
         }
         if (etapa.voltaRapida) {
           const res = etapa.resultado.find(x => x.piloto === etapa.voltaRapida);
           const rsp = (etapa.sprint||[]).find(x => x.piloto === etapa.voltaRapida);
-          if ((res&&res.pos<=10)||(rsp&&rsp.pos<=10)) {
+          if ((res&&res.pos<=10)||(rsp&&!rsp.dsq&&rsp.pos<=10)) {
             const p = PILOTOS.find(x => x.nome === etapa.voltaRapida);
             if (p && stats[p.equipe]) stats[p.equipe].pts += 1;
           }
