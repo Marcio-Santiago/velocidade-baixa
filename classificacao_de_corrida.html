@@ -417,22 +417,27 @@
         const r  = et.resultado.find(x => x.piloto === nome);
         const s  = (et.sprint||[]).find(x => x.piloto === nome);
         const hasRace = et.resultado && et.resultado.length > 0;
+        const hasSp   = et.sprint    && et.sprint.length    > 0;
         if (r) pts += r.pontos || 0;
-        if (s && !s.dsq) pts += s.pontos || 0;  // DSQ: sem pontos
-        // Bônus aplicados uma única vez por etapa, vinculados à corrida principal se existir
+        if (s && !s.dsq) pts += s.pontos || 0;
+        // Bônus corrida
         if (hasRace) {
           if (et.polePosition === nome) pts += 1;
           if (et.voltaRapida  === nome && r && r.pos<=10) pts += 1;
           if (et.corridaLimpa === nome) pts += 1;
           if (et.pilotoDia    === nome) pts += 1;
-        } else {
-          // Etapa só-sprint: bônus contam via sprint (mas não para DSQ)
-          if (!s?.dsq) {
-            if (et.polePosition === nome) pts += 1;
-            if (et.voltaRapida  === nome && s && s.pos<=10) pts += 1;
-            if (et.corridaLimpa === nome) pts += 1;
-            if (et.pilotoDia    === nome) pts += 1;
-          }
+        }
+        // Bônus sprint
+        if (hasSp && !s?.dsq) {
+          const pf = hasRace
+            ? { pole:'polePositionSprint', vr:'voltaRapidaSprint',
+                limpa:'corridaLimpaSprint', dia:'pilotoDiaSprint' }
+            : { pole:'polePosition', vr:'voltaRapida',
+                limpa:'corridaLimpa', dia:'pilotoDia' };
+          if (et[pf.pole] === nome) pts += 1;
+          if (et[pf.vr]   === nome && s && s.pos<=10) pts += 1;
+          if (et[pf.limpa]=== nome) pts += 1;
+          if (et[pf.dia]  === nome) pts += 1;
         }
       });
       return pts;
@@ -456,14 +461,11 @@
           // corrida principal
           const r = et.resultado.find(x => x.piloto === p.nome);
           const hasRace = et.resultado && et.resultado.length > 0;
+          const hasSp   = et.sprint    && et.sprint.length    > 0;
           let bonus = 0;
           if (hasRace) {
-            // bônus só conta aqui se houve corrida principal
             if (et.polePosition === p.nome) bonus++;
-            if (et.voltaRapida === p.nome) {
-              const rr = et.resultado.find(x=>x.piloto===p.nome);
-              if (rr && rr.pos<=10) bonus++;
-            }
+            if (et.voltaRapida  === p.nome) { const rr=et.resultado.find(x=>x.piloto===p.nome); if(rr&&rr.pos<=10) bonus++; }
             if (et.corridaLimpa === p.nome) bonus++;
             if (et.pilotoDia    === p.nome) bonus++;
           }
@@ -486,23 +488,23 @@
             const s = (et.sprint||[]).find(x => x.piloto === p.nome);
             if (s) {
               if (s.dsq) {
-                // DSQ: mostra badge vermelho, não soma pontos
                 tds += `<td style="text-align:center;padding:8px 4px;">
                   <span style="color:#f87171;font-weight:700;font-size:0.8em;">DSQ</span>
                   <div style="font-size:0.6em;color:#f87171;opacity:0.7;">−3 SL</div>
                 </td>`;
               } else {
-                // bonus que se aplicam ao sprint
+                const pf = hasRace
+                  ? { pole:'polePositionSprint', vr:'voltaRapidaSprint',
+                      limpa:'corridaLimpaSprint', dia:'pilotoDiaSprint' }
+                  : { pole:'polePosition', vr:'voltaRapida',
+                      limpa:'corridaLimpa', dia:'pilotoDia' };
                 let spBonus = 0;
-                if (et.polePosition === p.nome) spBonus++;
-                if (et.voltaRapida === p.nome && s.pos <= 10) spBonus++;
-                if (et.corridaLimpa === p.nome) spBonus++;
-                if (et.pilotoDia    === p.nome) spBonus++;
-                // só soma bônus aqui se não houve corrida principal (evita dupla contagem)
-                const hasRaceLocal = et.resultado && et.resultado.length > 0;
-                const spBonusEfetivo = hasRaceLocal ? 0 : spBonus;
-                total += (s.pontos||0) + spBonusEfetivo;
-                const spBonusStr = spBonusEfetivo > 0 ? `<span style="color:var(--gold);font-size:0.7em">+${spBonusEfetivo}</span>` : '';
+                if (et[pf.pole]  === p.nome) spBonus++;
+                if (et[pf.vr]    === p.nome && s.pos<=10) spBonus++;
+                if (et[pf.limpa] === p.nome) spBonus++;
+                if (et[pf.dia]   === p.nome) spBonus++;
+                total += (s.pontos||0) + spBonus;
+                const spBonusStr = spBonus > 0 ? `<span style="color:var(--gold);font-size:0.7em">+${spBonus}</span>` : '';
                 tds += `<td style="text-align:center;padding:8px 4px;opacity:0.85;">
                   <span style="color:#fb923c;font-weight:700;">${s.pos}º</span>${spBonusStr}
                   <div style="font-size:0.65em;opacity:0.5;">${s.pontos}p</div>

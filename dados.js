@@ -59,7 +59,18 @@ var resultados = [
     bandeira: "🐉",
     data: "15/03",
     hasSprint: true,
-    resultado: [],
+    resultado: [
+      { pos:  1, piloto: "Marcio",  equipe: "Kick Sauber",  pontos: 25 },
+      { pos:  2, piloto: "Lucas.B", equipe: "Mercedes",     pontos: 18 },
+      { pos:  3, piloto: "Exodo",   equipe: "Aston Martin", pontos: 15 },
+      { pos:  4, piloto: "Lucas.H", equipe: "Mercedes",     pontos: 12 },
+      { pos:  5, piloto: "Lewis",   equipe: "Ferrari",      pontos: 10 },
+      { pos:  6, piloto: "Charles", equipe: "Ferrari",      pontos:  8 },
+      { pos:  7, piloto: "Lando",   equipe: "McLaren",      pontos:  6 },
+      { pos:  8, piloto: "Denis",   equipe: "Kick Sauber",  pontos:  4 },
+      { pos:  9, piloto: "Cleber",  equipe: "Aston Martin", pontos:  2 },
+      { pos: 10, piloto: "Oscar",   equipe: "McLaren",      pontos:  0 },  // NC
+    ],
     sprint: [
       { pos: 1, piloto: "Marcio",  equipe: "Kick Sauber",  pontos: 8 },
       { pos: 2, piloto: "Lucas.B", equipe: "Mercedes",     pontos: 7 },
@@ -70,12 +81,18 @@ var resultados = [
       { pos: 7, piloto: "Lando",   equipe: "McLaren",      pontos: 2 },
       { pos: 8, piloto: "Oscar",   equipe: "McLaren",      pontos: 1 },
       { pos: 9, piloto: "Cleber",  equipe: "Aston Martin", pontos: 0 },
-      { pos:10, piloto: "Lucas.H", equipe: "Mercedes",     pontos: 0, dsq: true },  // DSQ
+      { pos:10, piloto: "Lucas.H", equipe: "Mercedes",     pontos: 0, dsq: true },  // DSQ -3 SL
     ],
-    polePosition: "Marcio",   // +1 pt
-    voltaRapida:  "Marcio",   // +1 pt (1º no sprint ✅)
-    corridaLimpa: "Exodo",    // +1 pt
-    pilotoDia:    "Denis",    // +1 pt
+    // ── Bônus da CORRIDA PRINCIPAL ──────────────────────────────
+    polePosition: "Exodo",    // +1 pt (pole para corrida)
+    voltaRapida:  "Marcio",   // +1 pt (1º lugar ✅)
+    corridaLimpa: "Marcio",   // +1 pt
+    pilotoDia:    "Charles",  // +1 pt
+    // ── Bônus do SPRINT ─────────────────────────────────────────
+    polePositionSprint: "Marcio",  // +1 pt
+    voltaRapidaSprint:  "Marcio",  // +1 pt (1º no sprint ✅)
+    corridaLimpaSprint: "Exodo",   // +1 pt
+    pilotoDiaSprint:    "Denis",   // +1 pt
   },
 
   // ── ETAPA 03 ────────────────────────────────────────────────
@@ -466,7 +483,9 @@ var resultados = [
 //
 //  ⚠️  PONTOS da corrida:  1º=25  2º=18  3º=15  4º=12  5º=10  6º=8  7º=6  8º=4  9º=2  10º=1
 //  ⚠️  PONTOS do sprint:   1º=8   2º=7   3º=6   4º=5   5º=4   6º=3  7º=2  8º=1
-//  ⚠️  BÔNUS automáticos: pole +1 | volta rápida +1 (apenas top10) | corrida limpa +1 | piloto do dia +1
+//  ⚠️  BÔNUS da CORRIDA:   polePosition | voltaRapida | corridaLimpa | pilotoDia  (+1 cada)
+//  ⚠️  BÔNUS do SPRINT:    polePositionSprint | voltaRapidaSprint | corridaLimpaSprint | pilotoDiaSprint  (+1 cada)
+//  ⚠️  Se a etapa NÃO tem sprint, use apenas os campos sem "Sprint"
 // ═══════════════════════════════════════════════════════════════
 
 // ═══════════════════════════════════════════════════════════════

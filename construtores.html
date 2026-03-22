@@ -478,40 +478,70 @@
         stats[eq] = { pts: 0, vitorias: 0, podios: 0, poles: 0 };
       });
 
-      resultados.forEach(etapa => {
-        etapa.resultado.forEach(r => {
+      resultados.forEach(et => {
+        const hasRace = et.resultado && et.resultado.length > 0;
+        const hasSp   = et.sprint    && et.sprint.length    > 0;
+
+        // Pontos corrida principal
+        et.resultado.forEach(r => {
           if (!stats[r.equipe]) return;
           stats[r.equipe].pts += r.pontos || 0;
           if (r.pos === 1) stats[r.equipe].vitorias++;
           if (r.pos <= 3)  stats[r.equipe].podios++;
         });
-        (etapa.sprint || []).forEach(r => {
-          if (!stats[r.equipe]) return;
-          if (r.dsq) return;  // DSQ: sem pontos nem pódio
+
+        // Pontos sprint
+        (et.sprint || []).forEach(r => {
+          if (!stats[r.equipe] || r.dsq) return;
           stats[r.equipe].pts += r.pontos || 0;
           if (r.pos === 1) stats[r.equipe].vitorias++;
           if (r.pos <= 3)  stats[r.equipe].podios++;
         });
-        // pole bônus vai ao piloto, mas conta pole e pts para equipe
-        if (etapa.polePosition) {
-          const p = PILOTOS.find(x => x.nome === etapa.polePosition);
-          if (p && stats[p.equipe]) { stats[p.equipe].poles++; stats[p.equipe].pts += 1; }
-        }
-        if (etapa.voltaRapida) {
-          const res = etapa.resultado.find(x => x.piloto === etapa.voltaRapida);
-          const rsp = (etapa.sprint||[]).find(x => x.piloto === etapa.voltaRapida);
-          if ((res&&res.pos<=10)||(rsp&&!rsp.dsq&&rsp.pos<=10)) {
-            const p = PILOTOS.find(x => x.nome === etapa.voltaRapida);
-            if (p && stats[p.equipe]) stats[p.equipe].pts += 1;
+
+        // Bônus CORRIDA PRINCIPAL
+        if (hasRace) {
+          if (et.polePosition) {
+            const p = PILOTOS.find(x => x.nome === et.polePosition);
+            if (p && stats[p.equipe]) { stats[p.equipe].poles++; stats[p.equipe].pts += 1; }
           }
+          if (et.voltaRapida) {
+            const r = et.resultado.find(x => x.piloto === et.voltaRapida);
+            if (r && r.pos <= 10) {
+              const p = PILOTOS.find(x => x.nome === et.voltaRapida);
+              if (p && stats[p.equipe]) stats[p.equipe].pts += 1;
+            }
+          }
+          if (et.corridaLimpa) { const p = PILOTOS.find(x=>x.nome===et.corridaLimpa); if(p&&stats[p.equipe]) stats[p.equipe].pts+=1; }
+          if (et.pilotoDia)    { const p = PILOTOS.find(x=>x.nome===et.pilotoDia);    if(p&&stats[p.equipe]) stats[p.equipe].pts+=1; }
         }
-        if (etapa.corridaLimpa) {
-          const p = PILOTOS.find(x => x.nome === etapa.corridaLimpa);
-          if (p && stats[p.equipe]) stats[p.equipe].pts += 1;
-        }
-        if (etapa.pilotoDia) {
-          const p = PILOTOS.find(x => x.nome === etapa.pilotoDia);
-          if (p && stats[p.equipe]) stats[p.equipe].pts += 1;
+
+        // Bônus SPRINT
+        if (hasSp) {
+          const pf = hasRace
+            ? { pole:'polePositionSprint', vr:'voltaRapidaSprint',
+                limpa:'corridaLimpaSprint', dia:'pilotoDiaSprint' }
+            : { pole:'polePosition', vr:'voltaRapida',
+                limpa:'corridaLimpa', dia:'pilotoDia' };
+
+          if (et[pf.pole]) {
+            const p = PILOTOS.find(x => x.nome === et[pf.pole]);
+            if (p && stats[p.equipe]) { stats[p.equipe].poles++; stats[p.equipe].pts += 1; }
+          }
+          if (et[pf.vr]) {
+            const rs = et.sprint.find(x => x.piloto === et[pf.vr]);
+            if (rs && !rs.dsq && rs.pos <= 10) {
+              const p = PILOTOS.find(x => x.nome === et[pf.vr]);
+              if (p && stats[p.equipe]) stats[p.equipe].pts += 1;
+            }
+          }
+          if (et[pf.limpa]) {
+            const rsl = et.sprint.find(x => x.piloto === et[pf.limpa]);
+            if (!rsl?.dsq) { const p=PILOTOS.find(x=>x.nome===et[pf.limpa]); if(p&&stats[p.equipe]) stats[p.equipe].pts+=1; }
+          }
+          if (et[pf.dia]) {
+            const rsd = et.sprint.find(x => x.piloto === et[pf.dia]);
+            if (!rsd?.dsq) { const p=PILOTOS.find(x=>x.nome===et[pf.dia]); if(p&&stats[p.equipe]) stats[p.equipe].pts+=1; }
+          }
         }
       });
 
