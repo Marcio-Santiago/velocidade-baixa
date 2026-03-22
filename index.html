@@ -681,6 +681,33 @@
             .header h1 { font-size: 2.5em; }
         }
 
+
+        /* STATUS DINÂMICO */
+        tr.disputada td { opacity: 0.72; }
+        tr.disputada { background: linear-gradient(90deg, rgba(0,200,100,0.06) 0%, transparent 100%) !important; }
+        tr.proxima   { background: linear-gradient(90deg, rgba(201,162,39,0.10) 0%, transparent 100%) !important; }
+        tr.proxima td { border-bottom-color: rgba(201,162,39,0.25); }
+        .badge.disputada-badge {
+            background: linear-gradient(135deg, #166534 0%, #14532d 100%);
+            color: #86efac;
+            box-shadow: 0 4px 15px rgba(22,101,52,0.4);
+        }
+        .badge.proxima-badge {
+            background: linear-gradient(135deg, #854d0e 0%, #713f12 100%);
+            color: #fde68a;
+            box-shadow: 0 4px 15px rgba(133,77,14,0.45);
+            animation: pulse 2s infinite;
+        }
+        .winner-tag {
+            display: block;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.72em;
+            letter-spacing: 1.5px;
+            margin-top: 5px;
+            color: #c9a227;
+            opacity: 0.9;
+        }
+
         /* DIFICULDADE */
         .diff-cell {
             white-space: nowrap;
@@ -804,7 +831,7 @@
             <th>Tipo</th>
             <th>Dificuldade</th>
         </tr>
-        <tr>
+        <tr data-etapa="01" data-tipo="corrida">
             <td>08</td>
             <td>Dom</td>
             <td>#01</td>
@@ -814,7 +841,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s1"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Acessível</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="02" data-tipo="sprint">
             <td>14</td>
             <td>Sáb</td>
             <td>#02</td>
@@ -824,7 +851,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s3"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Difícil</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="02" data-tipo="corrida">
             <td>15</td>
             <td>Dom</td>
             <td>#02</td>
@@ -834,7 +861,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s3"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Difícil</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="03" data-tipo="corrida">
             <td>29</td>
             <td>Dom</td>
             <td>#03</td>
@@ -867,7 +894,7 @@
             <th>Tipo</th>
             <th>Dificuldade</th>
         </tr>
-        <tr>
+        <tr data-etapa="04" data-tipo="corrida">
             <td>12</td>
             <td>Dom</td>
             <td>#04</td>
@@ -877,7 +904,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s1"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Acessível</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="05" data-tipo="corrida">
             <td>19</td>
             <td>Dom</td>
             <td>#05</td>
@@ -910,7 +937,7 @@
             <th>Tipo</th>
             <th>Dificuldade</th>
         </tr>
-        <tr>
+        <tr data-etapa="06" data-tipo="sprint">
             <td>02</td>
             <td>Sáb</td>
             <td>#06</td>
@@ -920,7 +947,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s2"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Moderado</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="06" data-tipo="corrida">
             <td>03</td>
             <td>Dom</td>
             <td>#06</td>
@@ -930,7 +957,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s2"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Moderado</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="07" data-tipo="sprint">
             <td>23</td>
             <td>Sáb</td>
             <td>#07</td>
@@ -940,7 +967,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s1"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Acessível</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="07" data-tipo="corrida">
             <td>24</td>
             <td>Dom</td>
             <td>#07</td>
@@ -973,7 +1000,7 @@
             <th>Tipo</th>
             <th>Dificuldade</th>
         </tr>
-        <tr>
+        <tr data-etapa="08" data-tipo="corrida">
             <td>07</td>
             <td>Dom</td>
             <td>#08</td>
@@ -983,7 +1010,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s5"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span></div><div class="diff-label">Lendário</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="09" data-tipo="corrida">
             <td>14</td>
             <td>Dom</td>
             <td>#09</td>
@@ -993,7 +1020,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s2"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Moderado</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="10" data-tipo="corrida">
             <td>28</td>
             <td>Dom</td>
             <td>#10</td>
@@ -1026,7 +1053,7 @@
             <th>Tipo</th>
             <th>Dificuldade</th>
         </tr>
-        <tr>
+        <tr data-etapa="11" data-tipo="sprint">
             <td>04</td>
             <td>Sáb</td>
             <td>#11</td>
@@ -1036,7 +1063,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s3"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span></div><div class="diff-label">Difícil</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="11" data-tipo="corrida">
             <td>05</td>
             <td>Dom</td>
             <td>#11</td>
@@ -1046,7 +1073,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s3"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span></div><div class="diff-label">Difícil</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="12" data-tipo="corrida">
             <td>19</td>
             <td>Dom</td>
             <td>#12</td>
@@ -1056,7 +1083,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s4"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span></div><div class="diff-label">Muito Difícil</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="13" data-tipo="corrida">
             <td>26</td>
             <td>Dom</td>
             <td>#13</td>
@@ -1089,7 +1116,7 @@
             <th>Tipo</th>
             <th>Dificuldade</th>
         </tr>
-        <tr>
+        <tr data-etapa="14" data-tipo="sprint">
             <td>22</td>
             <td>Sáb</td>
             <td>#14</td>
@@ -1099,7 +1126,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s3"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span></div><div class="diff-label">Difícil</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="14" data-tipo="corrida">
             <td>23</td>
             <td>Dom</td>
             <td>#14</td>
@@ -1132,7 +1159,7 @@
             <th>Tipo</th>
             <th>Dificuldade</th>
         </tr>
-        <tr>
+        <tr data-etapa="15" data-tipo="corrida">
             <td>06</td>
             <td>Dom</td>
             <td>#15</td>
@@ -1142,7 +1169,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s2"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Moderado</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="16" data-tipo="corrida">
             <td>13</td>
             <td>Dom</td>
             <td>#16</td>
@@ -1152,7 +1179,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s2"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Moderado</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="17" data-tipo="especial">
             <td>26</td>
             <td>Sáb</td>
             <td>#17</td>
@@ -1185,7 +1212,7 @@
             <th>Tipo</th>
             <th>Dificuldade</th>
         </tr>
-        <tr>
+        <tr data-etapa="18" data-tipo="sprint">
             <td>10</td>
             <td>Sáb</td>
             <td>#18</td>
@@ -1195,7 +1222,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s5"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span></div><div class="diff-label">Lendário</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="18" data-tipo="corrida">
             <td>11</td>
             <td>Dom</td>
             <td>#18</td>
@@ -1205,7 +1232,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s5"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span></div><div class="diff-label">Lendário</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="19" data-tipo="corrida">
             <td>25</td>
             <td>Dom</td>
             <td>#19</td>
@@ -1238,7 +1265,7 @@
             <th>Tipo</th>
             <th>Dificuldade</th>
         </tr>
-        <tr>
+        <tr data-etapa="20" data-tipo="corrida">
             <td>01</td>
             <td>Dom</td>
             <td>#20</td>
@@ -1248,7 +1275,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s2"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span><span class="s off">★</span></div><div class="diff-label">Moderado</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="21" data-tipo="corrida">
             <td>08</td>
             <td>Dom</td>
             <td>#21</td>
@@ -1258,7 +1285,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s3"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span></div><div class="diff-label">Difícil</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="22" data-tipo="especial">
             <td>21</td>
             <td>Sáb</td>
             <td>#22</td>
@@ -1268,7 +1295,7 @@
         
         <td class="diff-cell"><div class="diff-stars diff-s3"><div style="display:flex;gap:2px"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s off">★</span></div><div class="diff-label">Difícil</div></div></td>
         </tr>
-        <tr>
+        <tr data-etapa="23" data-tipo="corrida">
             <td>29</td>
             <td>Dom</td>
             <td>#23</td>
@@ -1301,7 +1328,7 @@
             <th>Tipo</th>
             <th>Dificuldade</th>
         </tr>
-        <tr>
+        <tr data-etapa="24" data-tipo="final">
             <td>06</td>
             <td>Dom</td>
             <td>#24</td>
@@ -1401,6 +1428,95 @@
         <div class="footer-icons">🎸 🔥 🏁 🏆 🎮 ⚡ 🤘</div>
         <div style="margin-top: 15px; font-size: 0.8em; opacity: 0.5;">Que vença o melhor piloto!</div>
     </div>
+
+
+  <script src="dados.js"></script>
+  <script>
+    // ── Marca linhas do calendário dinamicamente a partir de dados.js ──
+
+    function calcVencedor(etapa) {
+      // Para corrida principal
+      if (etapa.resultado && etapa.resultado.length > 0) {
+        const v = etapa.resultado.find(r => r.pos === 1);
+        return v ? { nome: v.piloto, tipo: 'corrida' } : null;
+      }
+      // Para sprint sem corrida principal
+      if (etapa.sprint && etapa.sprint.length > 0) {
+        const v = etapa.sprint.find(r => r.pos === 1);
+        return v ? { nome: v.piloto, tipo: 'sprint' } : null;
+      }
+      return null;
+    }
+
+    function calcVencedorSprint(etapa) {
+      if (etapa.sprint && etapa.sprint.length > 0) {
+        const v = etapa.sprint.find(r => r.pos === 1);
+        return v ? v.piloto : null;
+      }
+      return null;
+    }
+
+    function isDisputada(etapa, tipo) {
+      if (tipo === 'sprint') return etapa.sprint && etapa.sprint.length > 0;
+      return etapa.resultado && etapa.resultado.length > 0;
+    }
+
+    function updateCalendario() {
+      const rows = document.querySelectorAll('tr[data-etapa]');
+      let proximaSetada = false;
+
+      rows.forEach(tr => {
+        const numEtapa = tr.getAttribute('data-etapa');
+        const tipo     = tr.getAttribute('data-tipo');
+        const etapa    = resultados.find(e => e.etapa === numEtapa);
+        if (!etapa) return;
+
+        const disputada = isDisputada(etapa, tipo);
+        // Encontra a célula do badge (6ª td = index 5)
+        const tds = tr.querySelectorAll('td');
+        const badgeTd = tds[5];
+        if (!badgeTd) return;
+
+        if (disputada) {
+          tr.classList.add('disputada');
+          const label = tipo === 'sprint' ? '⚡ Sprint' : '🏁 Corrida';
+          let vencedor = '';
+          if (tipo === 'sprint') {
+            const v = calcVencedorSprint(etapa);
+            if (v) vencedor = `<span class="winner-tag">🏆 ${v}</span>`;
+          } else {
+            const v = calcVencedor(etapa);
+            if (v) vencedor = `<span class="winner-tag">🏆 ${v.nome}</span>`;
+          }
+          badgeTd.innerHTML = `<span class="badge disputada-badge">✓ DISPUTADA</span>${vencedor}`;
+        } else if (!proximaSetada) {
+          tr.classList.add('proxima');
+          proximaSetada = true;
+          const badgeEl = badgeTd.querySelector('.badge');
+          if (badgeEl) {
+            badgeEl.classList.add('proxima-badge');
+            badgeEl.textContent = '▶ PRÓXIMA';
+          }
+        }
+      });
+    }
+
+    // Atualiza stats dinâmicos da seção resumo
+    function updateStats() {
+      const etapasDisputadas = resultados.filter(e =>
+        (e.resultado && e.resultado.length > 0) || (e.sprint && e.sprint.length > 0)
+      ).length;
+      const sprintsDisputados = resultados.filter(e => e.sprint && e.sprint.length > 0).length;
+      const nums = document.querySelectorAll('.stat-number');
+      // slot 0 = GPs totais (estático=24), slot 1 = sprints totais (estático=6), slot 2 = sáb especiais
+      // Adiciona etapas disputadas se quisermos — aqui apenas atualizamos o 1º stat
+      if (nums[0]) nums[0].textContent = '24';
+      if (nums[1]) nums[1].textContent = '6';
+    }
+
+    updateCalendario();
+    updateStats();
+  </script>
 
 </body>
 </html>

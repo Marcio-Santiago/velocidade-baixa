@@ -488,6 +488,8 @@
         (etapa.sprint || []).forEach(r => {
           if (!stats[r.equipe]) return;
           stats[r.equipe].pts += r.pontos || 0;
+          if (r.pos === 1) stats[r.equipe].vitorias++;
+          if (r.pos <= 3)  stats[r.equipe].podios++;
         });
         // pole bônus vai ao piloto, mas conta pole para equipe
         if (etapa.polePosition) {

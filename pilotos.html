@@ -586,10 +586,12 @@
       "Denis":   "foto_denis.jpg",
     };
 
-    // ── Encontrar a última etapa com resultado preenchido ───────
+    // ── Encontrar a última etapa com resultado OU sprint preenchido
     function ultimaEtapa() {
       for (let i = resultados.length - 1; i >= 0; i--) {
-        if (resultados[i].resultado && resultados[i].resultado.length > 0) return resultados[i];
+        const et = resultados[i];
+        if ((et.resultado && et.resultado.length > 0) || (et.sprint && et.sprint.length > 0))
+          return et;
       }
       return null;
     }
@@ -605,9 +607,16 @@
         return;
       }
 
-      titleEl.innerHTML = `🏆 Pódio da Etapa — ${etapa.bandeira} ${etapa.gp}`;
+      // Usa corrida principal se disponível, senão usa sprint
+      const isSprint = !etapa.resultado || etapa.resultado.length === 0;
+      const fonte    = isSprint ? (etapa.sprint || []) : etapa.resultado;
+      const labelEtapa = isSprint
+        ? `⚡ Pódio do Sprint — ${etapa.bandeira} ${etapa.gp}`
+        : `🏆 Pódio da Etapa — ${etapa.bandeira} ${etapa.gp}`;
 
-      const top3  = etapa.resultado.filter(r => r.pos <= 3).sort((a,b) => a.pos - b.pos);
+      titleEl.innerHTML = labelEtapa;
+
+      const top3  = fonte.filter(r => r.pos <= 3).sort((a,b) => a.pos - b.pos);
       // ordem clássica de pódio: 2º | 1º | 3º
       const order = [
         top3.find(r=>r.pos===2),
@@ -650,13 +659,17 @@
              <div class="podium-photo-placeholder" style="display:none;">📷</div>`
           : `<div class="podium-photo-placeholder">📷</div>`;
 
+        const gpLabel = isSprint
+          ? `⚡ ${etapa.bandeira} Sprint — ${etapa.gp}`
+          : `${etapa.bandeira} ${etapa.gp}`;
+
         // ── Verso ──
         const backHtml = `
           <div class="back-pos">${pos}</div>
           <div class="back-name" style="color:${teamColor};text-shadow:0 0 16px ${teamColor}66;">${r.piloto}</div>
           <div class="back-team">${pilotoInfo.equipe || r.equipe}</div>
           <div class="back-divider"></div>
-          <div class="back-gp">${etapa.bandeira} ${etapa.gp}</div>
+          <div class="back-gp">${gpLabel}</div>
           <div class="back-pts">${totalPts}</div>
           <div class="back-pts-label">pontos nesta etapa</div>
           ${bonusTags ? `<div class="podium-bonuses">${bonusTags}</div>` : ''}`;
@@ -696,6 +709,8 @@
         (etapa.sprint || []).forEach(r => {
           if (!stats[r.piloto]) return;
           stats[r.piloto].pts += r.pontos || 0;
+          if (r.pos === 1) stats[r.piloto].vitorias++;  // sprint win conta como vitória
+          if (r.pos <= 3)  stats[r.piloto].podios++;
         });
         if (etapa.polePosition && stats[etapa.polePosition]) {
           stats[etapa.polePosition].pts += 1;
