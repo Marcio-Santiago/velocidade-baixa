@@ -119,25 +119,12 @@ var resultados = [
     bandeira: "🇧🇭",
     data: "12/04",
     hasSprint: false,
-    resultado: [
-      { pos:  1, piloto: "Lucas.B", equipe: "Mercedes",     pontos: 25 },
-      { pos:  2, piloto: "Marcio",  equipe: "Kick Sauber",  pontos: 18 },
-      { pos:  3, piloto: "Exodo",   equipe: "Aston Martin", pontos: 15 },
-      { pos:  4, piloto: "Lucas.H", equipe: "Mercedes",     pontos: 12 },
-      { pos:  5, piloto: "Denis",   equipe: "Kick Sauber",  pontos: 10 },
-      { pos:  6, piloto: "Lewis",   equipe: "Ferrari",      pontos:  8 },
-      { pos:  7, piloto: "Max",     equipe: "Red Bull",     pontos:  6 },  // convidado
-      { pos:  8, piloto: "Lando",   equipe: "McLaren",      pontos:  4 },
-      { pos:  9, piloto: "Carlos",  equipe: "Williams",     pontos:  2 },  // convidado
-      { pos: 10, piloto: "Oscar",   equipe: "McLaren",      pontos:  1 },  // -3 pts superlicença
-      { pos: 11, piloto: "Charles", equipe: "Ferrari",      pontos:  0 },  // -3 pts superlicença
-      { pos: 12, piloto: "Cleber",  equipe: "Aston Martin", pontos:  0 },
-    ],
+    resultado: [],
     sprint: [],
-    polePosition: "Lucas.B",  // +1 pt
-    voltaRapida:  "Marcio",   // +1 pt (2º lugar, dentro do top 10 ✅)
-    corridaLimpa: "Lucas.B",  // +1 pt
-    pilotoDia:    "Max",      // +1 pt (convidado — não soma no campeonato)
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 05 ────────────────────────────────────────────────
@@ -511,13 +498,9 @@ var resultados = [
 
 var infracoes = [
   { piloto: "Lando",   ocorrencias: [] },
-  { piloto: "Oscar",   ocorrencias: [
-    { etapa: "04", gravidade: "GRAVE", descricao: "Infração — GP do Bahrein", pontosLicenca: -3 }
-  ] },
+  { piloto: "Oscar",   ocorrencias: [] },
   { piloto: "Lewis",   ocorrencias: [] },
-  { piloto: "Charles", ocorrencias: [
-    { etapa: "04", gravidade: "GRAVE", descricao: "Infração — GP do Bahrein", pontosLicenca: -3 }
-  ] },
+  { piloto: "Charles", ocorrencias: [] },
   { piloto: "Lucas.B", ocorrencias: [] },
   { piloto: "Lucas.H", ocorrencias: [
     { etapa: "02", gravidade: "GRAVE", descricao: "DSQ — Sprint da China", pontosLicenca: -3 }
