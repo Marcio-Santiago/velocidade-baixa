@@ -20,8 +20,8 @@ var PILOTOS = [
   { nome: "Cleber",  equipe: "Aston Martin", cor: "#006f62" },
   { nome: "Marcio",  equipe: "Kick Sauber",  cor: "#b4dc00" },
   { nome: "Denis",   equipe: "Kick Sauber",  cor: "#b4dc00" },
-  { nome: "Max",     equipe: "Red Bull",     cor: "#3671C6" },
-  { nome: "Carlos",  equipe: "Red Bull",     cor: "#3671C6" },
+  { nome: "Max",     equipe: "Red Bull",     cor: "#0600ef" },
+  { nome: "Carlos",  equipe: "Red Bull",     cor: "#0600ef" },
 ];
 
 var resultados = [
@@ -134,12 +134,25 @@ var resultados = [
     bandeira: "🇧🇭",
     data: "12/04",
     hasSprint: false,
-    resultado: [],
+    resultado: [
+      { pos:  1, piloto: "Lucas.B", equipe: "Mercedes",     pontos: 25 },
+      { pos:  2, piloto: "Marcio",  equipe: "Kick Sauber",  pontos: 18 },
+      { pos:  3, piloto: "Exodo",   equipe: "Aston Martin", pontos: 15 },
+      { pos:  4, piloto: "Lucas.H", equipe: "Mercedes",     pontos: 12 },
+      { pos:  5, piloto: "Denis",   equipe: "Kick Sauber",  pontos: 10 },
+      { pos:  6, piloto: "Lewis",   equipe: "Ferrari",      pontos:  8 },
+      { pos:  7, piloto: "Max",     equipe: "Red Bull",     pontos:  6 },
+      { pos:  8, piloto: "Lando",   equipe: "McLaren",      pontos:  4 },
+      { pos:  9, piloto: "Carlos",  equipe: "Red Bull",     pontos:  2 },
+      { pos: 10, piloto: "Oscar",   equipe: "McLaren",      pontos:  1 },  // -3 SL
+      { pos: 11, piloto: "Charles", equipe: "Ferrari",      pontos:  0 },  // -3 SL
+      { pos: 12, piloto: "Cleber",  equipe: "Aston Martin", pontos:  0 },
+    ],
     sprint: [],
-    polePosition: null,
-    voltaRapida:  null,
-    corridaLimpa: null,
-    pilotoDia:    null,
+    polePosition: "Lucas.B",  // +1 pt
+    voltaRapida:  "Marcio",   // +1 pt (2º lugar, dentro do top 10 ✅)
+    corridaLimpa: "Lucas.B",  // +1 pt
+    pilotoDia:    "Max",      // +1 pt
   },
 
   // ── ETAPA 05 ────────────────────────────────────────────────
@@ -466,9 +479,13 @@ var resultados = [
 
 var infracoes = [
   { piloto: "Lando",   ocorrencias: [] },
-  { piloto: "Oscar",   ocorrencias: [] },
+  { piloto: "Oscar",   ocorrencias: [
+    { etapa: "04", gravidade: "GRAVE", descricao: "Penalidade — GP do Bahrein", pontosLicenca: -3 }
+  ] },
   { piloto: "Lewis",   ocorrencias: [] },
-  { piloto: "Charles", ocorrencias: [] },
+  { piloto: "Charles", ocorrencias: [
+    { etapa: "04", gravidade: "GRAVE", descricao: "Penalidade — GP do Bahrein", pontosLicenca: -3 }
+  ] },
   { piloto: "Lucas.B", ocorrencias: [] },
   { piloto: "Lucas.H", ocorrencias: [
     { etapa: "02", gravidade: "GRAVE", descricao: "DSQ — Sprint da China", pontosLicenca: -3 }
