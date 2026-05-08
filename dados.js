@@ -165,14 +165,14 @@ var resultados = [
       { pos:  8, piloto: "Oscar",   equipe: "McLaren",      pontos:  4 },
       { pos:  9, piloto: "Lewis",   equipe: "Ferrari",      pontos:  2 },
       { pos: 10, piloto: "Cleber",  equipe: "Aston Martin", pontos:  1 },
-      { pos: 11, piloto: "Exodo",   equipe: "Aston Martin", pontos:  0 },  // punição -3 SL
-      { pos: 12, piloto: "Lando",   equipe: "McLaren",      pontos:  0 },  // punição -3 SL
+      { pos: 11, piloto: "Exodo",   equipe: "Aston Martin", pontos:  0 },
+      { pos: 12, piloto: "Lando",   equipe: "McLaren",      pontos:  0 },
     ],
     sprint: [],
-    polePosition: "Marcio",     // +1 pt
-    voltaRapida:  "Lucas.B",    // +1 pt (2º lugar, dentro do top 10 ✅)
-    corridaLimpa: "Marcio",     // +1 pt
-    pilotoDia:    "Lucas.H",    // +1 pt
+    polePosition: "Marcio",
+    voltaRapida:  "Lucas.B",
+    corridaLimpa: "Marcio",
+    pilotoDia:    "Lucas.H",
   },
 
   // ── ETAPA 06 ────────────────────────────────────────────────
@@ -191,9 +191,293 @@ var resultados = [
     pilotoDia:    null,
   },
 
-  // ... (etapas 07 a 24 permanecem iguais ao original, todas vazias)
-  // Por brevidade, mantive apenas até a 06, mas no arquivo completo todas as etapas até 24 continuam vazias conforme o original enviado.
-  // A única mudança real é a etapa 05 preenchida e as infrações atualizadas.
+  // ── ETAPA 07 ────────────────────────────────────────────────
+  {
+    etapa: "07",
+    gp: "GP do Canadá",
+    circuito: "Montreal",
+    bandeira: "🍁",
+    data: "24/05",
+    hasSprint: true,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
+  },
+
+  // ── ETAPA 08 ────────────────────────────────────────────────
+  {
+    etapa: "08",
+    gp: "GP de Mônaco",
+    circuito: "Monte Carlo",
+    bandeira: "🎲",
+    data: "07/06",
+    hasSprint: false,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
+  },
+
+  // ── ETAPA 09 ────────────────────────────────────────────────
+  {
+    etapa: "09",
+    gp: "GP da Espanha",
+    circuito: "Barcelona-Catalunha",
+    bandeira: "🐂",
+    data: "14/06",
+    hasSprint: false,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
+  },
+
+  // ── ETAPA 10 ────────────────────────────────────────────────
+  {
+    etapa: "10",
+    gp: "GP da Áustria",
+    circuito: "Red Bull Ring",
+    bandeira: "⛰️",
+    data: "28/06",
+    hasSprint: false,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
+  },
+
+  // ── ETAPA 11 ────────────────────────────────────────────────
+  {
+    etapa: "11",
+    gp: "GP da Grã-Bretanha",
+    circuito: "Silverstone",
+    bandeira: "👑",
+    data: "05/07",
+    hasSprint: true,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
+  },
+
+  // ── ETAPA 12 ────────────────────────────────────────────────
+  {
+    etapa: "12",
+    gp: "GP da Bélgica",
+    circuito: "Spa-Francorchamps",
+    bandeira: "🍺",
+    data: "19/07",
+    hasSprint: false,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
+  },
+
+  // ── ETAPA 13 ────────────────────────────────────────────────
+  {
+    etapa: "13",
+    gp: "GP da Hungria",
+    circuito: "Hungaroring",
+    bandeira: "🌶️",
+    data: "26/07",
+    hasSprint: false,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
+  },
+
+  // ── ETAPA 14 ────────────────────────────────────────────────
+  {
+    etapa: "14",
+    gp: "GP da Holanda",
+    circuito: "Zandvoort",
+    bandeira: "🌷",
+    data: "23/08",
+    hasSprint: true,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
+  },
+
+  // ── ETAPA 15 ────────────────────────────────────────────────
+  {
+    etapa: "15",
+    gp: "GP da Itália",
+    circuito: "Monza",
+    bandeira: "🍕",
+    data: "06/09",
+    hasSprint: false,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
+  },
+
+  // ── ETAPA 16 ────────────────────────────────────────────────
+  {
+    etapa: "16",
+    gp: "GP da Espanha (Madrid)",
+    circuito: "Novo Circuito de Madrid",
+    bandeira: "🏟️",
+    data: "13/09",
+    hasSprint: false,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
+  },
+
+  // ── ETAPA 17 ────────────────────────────────────────────────
+  {
+    etapa: "17",
+    gp: "GP do Azerbaijão",
+    circuito: "Baku",
+    bandeira: "🔥",
+    data: "26/09",
+    hasSprint: false,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
+  },
+
+  // ── ETAPA 18 ────────────────────────────────────────────────
+  {
+    etapa: "18",
+    gp: "GP de Singapura",
+    circuito: "Marina Bay",
+    bandeira: "🦁",
+    data: "11/10",
+    hasSprint: true,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
+  },
+
+  // ── ETAPA 19 ────────────────────────────────────────────────
+  {
+    etapa: "19",
+    gp: "GP dos EUA",
+    circuito: "Austin (COTA)",
+    bandeira: "🤠",
+    data: "25/10",
+    hasSprint: false,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
+  },
+
+  // ── ETAPA 20 ────────────────────────────────────────────────
+  {
+    etapa: "20",
+    gp: "GP do México",
+    circuito: "Hermanos Rodríguez",
+    bandeira: "💀",
+    data: "01/11",
+    hasSprint: false,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
+  },
+
+  // ── ETAPA 21 ────────────────────────────────────────────────
+  {
+    etapa: "21",
+    gp: "GP do Brasil",
+    circuito: "Interlagos",
+    bandeira: "🇧🇷",
+    data: "08/11",
+    hasSprint: false,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
+  },
+
+  // ── ETAPA 22 ────────────────────────────────────────────────
+  {
+    etapa: "22",
+    gp: "GP de Las Vegas",
+    circuito: "Las Vegas Strip",
+    bandeira: "🎰",
+    data: "21/11",
+    hasSprint: false,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
+  },
+
+  // ── ETAPA 23 ────────────────────────────────────────────────
+  {
+    etapa: "23",
+    gp: "GP do Catar",
+    circuito: "Lusail",
+    bandeira: "🐪",
+    data: "29/11",
+    hasSprint: false,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
+  },
+
+  // ── ETAPA 24 ────────────────────────────────────────────────
+  {
+    etapa: "24",
+    gp: "GP de Abu Dhabi",
+    circuito: "Yas Marina",
+    bandeira: "🏙️",
+    data: "06/12",
+    hasSprint: false,
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
+  },
 
 ];
 
