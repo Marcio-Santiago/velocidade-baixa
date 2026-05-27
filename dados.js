@@ -1,5 +1,12 @@
 // ═══════════════════════════════════════════════════════════════
 //  VELOCIDADE BAIXA 2026 — DADOS DO CAMPEONATO
+//  Como preencher após cada corrida:
+//  - resultado: liste todos os pilotos por ordem de chegada
+//  - pontos: pontos da corrida (25,18,15,12,10,8,6,4,2,1)
+//  - sprint: preencha apenas nas etapas marcadas com hasSprint: true
+//  - pontos sprint: (8,7,6,5,4,3,2,1)
+//  - polePosition, voltaRapida, corridaLimpa: nome do piloto
+//  - Deixe resultado: [] e sprint: [] quando ainda não aconteceu
 // ═══════════════════════════════════════════════════════════════
 
 var PILOTOS = [
@@ -13,8 +20,8 @@ var PILOTOS = [
   { nome: "Cleber",  equipe: "Aston Martin", cor: "#006f62" },
   { nome: "Marcio",  equipe: "Kick Sauber",  cor: "#b4dc00" },
   { nome: "Denis",   equipe: "Kick Sauber",  cor: "#b4dc00" },
-  { nome: "Max",     equipe: "Red Bull",     cor: "#0600ef" },
-  { nome: "Carlos",  equipe: "Red Bull",     cor: "#0600ef" },
+  { nome: "Max",     equipe: "Red Bull",     cor: "#3671C6" },
+  { nome: "Carlos",  equipe: "Red Bull",     cor: "#3671C6" },
 ];
 
 var resultados = [
@@ -37,13 +44,13 @@ var resultados = [
       { pos:  7, piloto: "Denis",   equipe: "Kick Sauber",  pontos:  6 },
       { pos:  8, piloto: "Lucas.H", equipe: "Mercedes",     pontos:  4 },
       { pos:  9, piloto: "Cleber",  equipe: "Aston Martin", pontos:  2 },
-      { pos: 10, piloto: "Lewis",   equipe: "Ferrari",      pontos:  0 },
+      { pos: 10, piloto: "Lewis",   equipe: "Ferrari",      pontos:  0 },  // NC — não somou pontos
     ],
     sprint: [],
-    polePosition: "Lucas.B",
-    voltaRapida:  "Lucas.B",
-    corridaLimpa: "Marcio",
-    pilotoDia:    "Exodo",
+    polePosition: "Lucas.B",  // +1 pt
+    voltaRapida:  "Lucas.B",  // +1 pt (1º lugar, dentro do top 10 ✅)
+    corridaLimpa: "Marcio",   // +1 pt
+    pilotoDia:    "Exodo",    // +1 pt
   },
 
   // ── ETAPA 02 ────────────────────────────────────────────────
@@ -64,7 +71,7 @@ var resultados = [
       { pos:  7, piloto: "Lando",   equipe: "McLaren",      pontos:  6 },
       { pos:  8, piloto: "Denis",   equipe: "Kick Sauber",  pontos:  4 },
       { pos:  9, piloto: "Cleber",  equipe: "Aston Martin", pontos:  2 },
-      { pos: 10, piloto: "Oscar",   equipe: "McLaren",      pontos:  0 },
+      { pos: 10, piloto: "Oscar",   equipe: "McLaren",      pontos:  0 },  // NC
     ],
     sprint: [
       { pos: 1, piloto: "Marcio",  equipe: "Kick Sauber",  pontos: 8 },
@@ -76,16 +83,16 @@ var resultados = [
       { pos: 7, piloto: "Lando",   equipe: "McLaren",      pontos: 2 },
       { pos: 8, piloto: "Oscar",   equipe: "McLaren",      pontos: 1 },
       { pos: 9, piloto: "Cleber",  equipe: "Aston Martin", pontos: 0 },
-      { pos:10, piloto: "Lucas.H", equipe: "Mercedes",     pontos: 0, dsq: true },
+      { pos:10, piloto: "Lucas.H", equipe: "Mercedes",     pontos: 0, dsq: true },  // DSQ -3 SL
     ],
-    polePosition: "Exodo",
-    voltaRapida:  "Marcio",
-    corridaLimpa: "Marcio",
-    pilotoDia:    "Charles",
-    polePositionSprint: "Marcio",
-    voltaRapidaSprint:  "Marcio",
-    corridaLimpaSprint: "Exodo",
-    pilotoDiaSprint:    "Denis",
+    polePosition: "Exodo",        // +1 pt
+    voltaRapida:  "Marcio",       // +1 pt
+    corridaLimpa: "Marcio",       // +1 pt
+    pilotoDia:    "Charles",      // +1 pt
+    polePositionSprint: "Marcio",  // +1 pt
+    voltaRapidaSprint:  "Marcio",  // +1 pt
+    corridaLimpaSprint: "Exodo",   // +1 pt
+    pilotoDiaSprint:    "Denis",   // +1 pt
   },
 
   // ── ETAPA 03 ────────────────────────────────────────────────
@@ -111,10 +118,10 @@ var resultados = [
       { pos: 12, piloto: "Cleber",  equipe: "Aston Martin", pontos:  0 },
     ],
     sprint: [],
-    polePosition: "Lucas.B",
-    voltaRapida:  "Marcio",
-    corridaLimpa: "Lucas.B",
-    pilotoDia:    "Lucas.H",
+    polePosition: "Lucas.B",  // +1 pt
+    voltaRapida:  "Marcio",   // +1 pt (3º lugar ✅)
+    corridaLimpa: "Lucas.B",  // +1 pt
+    pilotoDia:    "Lucas.H",  // +1 pt
   },
 
   // ── ETAPA 04 ────────────────────────────────────────────────
@@ -125,25 +132,12 @@ var resultados = [
     bandeira: "🇧🇭",
     data: "12/04",
     hasSprint: false,
-    resultado: [
-      { pos:  1, piloto: "Lucas.B", equipe: "Mercedes",     pontos: 25 },
-      { pos:  2, piloto: "Marcio",  equipe: "Kick Sauber",  pontos: 18 },
-      { pos:  3, piloto: "Exodo",   equipe: "Aston Martin", pontos: 15 },
-      { pos:  4, piloto: "Lucas.H", equipe: "Mercedes",     pontos: 12 },
-      { pos:  5, piloto: "Denis",   equipe: "Kick Sauber",  pontos: 10 },
-      { pos:  6, piloto: "Lewis",   equipe: "Ferrari",      pontos:  8 },
-      { pos:  7, piloto: "Max",     equipe: "Red Bull",     pontos:  6 },
-      { pos:  8, piloto: "Lando",   equipe: "McLaren",      pontos:  4 },
-      { pos:  9, piloto: "Carlos",  equipe: "Red Bull",     pontos:  2 },
-      { pos: 10, piloto: "Oscar",   equipe: "McLaren",      pontos:  1 },
-      { pos: 11, piloto: "Charles", equipe: "Ferrari",      pontos:  0 },
-      { pos: 12, piloto: "Cleber",  equipe: "Aston Martin", pontos:  0 },
-    ],
+    resultado: [],
     sprint: [],
-    polePosition: "Lucas.B",
-    voltaRapida:  "Marcio",
-    corridaLimpa: "Lucas.B",
-    pilotoDia:    "Max",
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
   },
 
   // ── ETAPA 05 ────────────────────────────────────────────────
@@ -154,28 +148,15 @@ var resultados = [
     bandeira: "🌙",
     data: "19/04",
     hasSprint: false,
-    resultado: [
-      { pos:  1, piloto: "Marcio",  equipe: "Kick Sauber",  pontos: 25 },
-      { pos:  2, piloto: "Lucas.B", equipe: "Mercedes",     pontos: 18 },
-      { pos:  3, piloto: "Lucas.H", equipe: "Mercedes",     pontos: 15 },
-      { pos:  4, piloto: "Carlos",  equipe: "Red Bull",     pontos: 12 },
-      { pos:  5, piloto: "Denis",   equipe: "Kick Sauber",  pontos: 10 },
-      { pos:  6, piloto: "Charles", equipe: "Ferrari",      pontos:  8 },
-      { pos:  7, piloto: "Max",     equipe: "Red Bull",     pontos:  6 },
-      { pos:  8, piloto: "Oscar",   equipe: "McLaren",      pontos:  4 },
-      { pos:  9, piloto: "Lewis",   equipe: "Ferrari",      pontos:  2 },
-      { pos: 10, piloto: "Cleber",  equipe: "Aston Martin", pontos:  1 },
-      { pos: 11, piloto: "Exodo",   equipe: "Aston Martin", pontos:  0 },
-      { pos: 12, piloto: "Lando",   equipe: "McLaren",      pontos:  0 },
-    ],
+    resultado: [],
     sprint: [],
-    polePosition: "Marcio",
-    voltaRapida:  "Lucas.B",
-    corridaLimpa: "Marcio",
-    pilotoDia:    "Lucas.H",
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
   },
 
-  // ── ETAPA 06 ────────────────────────────────────────────────
+  // ── ETAPA 06 (MIAMI) ────────────────────────────────────────────────
   {
     etapa: "06",
     gp: "GP de Miami",
@@ -183,12 +164,42 @@ var resultados = [
     bandeira: "🌴",
     data: "03/05",
     hasSprint: true,
-    resultado: [],
-    sprint: [],
-    polePosition: null,
-    voltaRapida:  null,
-    corridaLimpa: null,
-    pilotoDia:    null,
+    resultado: [
+      { pos:  1, piloto: "Lewis",   equipe: "Ferrari",      pontos: 25 },
+      { pos:  2, piloto: "Marcio",  equipe: "Kick Sauber",  pontos: 18 },
+      { pos:  3, piloto: "Max",     equipe: "Red Bull",     pontos: 15 },
+      { pos:  4, piloto: "Charles", equipe: "Ferrari",      pontos: 12 },
+      { pos:  5, piloto: "Lando",   equipe: "McLaren",      pontos: 10 },
+      { pos:  6, piloto: "Lucas.H", equipe: "Mercedes",     pontos:  8 },
+      { pos:  7, piloto: "Carlos",  equipe: "Red Bull",     pontos:  6 },
+      { pos:  8, piloto: "Lucas.B", equipe: "Mercedes",     pontos:  4 },
+      { pos:  9, piloto: "Oscar",   equipe: "McLaren",      pontos:  2 },
+      { pos: 10, piloto: "Cleber",  equipe: "Aston Martin", pontos:  1 },
+      { pos: 11, piloto: "Denis",   equipe: "Kick Sauber",  pontos:  0 },
+      { pos: 12, piloto: "Exodo",   equipe: "Aston Martin", pontos:  0 }
+    ],
+    sprint: [
+      { pos: 1, piloto: "Marcio",  equipe: "Kick Sauber",  pontos: 8 },
+      { pos: 2, piloto: "Max",     equipe: "Red Bull",     pontos: 7 },
+      { pos: 3, piloto: "Charles", equipe: "Ferrari",      pontos: 6 },
+      { pos: 4, piloto: "Oscar",   equipe: "McLaren",      pontos: 5 },
+      { pos: 5, piloto: "Lando",   equipe: "McLaren",      pontos: 4 },
+      { pos: 6, piloto: "Lewis",   equipe: "Ferrari",      pontos: 3 },
+      { pos: 7, piloto: "Lucas.B", equipe: "Mercedes",     pontos: 2 },
+      { pos: 8, piloto: "Carlos",  equipe: "Red Bull",     pontos: 1 },
+      { pos: 9, piloto: "Denis",   equipe: "Kick Sauber",  pontos: 0 },
+      { pos:10, piloto: "Cleber",  equipe: "Aston Martin", pontos: 0 },
+      { pos:11, piloto: "Lucas.H", equipe: "Mercedes",     pontos: 0 },
+      { pos:12, piloto: "Exodo",   equipe: "Aston Martin", pontos: 0 }
+    ],
+    polePosition: "Cleber",        // +1 pt
+    voltaRapida:  "Cleber",        // +1 pt
+    corridaLimpa: "Marcio",        // +1 pt
+    pilotoDia:    "Lando",         // +1 pt
+    polePositionSprint: "Max",     // +1 pt
+    voltaRapidaSprint:  "Marcio",  // +1 pt
+    corridaLimpaSprint: null,
+    pilotoDiaSprint:    null
   },
 
   // ── ETAPA 07 ────────────────────────────────────────────────
@@ -482,23 +493,15 @@ var resultados = [
 ];
 
 var infracoes = [
-  { piloto: "Lando",   ocorrencias: [
-    { etapa: "05", gravidade: "GRAVE", descricao: "Penalidade — GP da Arábia Saudita", pontosLicenca: -3 }
-  ] },
-  { piloto: "Oscar",   ocorrencias: [
-    { etapa: "04", gravidade: "GRAVE", descricao: "Penalidade — GP do Bahrein", pontosLicenca: -3 }
-  ] },
+  { piloto: "Lando",   ocorrencias: [] },
+  { piloto: "Oscar",   ocorrencias: [] },
   { piloto: "Lewis",   ocorrencias: [] },
-  { piloto: "Charles", ocorrencias: [
-    { etapa: "04", gravidade: "GRAVE", descricao: "Penalidade — GP do Bahrein", pontosLicenca: -3 }
-  ] },
+  { piloto: "Charles", ocorrencias: [] },
   { piloto: "Lucas.B", ocorrencias: [] },
   { piloto: "Lucas.H", ocorrencias: [
     { etapa: "02", gravidade: "GRAVE", descricao: "DSQ — Sprint da China", pontosLicenca: -3 }
   ] },
-  { piloto: "Exodo",   ocorrencias: [
-    { etapa: "05", gravidade: "GRAVE", descricao: "Penalidade — GP da Arábia Saudita", pontosLicenca: -3 }
-  ] },
+  { piloto: "Exodo",   ocorrencias: [] },
   { piloto: "Cleber",  ocorrencias: [] },
   { piloto: "Marcio",  ocorrencias: [] },
   { piloto: "Denis",   ocorrencias: [] },
