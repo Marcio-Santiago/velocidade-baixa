@@ -20,8 +20,8 @@ var PILOTOS = [
   { nome: "Cleber",  equipe: "Aston Martin", cor: "#006f62" },
   { nome: "Marcio",  equipe: "Kick Sauber",  cor: "#b4dc00" },
   { nome: "Denis",   equipe: "Kick Sauber",  cor: "#b4dc00" },
-  { nome: "Max",     equipe: "Red Bull",     cor: "#3671C6" },
-  { nome: "Carlos",  equipe: "Red Bull",     cor: "#3671C6" },
+  { nome: "Max",     equipe: "Red Bull",     cor: "#0600ef" },
+  { nome: "Carlos",  equipe: "Red Bull",     cor: "#0600ef" },
 ];
 
 var resultados = [
@@ -158,7 +158,7 @@ var resultados = [
     pilotoDia:    null,
   },
 
-    // ── ETAPA 06 ────────────────────────────────────────────────
+  // ── ETAPA 06 ────────────────────────────────────────────────
   {
     etapa: "06",
     gp: "GP de Miami",
@@ -166,47 +166,15 @@ var resultados = [
     bandeira: "🌴",
     data: "03/05",
     hasSprint: true,
-    resultado: [
-      { pos:  1, piloto: "Lewis",   equipe: "Ferrari",      pontos: 25 },
-      { pos:  2, piloto: "Marcio",  equipe: "Kick Sauber",  pontos: 18 },
-      { pos:  3, piloto: "Max",     equipe: "Red Bull",     pontos: 15 },
-      { pos:  4, piloto: "Charles", equipe: "Ferrari",      pontos: 12 },
-      { pos:  5, piloto: "Lando",   equipe: "McLaren",      pontos: 10 },
-      { pos:  6, piloto: "Lucas.H", equipe: "Mercedes",     pontos:  8 },
-      { pos:  7, piloto: "Carlos",  equipe: "Red Bull",     pontos:  6 },
-      { pos:  8, piloto: "Lucas.B", equipe: "Mercedes",     pontos:  4 },
-      { pos:  9, piloto: "Oscar",   equipe: "McLaren",      pontos:  2 },
-      { pos: 10, piloto: "Cleber",  equipe: "Aston Martin", pontos:  1 },
-      { pos: 11, piloto: "Denis",   equipe: "Kick Sauber",  pontos:  0 },
-      { pos: 12, piloto: "Exodo",   equipe: "Aston Martin", pontos:  0 },
-    ],
-    sprint: [
-      { pos: 1, piloto: "Marcio",  equipe: "Kick Sauber",  pontos: 8 },
-      { pos: 2, piloto: "Max",     equipe: "Red Bull",     pontos: 7 },
-      { pos: 3, piloto: "Charles", equipe: "Ferrari",      pontos: 6 },
-      { pos: 4, piloto: "Oscar",   equipe: "McLaren",      pontos: 5 },
-      { pos: 5, piloto: "Lando",   equipe: "McLaren",      pontos: 4 },
-      { pos: 6, piloto: "Lewis",   equipe: "Ferrari",      pontos: 3 },
-      { pos: 7, piloto: "Lucas.B", equipe: "Mercedes",     pontos: 2 },
-      { pos: 8, piloto: "Carlos",  equipe: "Red Bull",     pontos: 1 },
-      { pos: 9, piloto: "Denis",   equipe: "Kick Sauber",  pontos: 0 },
-      { pos:10, piloto: "Cleber",  equipe: "Aston Martin", pontos: 0 },
-      { pos:11, piloto: "Lucas.H", equipe: "Mercedes",     pontos: 0 },
-      { pos:12, piloto: "Exodo",   equipe: "Aston Martin", pontos: 0 },
-    ],
-    // ── Bônus da CORRIDA PRINCIPAL ──────────────────────────────
-    polePosition: "Cleber",   // +1 pt
-    voltaRapida:  "Cleber",   // +1 pt (10º lugar, dentro do top 10 ✅)
-    corridaLimpa: "Marcio",   // +1 pt
-    pilotoDia:    "Lando",    // +1 pt
-    // ── Bônus do SPRINT ─────────────────────────────────────────
-    polePositionSprint: "Max",     // +1 pt
-    voltaRapidaSprint:  "Marcio",  // +1 pt (1º no sprint ✅)
-    corridaLimpaSprint: null,      // Não teve
-    pilotoDiaSprint:    null,      // Não teve
+    resultado: [],
+    sprint: [],
+    polePosition: null,
+    voltaRapida:  null,
+    corridaLimpa: null,
+    pilotoDia:    null,
   },
 
-// ── ETAPA 07 ────────────────────────────────────────────────
+  // ── ETAPA 07 ────────────────────────────────────────────────
   {
     etapa: "07",
     gp: "GP do Canadá",
