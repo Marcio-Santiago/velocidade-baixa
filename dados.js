@@ -85,12 +85,14 @@ var resultados = [
       { pos: 9, piloto: "Cleber",  equipe: "Aston Martin", pontos: 0 },
       { pos:10, piloto: "Lucas.H", equipe: "Mercedes",     pontos: 0, dsq: true },  // DSQ -3 SL
     ],
-    polePosition: "Exodo",        // +1 pt
-    voltaRapida:  "Marcio",       // +1 pt
-    corridaLimpa: "Marcio",       // +1 pt
-    pilotoDia:    "Charles",      // +1 pt
+    // ── Bônus da CORRIDA PRINCIPAL ──────────────────────────────
+    polePosition: "Exodo",    // +1 pt (pole para corrida)
+    voltaRapida:  "Marcio",   // +1 pt (1º lugar ✅)
+    corridaLimpa: "Marcio",   // +1 pt
+    pilotoDia:    "Charles",  // +1 pt
+    // ── Bônus do SPRINT ─────────────────────────────────────────
     polePositionSprint: "Marcio",  // +1 pt
-    voltaRapidaSprint:  "Marcio",  // +1 pt
+    voltaRapidaSprint:  "Marcio",  // +1 pt (1º no sprint ✅)
     corridaLimpaSprint: "Exodo",   // +1 pt
     pilotoDiaSprint:    "Denis",   // +1 pt
   },
@@ -156,7 +158,7 @@ var resultados = [
     pilotoDia:    null,
   },
 
-  // ── ETAPA 06 (MIAMI) ────────────────────────────────────────────────
+    // ── ETAPA 06 ────────────────────────────────────────────────
   {
     etapa: "06",
     gp: "GP de Miami",
@@ -176,7 +178,7 @@ var resultados = [
       { pos:  9, piloto: "Oscar",   equipe: "McLaren",      pontos:  2 },
       { pos: 10, piloto: "Cleber",  equipe: "Aston Martin", pontos:  1 },
       { pos: 11, piloto: "Denis",   equipe: "Kick Sauber",  pontos:  0 },
-      { pos: 12, piloto: "Exodo",   equipe: "Aston Martin", pontos:  0 }
+      { pos: 12, piloto: "Exodo",   equipe: "Aston Martin", pontos:  0 },
     ],
     sprint: [
       { pos: 1, piloto: "Marcio",  equipe: "Kick Sauber",  pontos: 8 },
@@ -190,19 +192,21 @@ var resultados = [
       { pos: 9, piloto: "Denis",   equipe: "Kick Sauber",  pontos: 0 },
       { pos:10, piloto: "Cleber",  equipe: "Aston Martin", pontos: 0 },
       { pos:11, piloto: "Lucas.H", equipe: "Mercedes",     pontos: 0 },
-      { pos:12, piloto: "Exodo",   equipe: "Aston Martin", pontos: 0 }
+      { pos:12, piloto: "Exodo",   equipe: "Aston Martin", pontos: 0 },
     ],
-    polePosition: "Cleber",        // +1 pt
-    voltaRapida:  "Cleber",        // +1 pt
-    corridaLimpa: "Marcio",        // +1 pt
-    pilotoDia:    "Lando",         // +1 pt
+    // ── Bônus da CORRIDA PRINCIPAL ──────────────────────────────
+    polePosition: "Cleber",   // +1 pt
+    voltaRapida:  "Cleber",   // +1 pt (10º lugar, dentro do top 10 ✅)
+    corridaLimpa: "Marcio",   // +1 pt
+    pilotoDia:    "Lando",    // +1 pt
+    // ── Bônus do SPRINT ─────────────────────────────────────────
     polePositionSprint: "Max",     // +1 pt
-    voltaRapidaSprint:  "Marcio",  // +1 pt
-    corridaLimpaSprint: null,
-    pilotoDiaSprint:    null
+    voltaRapidaSprint:  "Marcio",  // +1 pt (1º no sprint ✅)
+    corridaLimpaSprint: null,      // Não teve
+    pilotoDiaSprint:    null,      // Não teve
   },
 
-  // ── ETAPA 07 ────────────────────────────────────────────────
+// ── ETAPA 07 ────────────────────────────────────────────────
   {
     etapa: "07",
     gp: "GP do Canadá",
